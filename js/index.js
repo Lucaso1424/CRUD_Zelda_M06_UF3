@@ -1,7 +1,8 @@
-// let zelda = {
-//     id, 
-//     nombre
-// }
+let zelda = {
+    "nom":"Zelda",
+    "id":0,
+} 
+
 
 window.onload = function() {
     recargaLista("guardados");
