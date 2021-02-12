@@ -1,5 +1,5 @@
 window.onload = function(){
-    recargaLista("guardados");
+   // recargaLista("guardados");
 }
 
 function CreacionTarjeta(){
