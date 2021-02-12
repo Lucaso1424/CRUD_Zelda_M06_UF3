@@ -1,14 +1,19 @@
-window.onload = function(){
+// let zelda = {
+//     id, 
+//     nombre
+// }
+
+window.onload = function() {
     recargaLista("guardados");
 }
 
-function CreacionTarjeta(){
+function CreacionTarjeta() {
     let tarjeta = document.createElement("div");
     let img = document.createElement("img");
     let div = document.createElement("div");
     let span = document.createElement("span");  
     
-    img.setAttribute("src", "img/trifuerza.jpg");
+    img.setAttribute("src", "img/trifuerza.jpg", "width", "300", "height", "200");
     div.setAttribute("class", "flex-column center");
     span.innerText = "Trifuerza";
     
