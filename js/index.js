@@ -1,6 +1,17 @@
+
+
 window.onload = function(){
    // recargaLista("guardados");
+   document.getElementById("formulario").style.visibility = "hidden";
 }
+
+
+
+function esVisible(id,id2){
+        document.getElementById(id2).style.visibility ="hidden";
+        document.getElementById(id).style.visibility = "visible";
+}
+
 
 function CreacionTarjeta(){
     let tarjeta = document.createElement("div");
@@ -23,7 +34,11 @@ function CreacionTarjeta(){
 
 
 function recargaLista(menu){
+    document.getElementById("formulario").style.visibility = "hidden";
+    document.getElementById("guardados").style.visibility = "visible";
     document.getElementById(menu).innerHTML ="";
     document.getElementById(menu).appendChild(CreacionTarjeta());
 
 }
+
+
