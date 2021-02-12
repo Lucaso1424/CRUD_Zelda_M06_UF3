@@ -3,7 +3,6 @@ let zelda = {
     "id":0,
 } 
 
-
 window.onload = function() {
     recargaLista("guardados");
 }
