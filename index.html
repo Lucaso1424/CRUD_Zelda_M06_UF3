@@ -11,9 +11,7 @@
 </head>
 <body>
     <div id="guardados">  
-        
-        
-  <!-- CONTENIDO DINAMICO-->
+        <!-- CONTENIDO DINAMICO-->
     </div>
     <br> 
 
@@ -23,7 +21,7 @@
     <div id="formulario">
         <form>
             <div>
-                <label for="txtID">ID:</label> <!-- NUMERICO (AUTO INCREMENTAL)?? -->
+                <label>ID:</label> <!-- NUMERICO (AUTO INCREMENTAL)?? -->
                 <input type="number" id="txtID" placeholder="Escribe un numero">
             </div>
 
@@ -38,8 +36,8 @@
             </div>
 
             <div>
-                <label for="txtMenuradial">Menu Radial</label> <!-- MENU DESPLEGABLE -->
-                <select name="menuRadial">
+                <label for="txtMenuRadial">Menu Radial</label> <!-- MENU DESPLEGABLE -->
+                <select name="menuRadial" id="txtMenuRadial">
                     <option>Bombas</option>
                     <option>Arco</option>
                     <option>Arpa</option>
@@ -59,12 +57,10 @@
             <!--<div>
                 <label for="txtImage">Imagen:</label>  IMAGEN 
                 <input type="number" id="txtID" placeholder="Escribe un numero">
-            </div> -->
-            <button type="" id="guardarForm">Guardar</button>
-
+            </div> 
+           <button type="button" id="guardarForm">Guardar</button> -->
+           <input type="button" value="Send Request" id="guardarForm">
         </form>
     </div>
-
-
 </body>
 </html>
