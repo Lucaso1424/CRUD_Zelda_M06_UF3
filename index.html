@@ -8,13 +8,60 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
     <script src='js/index.js'></script>
+    <script src='objeto.js'></script>
 </head>
 
 <body>
-    <input type="button" value="Genera una tabla" onclick="recargaLista('guardados')">
-
-    <div id="guardados">
+    <div id="guardados">  
+        <!-- CONTENIDO DINAMICO-->
     </div>
+    <br> 
+
+    <button id="bntForm" onclick="">Formulario</button>
+
+
+    <div id="formulario">
+        <form>
+            <div>
+                <label>ID:</label> <!-- NUMERICO (AUTO INCREMENTAL)?? -->
+                <input type="number" id="txtID" placeholder="Escribe un numero">
+            </div>
+
+            <div>
+                <label for="txtNameGame">Nombre del juego:</label> <!-- CAMPO TEXTO -->
+                <input type="text" id="txtNameGame" placeholder="Escribe un Juego">
+            </div>
+
+            <div>
+                <label for="txtNamePlayer">Nombre del jugador:</label> <!-- CAMPO TEXTO -->
+                <input type="text" id="txtNamePlayer" placeholder="Escribe un Jugador">
+            </div>
+
+            <div>
+                <label for="txtMenuRadial">Menu Radial</label> <!-- MENU DESPLEGABLE -->
+                <select name="menuRadial" id="txtMenuRadial">
+                    <option>Bombas</option>
+                    <option>Arco</option>
+                    <option>Arpa</option>
+                    <option>Gancho</option>
+                    <option>Beyblade</option>
+                </select>
+            </div>
+
+            <div>
+                <label id="txtVehiculo">Vehículo:</label> <!-- MULTIOPCION -->
+                <input type="checkbox" id="txtVehiculo1" name="Caballo"> Caballo
+                <input type="checkbox" id="txtVehiculo2" name="Moto"> Moto
+                <input type="checkbox" id="txtVehiculo3" name="Lobo"> Lobo
+            </div>
+
+            <!--<div>
+                <label for="txtImage">Imagen:</label>  IMAGEN 
+                <input type="number" id="txtID" placeholder="Escribe un numero">
+            </div> 
+           <button type="button" id="guardarForm">Guardar</button> -->
+           <input type="button" value="Send Request" id="guardarForm">
+        </form>
     </div>
 </body>
 

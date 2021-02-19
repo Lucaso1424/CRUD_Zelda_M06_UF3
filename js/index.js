@@ -1,28 +1,90 @@
-window.onload = function(){
-    // recargaLista("guardados");
- }
- 
- function CreacionTarjeta(){
-     let tarjeta = document.createElement("div");
-     let img = document.createElement("img");
-     let div = document.createElement("div");
-     let span = document.createElement("span");
-     
-     img.setAttribute("src", "img/trifuerza.jpg");
-     div.setAttribute("class", "flex-column center");
-     span.innerText = "Trifuerza";
-     
-     tarjeta.appendChild(img);
-     tarjeta.appendChild(div);
-     tarjeta.appendChild(span);
- 
-     tarjeta.setAttribute("class","flex-row space-between item-activity");
-     
-     return tarjeta;
- }
- 
- 
- function recargaLista (menu) {
-     document.getElementById(menu).innerHTML ="";
-     document.getElementById(menu).appendChild(CreacionTarjeta());
- }
+var divGuardado;
+window.onload = function () {
+    var btnPulsado = document.getElementById("guardarForm");
+    btnPulsado.addEventListener("click", saveObject);
+
+    generarTabla();
+    document.getElementById("formulario").style.visibility = "visible";
+
+
+}
+
+
+function generarTabla() {
+    // Obtener la referencia del elemento body
+    var body = document.getElementsByTagName("div")[0];
+
+    // Crea un elemento <table> y un elemento <tbody>
+    var tabla = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+
+    // Crea las celdas
+    for (var i = 0; i < 2; i++) {
+        // Crea las hileras de la tabla
+        var hilera = document.createElement("tr");
+
+        for (var j = 0; j < 2; j++) {
+            // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+            // texto sea el contenido de <td>, ubica el elemento <td> al final
+            // de la hilera de la tabla
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("celda en la hilera " + i + ", columna " + j);
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+        }
+
+        // agrega la hilera al final de la tabla (al final del elemento tblbody)
+        tblBody.appendChild(hilera);
+    }
+
+    // posiciona el <tbody> debajo del elemento <table>
+    tabla.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tabla);
+    // modifica el atributo "border" de la tabla y lo fija a "2";
+    tabla.setAttribute("border", "2");
+}
+
+/* AÑADIR VALORES FORM AL JSON  */
+
+
+function saveObject() {
+    console.log(document.getElementById("txtID"));
+    let id = document.getElementById("txtID").value,
+        nombreJuego = document.getElementById("txtNameGame").value,
+        nombreJugador = document.getElementById("txtNamePlayer").value,
+        menuRadial = document.getElementById("txtMenuRadial").value,
+
+
+        vehiculo = [];
+
+        if (vehiculo = document.getElementById("txtVehiculo1").checked && (vehiculo = [document.getElementById("txtVehiculo2").checked]) && (vehiculo = [document.getElementById("txtVehiculo3").checked])) {
+            vehiculo = [document.getElementById("txtVehiculo1").name, document.getElementById("txtVehiculo2").name, document.getElementById("txtVehiculo3").name];
+        }
+
+        if (vehiculo = document.getElementById("txtVehiculo1").checked && (vehiculo = [document.getElementById("txtVehiculo2").checked])) {
+            vehiculo = [document.getElementById("txtVehiculo1").name, document.getElementById("txtVehiculo2").name];
+        }
+
+        if (vehiculo = document.getElementById("txtVehiculo2").checked) {
+            vehiculo = [document.getElementById("txtVehiculo2").name];
+        }
+
+
+        // if (document.getElementById("txtVehiculo1").checked) {
+        //     vehiculo = [] = document.getElementById("txtVehiculo1").name;
+        // }
+
+        // if (document.getElementById("txtVehiculo2").checked) {
+        //     vehiculo = [] = document.getElementById("txtVehiculo2").name;
+        // }
+
+        // if (document.getElementById("txtVehiculo3").checked) {
+        //     vehiculo = [] = document.getElementById("txtVehiculo3").name;
+        // }
+    
+
+    //img = document.querySelector("#txtImage").value;
+
+    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo);
+}
