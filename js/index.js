@@ -6,7 +6,8 @@ window.onload =  function(){
 
     generarTabla();
     document.getElementById("formulario").style.visibility = "visible";
-  
+
+
 
 }
 
@@ -55,9 +56,14 @@ function saveObject(){
     nombreJuego = document.getElementById("txtNameGame").value,
     nombreJugador = document.getElementById("txtNamePlayer").value,
     menuRadial = document.getElementById("txtMenuRadial").value,
-    dificultad = document.getElementById("txtDifficulty2
-    ").value;
+    dificultad = document.getElementById("txtDifficulty2").value;
     //img = document.querySelector("#txtImage").value;
 
     addItems(id,nombreJuego,nombreJugador,menuRadial,dificultad);
+}
+
+function obtenerImg(){
+let img = document.getElementById('img');
+console.log(img.value)
+
 }
