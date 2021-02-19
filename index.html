@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>CRUD Zelda M06</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
 
+    <script src='js/index.js'></script>
+    <script src='objeto.js'></script>
 </head>
+
 <body>
     <div id="guardados">  
         <!-- CONTENIDO DINAMICO-->
@@ -25,12 +29,12 @@
             </div>
 
             <div>
-                <label for="txtNameGame">Nombre Juego:</label> <!-- CAMPO TEXTO -->
+                <label for="txtNameGame">Nombre del juego:</label> <!-- CAMPO TEXTO -->
                 <input type="text" id="txtNameGame" placeholder="Escribe un Juego">
             </div>
 
             <div>
-                <label for="txtNamePlayer">Nombre Jugador:</label> <!-- CAMPO TEXTO -->
+                <label for="txtNamePlayer">Nombre del jugador:</label> <!-- CAMPO TEXTO -->
                 <input type="text" id="txtNamePlayer" placeholder="Escribe un Jugador">
             </div>
 
@@ -42,15 +46,14 @@
                     <option>Arpa</option>
                     <option>Gancho</option>
                     <option>Beyblade</option>
-
                 </select>
             </div>
 
             <div>
-                <label for="txtDifficulty">Dificultad:</label> <!-- MULTIOPCION -->
-                <input type="checkbox" id="txtDifficulty1"> Facil
-                <input type="checkbox" id="txtDifficulty2"> Normal
-                <input type="checkbox" id="txtDifficulty3"> Dificil
+                <label id="txtVehiculo">Vehículo:</label> <!-- MULTIOPCION -->
+                <input type="checkbox" class="txtVehiculo1" name="Caballo"> Caballo
+                <input type="checkbox" class="txtVehiculo1" name="Moto"> Moto
+                <input type="checkbox" class="txtVehiculo1" name="Lobo"> Lobo
             </div>
 
             <!--<div>
@@ -58,18 +61,10 @@
                 <input type="number" id="txtID" placeholder="Escribe un numero">
             </div> 
            <button type="button" id="guardarForm">Guardar</button> -->
-
-           <input id="img" type="file"/>
-          
-           <br>
-           <br>
            <input type="button" value="Send Request" id="guardarForm">
         </form>
-
-        <button id="lmao" onclick="obtenerImg()">Pulsa</button>
     </div>
 
-    <script src='js/index.js'></script>
-    <script src='objeto.js'></script>
 </body>
+
 </html>
