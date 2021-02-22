@@ -1,12 +1,12 @@
 var divGuardado;
+var string64; 
+
 window.onload = function () {
   var btnPulsado = document.getElementById("guardarForm");
   btnPulsado.addEventListener("click", saveObject);
 
   //generarTabla();
   document.getElementById("formulario").style.visibility = "visible";
-
-
 }
 
 
@@ -45,6 +45,9 @@ function generarTabla() {
   tabla.setAttribute("border", "2");
 }
 
+
+
+
 /* AÑADIR VALORES FORM AL JSON  */
 function generarItems(){
   let body = document.getElementById("guardados");
@@ -79,48 +82,23 @@ function saveObject() {
     nombreJugador = document.getElementById("txtNamePlayer").value,
     menuRadial = document.getElementById("txtMenuRadial").value
     vehiculo = checkedBoxes;
-
+    img = string64;
 
     //img = document.querySelector("#txtImage").value;
 
-    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo);
+    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo,img);
 }
-
-
-function pasarImgBase64(img){
-  let canvas = document.createElement('canvas');
-  let ctx = canvas.getContext('2d');
-
-  canvas.width = img.width;
-  canvar.heigh = img.heigh;
-
-  ctx.drawImage(img,0,0);
-  return canvas.toDataURL('image/jpg');
-}
-
-
-let img = document.querySelector('#guardarForm');
-img.addEventListener('load', function(param){
-  let dataURL = getDataUrl(param.currentTarget);
-  console.log(param.currentTarget);
-  console.log(dataURL);
-
-});
-
 
 function previewFile() {
-  var preview = document.querySelector('img');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
+  var file = document.querySelector('input[type=file]').files[0];
+  var reader = new FileReader();
 
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
-
-  if (file) {
+    reader.onloadend = function () {
+    string64 = reader.result;
+    console.log(string64)
+    }
+    
     reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
+
 }
 
