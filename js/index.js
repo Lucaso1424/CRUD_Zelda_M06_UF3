@@ -7,6 +7,8 @@ window.onload = function () {
 
   //generarTabla();
   document.getElementById("formulario").style.visibility = "visible";
+
+  document.getElementById("guardarForm").addEventListener("click",recorrer);
 }
 
 
@@ -102,3 +104,21 @@ function previewFile() {
 
 }
 
+function recorrer(){
+
+  for(let i = 0; i < objetoForm.length;i++){
+
+      let id = objetoForm[i].id
+      let nameGame = objetoForm[i].name
+      let namePlayer = objetoForm[i].namePlayer
+      let menuRadial = objetoForm[i].radialMenu
+      let veh = "";
+      for(let j = 0; j < objetoForm[i].vehiculo.length;j++){
+        veh += objetoForm[i].vehiculo[j].name;
+      }
+
+      let img = objetoForm[i].image
+      
+      console.log(id,nameGame,namePlayer,menuRadial,veh,img);
+}
+}
