@@ -1,4 +1,5 @@
 var divGuardado;
+var string64; 
 
 window.onload = function () {
   var btnPulsado = document.getElementById("guardarForm");
@@ -37,6 +38,9 @@ function generarTabla() {
   // modifica el atributo "border" de la tabla y lo fija a "2";
   tabla.setAttribute("border", "2");
 }
+
+
+
 
 /* AÑADIR VALORES FORM AL JSON  */
 // function generarItems() {
@@ -95,6 +99,12 @@ function genera_tabla() {
   tabla.setAttribute("border", "2");
 }
 
+function imprimirObjeto() {
+  let imprimir;
+  imprimir = document.getElementById("imprimir");
+  imprimir.innerHTML = JSON.stringify(objetoForm);
+}
+
 function saveObject() {
   let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
 
@@ -103,51 +113,24 @@ function saveObject() {
     nombreJuego = document.getElementById("txtNameGame").value,
     nombreJugador = document.getElementById("txtNamePlayer").value,
     menuRadial = document.getElementById("txtMenuRadial").value
-  vehiculo = checkedBoxes;
-  //img = document.querySelector("#txtImage").value;
-  addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo);
+    vehiculo = checkedBoxes;
+    img = string64;
+
+    //img = document.querySelector("#txtImage").value;
+
+    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo,img);
 }
-
-function imprimirObjeto() {
-  let imprimir;
-  imprimir = document.getElementById("imprimir");
-  imprimir.innerHTML = JSON.stringify(objetoForm);
-}
-
-// CÓDIGO PARA LAS IMAGENES
-
-function pasarImgBase64(img){
-  let canvas = document.createElement('canvas');
-  let ctx = canvas.getContext('2d');
-
-  canvas.width = img.width;
-  canvar.heigh = img.heigh;
-
-  ctx.drawImage(img,0,0);
-  return canvas.toDataURL('image/jpg');
-}
-
-
-let img = document.querySelector('#guardarForm');
-img.addEventListener('load', function(param){
-  let dataURL = getDataUrl(param.currentTarget);
-  console.log(param.currentTarget);
-  console.log(dataURL);
-
-});
-
 
 function previewFile() {
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
+  var file = document.querySelector('input[type=file]').files[0];
+  var reader = new FileReader();
 
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
-
-  if (file) {
+    reader.onloadend = function () {
+    string64 = reader.result;
+    console.log(string64)
+    }
+    
     reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
+
 }
+
