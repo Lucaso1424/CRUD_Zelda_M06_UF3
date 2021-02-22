@@ -13,13 +13,15 @@
 </head>
 
 <body>
-    <div id="guardados">  
+    <div id="guardados">
         <!-- CONTENIDO DINAMICO-->
     </div>
-    <br> 
 
-    <button id="bntForm" onclick="">Formulario</button>
-
+    <div id="imprimir">
+    </div>
+    <br>
+    
+    <input type="button" value="Formulario" onclick="genera_tabla()">
 
     <div id="formulario">
         <form>
@@ -51,14 +53,13 @@
 
             <div>
                 <label id="txtVehiculo">Vehículo:</label> <!-- MULTIOPCION -->
-                <input type="checkbox" class="txtVehiculo1" name="Caballo"> Caballo
-                <input type="checkbox" class="txtVehiculo1" name="Moto"> Moto
-                <input type="checkbox" class="txtVehiculo1" name="Lobo"> Lobo
+                <input type="checkbox" class="txtVehiculo1" name="Caballo">Caballo
+                <input type="checkbox" class="txtVehiculo1" name=" Moto">Moto
+                <input type="checkbox" class="txtVehiculo1" name=" Lobo">Lobo
             </div>
             <div id="imagen">
                 <input type="file"  id="txtImg" onchange="previewFile()">
             </div>
-            <br>
 
 
             <!--<div>
@@ -66,7 +67,9 @@
                 <input type="number" id="txtID" placeholder="Escribe un numero">
             </div> 
            <button type="button" id="guardarForm">Guardar</button> -->
-           <input type="button" value="Send Request" id="guardarForm">
+            <input type="button" value="Send Request" id="guardarForm">
+            <br>
+            <br>
         </form>
     </div>
 
