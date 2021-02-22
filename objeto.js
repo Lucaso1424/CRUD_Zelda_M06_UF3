@@ -1,7 +1,6 @@
-var objetoForm  = [];
+var objetoForm = [];
 
-function addItems(pid,nameGame,player,menu,veh){
-
+function addItems(pid, nameGame, player, menu, veh) {
     let newObject = {
         id: pid,
         name: nameGame,
@@ -12,7 +11,4 @@ function addItems(pid,nameGame,player,menu,veh){
     };
     console.log(newObject);
     objetoForm.push(newObject);
-
 }
-
-
