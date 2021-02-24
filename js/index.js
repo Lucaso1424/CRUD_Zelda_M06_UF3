@@ -2,21 +2,27 @@ var divGuardado;
 var string64;
 
 function borrarDiv() {
-    var borrar;
+    let borrar;
     borrar = document.getElementById("imprimir").innerHTML = "";
 }
 
-
-
-window.onload = function () {
-  var btnPulsado = document.getElementById("guardarForm");
-  btnPulsado.addEventListener("click", saveObject);
-  //generarTabla();
-  document.getElementById("formulario").style.visibility = "visible";
-  document.getElementById("guardarForm").addEventListener("click", leerBase64);
-  
+function mostrarForm() {
+    document.getElementById("formulario").style.visibility = "visible";
+    borrarDiv();
 }
 
+function ocultarForm() {
+    document.getElementById("formulario").style.visibility = "hidden";
+}
+
+window.onload = function () {
+   var btnPulsado = document.getElementById("guardarForm");
+   btnPulsado.addEventListener("click", saveObject);
+   btnPulsado.addEventListener("click", genera_tabla);
+  //generarTabla();
+  document.getElementById("formulario").style.visibility = "hidden";
+  document.getElementById("guardarForm").addEventListener("click", leerBase64);
+}
 
 function genera_tabla() {
     var textoCelda;
@@ -75,20 +81,22 @@ function genera_tabla() {
     document.getElementById("imprimir").appendChild(tabla); 
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
+
+    ocultarForm();
 }
 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
 
     console.log(document.getElementById("txtID"));
-    let id = document.getElementById("txtID").value,
+    let money = document.getElementById("txtID").value,
         nombreJuego = document.getElementById("txtNameGame").value,
         nombreJugador = document.getElementById("txtNamePlayer").value,
         menuRadial = document.getElementById("txtMenuRadial").value
     vehiculo = checkedBoxes;
     img = string64;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo, img);
+    addItems(money, nombreJuego, nombreJugador, menuRadial, vehiculo, img);
 }
 
 function previewFile() {
