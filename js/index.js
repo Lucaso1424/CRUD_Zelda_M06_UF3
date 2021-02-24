@@ -13,7 +13,7 @@ window.onload = function () {
   btnPulsado.addEventListener("click", saveObject);
   //generarTabla();
   document.getElementById("formulario").style.visibility = "visible";
-  document.getElementById("guardarForm").addEventListener("click", leerBase64);
+  //document.getElementById("guardarForm").addEventListener("click", leerBase64);
   
 }
 
@@ -56,25 +56,31 @@ function genera_tabla() {
                     }
                 }
             } else if (j == 5) {
-                textoCelda = objetoForm[i].image;
+              //console.log(objetoForm[i].image);
+              //textoCelda = objetoForm[i];
             }
 
             var celda = document.createElement("td");
-            
+            celda.setAttribute("id",i+"-"+j); 
+            //celda.setAttribute("class","celdas");
             var nepe = document.createTextNode(textoCelda);
             celda.appendChild(nepe);
             hilera.appendChild(celda);
+            
         }
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
+        
     }
-
+   
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
     document.getElementById("imprimir").appendChild(tabla); 
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
+    leerBase64(0);
+  
 }
 
 function saveObject() {
@@ -104,8 +110,9 @@ function previewFile() {
 }
 
 
-function leerBase64(){
-  let image = new Image();
-  image.src = string64;
-  document.getElementById("imprimirIMG").appendChild(image);
+function leerBase64(i){
+  let imagen = new Image();
+  imagen.src = string64;
+  //objetoForm.image = imagen;
+  document.getElementById(""+i+"-5").appendChild(imagen);
 }
