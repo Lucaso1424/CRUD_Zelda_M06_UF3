@@ -21,7 +21,7 @@
     </div>
     <br>
     
-    <input type="button" value="Formulario" onclick="genera_tabla()">
+    <input type="button" value="Formulario" onclick="mostrarForm()">
 
     <div id="formulario">
         <form>
@@ -59,18 +59,21 @@
             </div>
             <div id="imagen">
                 <input type="file"  id="txtImg" onchange="previewFile()">
+                
             </div>
 
 
             <!--<div>
                 <label for="txtImage">Imagen:</label>  IMAGEN 
                 <input type="number" id="txtID" placeholder="Escribe un numero">
-            </div> 
-           <button type="button" id="guardarForm">Guardar</button> -->
+            </div> -->
             <input type="button" value="Send Request" id="guardarForm">
+            
             <br>
             <br>
         </form>
+        <div id="imprimirIMG">
+        </div>
     </div>
 
 </body>
