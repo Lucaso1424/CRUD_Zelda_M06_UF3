@@ -6,6 +6,8 @@ window.onload = function () {
   btnPulsado.addEventListener("click", saveObject);
   //generarTabla();
   document.getElementById("formulario").style.visibility = "visible";
+  document.getElementById("guardarForm").addEventListener("click", leerBase64);
+  
 }
 
 var textoCelda;
@@ -92,3 +94,12 @@ function previewFile() {
 
   reader.readAsDataURL(file);
 }
+
+
+function leerBase64(){
+  let image = new Image();
+  image.src = string64;
+  document.getElementById("imprimirIMG").appendChild(image);
+}
+
+
