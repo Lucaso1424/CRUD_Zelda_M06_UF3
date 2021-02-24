@@ -9,9 +9,12 @@ function borrarDiv() {
 
 
 window.onload = function () {
-    var btnPulsado = document.getElementById("guardarForm");
-    btnPulsado.addEventListener("click", saveObject);
-    document.getElementById("formulario").style.visibility = "visible";
+  var btnPulsado = document.getElementById("guardarForm");
+  btnPulsado.addEventListener("click", saveObject);
+  //generarTabla();
+  document.getElementById("formulario").style.visibility = "visible";
+  document.getElementById("guardarForm").addEventListener("click", leerBase64);
+  
 }
 
 
@@ -97,5 +100,12 @@ function previewFile() {
         console.log(string64)
     }
 
-    reader.readAsDataURL(file);
+  reader.readAsDataURL(file);
+}
+
+
+function leerBase64(){
+  let image = new Image();
+  image.src = string64;
+  document.getElementById("imprimirIMG").appendChild(image);
 }
