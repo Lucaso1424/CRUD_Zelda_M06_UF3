@@ -16,19 +16,18 @@ function ocultarForm() {
 }
 
 window.onload = function () {
-   var btnPulsado = document.getElementById("guardarForm");
-   btnPulsado.addEventListener("click", saveObject);
-   btnPulsado.addEventListener("click", genera_tabla);
-  //generarTabla();
-  document.getElementById("formulario").style.visibility = "hidden";
-  //document.getElementById("guardarForm").addEventListener("click", leerBase64);
+    var btnPulsado = document.getElementById("guardarForm");
+    btnPulsado.addEventListener("click", saveObject);
+    btnPulsado.addEventListener("click", genera_tabla);
+    //generarTabla();
+    document.getElementById("formulario").style.visibility = "hidden";
+
+    document.getElementById("txtImg").addEventListener("change",previewFile)
 }
 
 function genera_tabla() {
-    var textoCelda;
-
     // Obtener la referencia del elemento body
-    // var body = document.getElementsByTagName("body")[0];
+    var div = document.getElementById("guardados");
 
     // Crea un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
@@ -39,70 +38,88 @@ function genera_tabla() {
         // Crea las hileras de la tabla
         var hilera = document.createElement("tr");
 
-        for (var j = 0; j < 6; j++) {
+        for (var j = 0; j <= 5; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-            // texto sea el contenido de <td>, ubica el elemento <td> al final
-            // de la hilera de la tabla
+            // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
+            var celda = document.createElement("td");
+            
 
+            var textoCelda = null;
             if (j == 0) {
-                textoCelda = objetoForm[i].id;
-            } else if (j == 1) {
-                textoCelda = objetoForm[i].name;
-            } else if (j == 2) {
-                textoCelda = objetoForm[i].namePlayer;
-            } else if (j == 3) {
-                textoCelda = objetoForm[i].radialMenu;
-            } else if (j == 4) {
+                textoCelda = document.createTextNode(objetoForm[i].id);
+            } 
+            
+            else if (j == 1) {
+                textoCelda = document.createTextNode(objetoForm[i].name);
+            } 
+            
+            else if (j == 2) {
+                textoCelda = document.createTextNode(objetoForm[i].namePlayer);
+            } 
+            
+            else if (j == 3) {
+                textoCelda = document.createTextNode(objetoForm[i].radialMenu);
+            } 
+            
+            else if (j == 4) {
                 textoCelda = "";
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo") {
                         textoCelda += objetoForm[i].vehiculo[j].name.trim();
-                    } else {
+                    } 
+                    
+                    else {
                         textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
                     }
                 }
-            } else if (j == 5) {
-                //textoCelda = objetoForm[i].image;
+                textoCelda = document.createTextNode(textoCelda);
+            } 
+            
+            else if (j == 5) {
+                textoCelda = document.createElement("img");
+                textoCelda.setAttribute("id", i + "+" + j);
+                textoCelda.setAttribute("heigh", "300px");
+                textoCelda.setAttribute("width", "300px");
+                textoCelda.setAttribute("src", objetoForm[i].image);
             }
 
-            var celda = document.createElement("td");
-            celda.setAttribute("id",i+"-"+j);
-            
-            var nepe = document.createTextNode(textoCelda);
-            celda.appendChild(nepe);
+
+
+            console.log("Valor J: " + j);
+            console.log("Valor textoCelda: " + textoCelda);
+
+            celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
-        
     }
 
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
-    document.getElementById("imprimir").appendChild(tabla); 
+    div.appendChild(tabla);
+
+    document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
 
-    for(let i = 0; i <tabla.rows.length; i++){
-        console.log(tabla.rows.length);
-        leerBase64(i);
-    }
     ocultarForm();
+
 }
 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
 
     console.log(document.getElementById("txtID"));
-    let money = document.getElementById("txtID").value,
+    let id = document.getElementById("txtID").value,
         nombreJuego = document.getElementById("txtNameGame").value,
         nombreJugador = document.getElementById("txtNamePlayer").value,
         menuRadial = document.getElementById("txtMenuRadial").value
     vehiculo = checkedBoxes;
     img = string64;
     //img = document.querySelector("#txtImage").value;
-    addItems(money, nombreJuego, nombreJugador, menuRadial, vehiculo, img);
+    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo, img);
 }
 
 function previewFile() {
@@ -114,16 +131,5 @@ function previewFile() {
         console.log(string64)
     }
 
-  reader.readAsDataURL(file);
-}
-
-
-function leerBase64(index){
-  let image = new Image();
-  image.src = string64;
-  //document.querySelectorAll('tr').lastChild.appendChild(image);
-  let ultimo = document.getElementById(""+index+"-5");
-  ultimo.appendChild(image)
-  objetoForm[index].image = ultimo;
-  console.log(ultimo);
+    reader.readAsDataURL(file);
 }
