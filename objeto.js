@@ -1,6 +1,6 @@
 var objetoForm  = [];
 
-function addItems(pid, nameGame, player, menu, veh,money,img) {
+function addItems(pid, nameGame, player, menu, money,veh,img) {
     let newObject = {
         id: pid,
         name: nameGame,
