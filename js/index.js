@@ -1,6 +1,6 @@
 var divGuardado;
 var string64;
-
+var contador = 1;
 function borrarDiv() {
     let borrar;
     borrar = document.getElementById("imprimir").innerHTML = "";
@@ -23,6 +23,8 @@ window.onload = function () {
     document.getElementById("formulario").style.visibility = "hidden";
 
     document.getElementById("txtImg").addEventListener("change",previewFile)
+
+    
 }
 
 function genera_tabla() {
@@ -38,7 +40,7 @@ function genera_tabla() {
         // Crea las hileras de la tabla
         var hilera = document.createElement("tr");
 
-        for (var j = 0; j <= 5; j++) {
+        for (var j = 0; j <= 6; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             var celda = document.createElement("td");
@@ -60,8 +62,11 @@ function genera_tabla() {
             else if (j == 3) {
                 textoCelda = document.createTextNode(objetoForm[i].radialMenu);
             } 
+            else if(j == 4){
+                textoCelda = document.createTextNode(objetoForm[i].rupias);
+            }
             
-            else if (j == 4) {
+            else if (j == 5) {
                 textoCelda = "";
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo") {
@@ -75,11 +80,11 @@ function genera_tabla() {
                 textoCelda = document.createTextNode(textoCelda);
             } 
             
-            else if (j == 5) {
+            else if (j == 6) {
                 textoCelda = document.createElement("img");
-                textoCelda.setAttribute("id", i + "+" + j);
-                textoCelda.setAttribute("heigh", "300px");
-                textoCelda.setAttribute("width", "300px");
+                textoCelda.setAttribute("id", i + "-" + j);
+                textoCelda.setAttribute("heigh", "120px");
+                textoCelda.setAttribute("width", "120px");
                 textoCelda.setAttribute("src", objetoForm[i].image);
             }
 
@@ -110,16 +115,18 @@ function genera_tabla() {
 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
-
-    console.log(document.getElementById("txtID"));
-    let id = document.getElementById("txtID").value,
+       
+         let id = contador;
+         money = document.getElementById("txtRupias").value,
         nombreJuego = document.getElementById("txtNameGame").value,
         nombreJugador = document.getElementById("txtNamePlayer").value,
         menuRadial = document.getElementById("txtMenuRadial").value
     vehiculo = checkedBoxes;
     img = string64;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo, img);
+    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo,money, img);
+    console.log(contador);
+    contador++;
 }
 
 function previewFile() {
