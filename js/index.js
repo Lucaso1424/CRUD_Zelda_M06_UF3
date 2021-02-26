@@ -125,14 +125,14 @@ function genera_tabla() {
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
         let id = contador;
-        let money = document.getElementById("txtRupias").value;
         let nombreJuego = document.getElementById("txtNameGame").value;
         let nombreJugador = document.getElementById("txtNamePlayer").value;
+        let money = document.getElementById("txtRupias").value;
         let menuRadial = document.getElementById("txtMenuRadial").value;
-        let vehiculo = checkedBoxes;
+        let veh = checkedBoxes;
         let img = string64;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo,money, img);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial,veh,img);
     console.log(contador);
     contador++;
 }
@@ -236,8 +236,6 @@ function generarFormulario(){
                 div4.appendChild(select);
 
         let div5 = document.createElement("div");
-        let h1 = document.createElement("h1");
-            h1.innerText ="Vehiculo"
             let texto = document.createElement("label");
                 let checkbox = document.createElement("input");
                 let checkbox2 = document.createElement("input");
@@ -281,7 +279,6 @@ function generarFormulario(){
                 texto4.innerText = checkbox4.name;
 
 
-                div5.appendChild(h1)
                 div5.appendChild(texto);
                 div5.appendChild(checkbox);
 
@@ -318,16 +315,17 @@ function generarFormulario(){
         form.appendChild(submit);
         document.getElementById("formulario").appendChild(form);
 
+
+
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function(){
             saveObject();
             ocultarForm();
-           genera_tabla();
-
-
+            genera_tabla();
         });
+//                <input type="file"  id="txtImg" onchange="previewFile()">
+        document.getElementById("txtImg").addEventListener("change", previewFile)
 
 
-       // document.getElementById("mostrarForm").addEventListener("click", mostrarForm)
     }
 
