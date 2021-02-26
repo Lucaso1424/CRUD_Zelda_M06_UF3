@@ -87,9 +87,19 @@ function genera_tabla() {
             else if (j == 6) {
                 textoCelda = document.createElement("img");
                 textoCelda.setAttribute("id", i + "-" + j);
-                textoCelda.setAttribute("heigh", "120px");
-                textoCelda.setAttribute("width", "120px");
-                textoCelda.setAttribute("src", objetoForm[i].image);
+
+                if(objetoForm[i].image){
+                    textoCelda.setAttribute("width", "120px");
+                    textoCelda.setAttribute("heigh", "120px");
+                    textoCelda.setAttribute("src", objetoForm[i].image);
+                } 
+
+                else{
+                    textoCelda.setAttribute("width", "120px");
+                    textoCelda.setAttribute("heigh", "120px");
+                    textoCelda.setAttribute("src", "/img/noImg.jpg");
+                } 
+
             }
 
 
