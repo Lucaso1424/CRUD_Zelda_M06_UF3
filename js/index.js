@@ -1,6 +1,6 @@
 var divGuardado;
 var string64;
-var contador = 1;
+var contador = 2;
 
 function borrarDiv() {
     var borrar;
@@ -114,7 +114,7 @@ function genera_tabla() {
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-
+    document.getElementById("mostrarForm").style.visibility = "visible";
     ocultarForm();
 
 }
@@ -148,6 +148,8 @@ function previewFile() {
 
 
 function generarFormulario(){
+
+    document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
 
