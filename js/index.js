@@ -15,14 +15,14 @@ function mostrarForm() {
 
 function ocultarForm() {
     //document.getElementById("formulario").style.visibility = "hidden";
-    document.getElementById("formulario").innerHTML = "";
+    document.getElementById("formulario").innerHTML ="";
 }
 
 window.onload = function () {
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
 
     var formular = document.getElementById("formulario");
-
+    
     console.log(formular)
 
     genera_tabla();
@@ -48,20 +48,29 @@ function genera_tabla() {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             var celda = document.createElement("td");
-
+            
 
             var textoCelda = null;
             if (j == 0) {
                 textoCelda = document.createTextNode(objetoForm[i].id);
-            } else if (j == 1) {
+            } 
+            
+            else if (j == 1) {
                 textoCelda = document.createTextNode(objetoForm[i].name);
-            } else if (j == 2) {
+            } 
+            
+            else if (j == 2) {
                 textoCelda = document.createTextNode(objetoForm[i].namePlayer);
-            } else if (j == 3) {
+            } 
+            
+            else if (j == 3) {
                 textoCelda = document.createTextNode(objetoForm[i].radialMenu);
-            } else if (j == 4) {
+            } 
+            else if(j == 4){
                 textoCelda = document.createTextNode(objetoForm[i].rupias);
-            } else if (j == 5) {
+            }
+            
+            else if (j == 5) {
                 textoCelda = "";
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo") {
@@ -73,7 +82,9 @@ function genera_tabla() {
                     }
                 }
                 textoCelda = document.createTextNode(textoCelda);
-            } else if (j == 6) {
+            } 
+            
+            else if (j == 6) {
                 textoCelda = document.createElement("img");
                 textoCelda.setAttribute("id", i + "-" + j);
 
@@ -114,7 +125,7 @@ function genera_tabla() {
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
     document.getElementById("mostrarForm").style.visibility = "visible";
-    ocultarForm();
+  //  ocultarForm();
 
 }
 
@@ -150,66 +161,88 @@ function generarFormulario(){
 
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
-    /* Juego */
-    let div = document.createElement("div");
-    let label = document.createElement("label");
-    let input = document.createElement("input");
-
-    label.setAttribute("for", "Juego");
-    label.innerText = "Juego: ";
-
-    input.setAttribute("type", "text");
-    input.setAttribute("id", "txtNameGame");
-    input.setAttribute("placeholder", "Escribe un Juego");
-
-    div.appendChild(label);
-    div.appendChild(input);
-
-    /* Jugador */
-    let div2 = document.createElement("div");
-    let label2 = document.createElement("label");
-    let input2 = document.createElement("input");
-
-    label2.setAttribute("for", "Jugador");
-    label2.innerText = "Jugador: "
-
-    input2.setAttribute("type", "text");
-    input2.setAttribute("id", "txtNamePlayer");
-    input2.setAttribute("placeholder", "Escribe un Jugador");
-
-    div2.appendChild(label2);
-    div2.appendChild(input2);
-
-    /* RUPIAS */
-    let div3 = document.createElement("div");
-    let label3 = document.createElement("label");
-    let input3 = document.createElement("input");
-    label.setAttribute("for", "Rupias");
-    label3.innerText = "Rupias: "
-
-    input3.setAttribute("type", "number");
-    input3.setAttribute("id", "txtRupias");
-    input3.setAttribute("placeholder", "Escribe un numero");
 
 
-    div3.appendChild(label3);
-    div3.appendChild(input3);
+                         /* Juego */
+        let div = document.createElement("div");
+            let label = document.createElement("label");
+            let input = document.createElement("input");
+            
+            label.setAttribute("for","Juego");
+            label.innerText = "Juego: "
 
-    /* Menu RADIAL */
-    let div4 = document.createElement("div");
-    let label4 = document.createElement("label");
-    let select = document.createElement("select");
-    let option = document.createElement("option")
-    let option2 = document.createElement("option")
-    let option3 = document.createElement("option")
-    let option4 = document.createElement("option")
-    let option5 = document.createElement("option")
+            input.setAttribute("type", "text");
+            input.setAttribute("id","txtNameGame");
+            input.setAttribute("placeholder","Escribe un Juego");
 
-    label4.setAttribute("for", "Rupias");
-    label4.innerText = "Menu Radial: ";
+            div.appendChild(label);
+            div.appendChild(input);
 
-    select.setAttribute("name", "menuRadial");
-    select.setAttribute("id", "txtMenuRadial");
+                         /* Jugador */
+        let div2 = document.createElement("div");
+            let label2 = document.createElement("label");
+            let input2= document.createElement("input");
+            
+            label2.setAttribute("for","Jugador");
+            label2.innerText = "Jugador: "
+
+            input2.setAttribute("type", "text");
+            input2.setAttribute("id","txtNamePlayer");
+            input2.setAttribute("placeholder","Escribe un Jugador");
+
+            div2.appendChild(label2);
+            div2.appendChild(input2);
+
+                         /* RUPIAS */
+        let div3 = document.createElement("div");
+            let label3 = document.createElement("label");
+            let input3= document.createElement("input");
+            label.setAttribute("for","Rupias");
+            label3.innerText = "Rupias: "
+
+            input3.setAttribute("type", "number");
+            input3.setAttribute("id","txtRupias");
+            input3.setAttribute("placeholder","Escribe un numero");
+
+
+
+            div3.appendChild(label3);
+            div3.appendChild(input3);
+
+                         /* Menu RADIAL */         
+        let div4 = document.createElement("div");
+            let label4 = document.createElement("label");
+            let select = document.createElement("select");
+                let option = document.createElement("option")
+                let option2 = document.createElement("option")
+                let option3 = document.createElement("option")
+                let option4 = document.createElement("option")
+                let option5 = document.createElement("option")
+
+                label4.setAttribute("for","Rupias");
+                label4.innerText = "Menu Radial: ";
+
+                select.setAttribute("name","menuRadial");
+                select.setAttribute("id","txtMenuRadial");
+
+                option.innerText = "Arco";
+                option2.innerText= "Arpa";
+                option3.innerText = "Bombas";
+                option4.innerText = "Beyblade";
+                option5.innerText = "Gancho";
+
+
+                select.appendChild(option);
+                select.appendChild(option2);
+                select.appendChild(option3);
+                select.appendChild(option4);
+                select.appendChild(option5);
+               // for(let i = 1; i < 4; i++){
+                 //   select.appendChild(option+""+i);
+
+               // }
+                div4.appendChild(label4);
+                div4.appendChild(select);
 
         let div5 = document.createElement("div");
             let texto = document.createElement("label");
@@ -226,85 +259,95 @@ function generarFormulario(){
                 texto.innerText = checkbox.name;
 
 
-    select.appendChild(option);
-    select.appendChild(option2);
-    select.appendChild(option3);
-    select.appendChild(option4);
-    select.appendChild(option5);
-    // for(let i = 1; i < 4; i++){
-    //   select.appendChild(option+""+i);
 
-    // }
-    div4.appendChild(label4);
-    div4.appendChild(select);
+                checkbox2.setAttribute("type","checkbox");
+                checkbox2.setAttribute("class","txtVehiculo1");
+                checkbox2.setAttribute("name"," Moto");
 
-    let div5 = document.createElement("div");
-    let h1 = document.createElement("h1");
-    h1.innerText = "Vehiculo"
-    let texto = document.createElement("label");
-    let checkbox = document.createElement("input");
-    let checkbox2 = document.createElement("input");
-    let checkbox3 = document.createElement("input");
-    let checkbox4 = document.createElement("input");
-
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("class", "txtVehiculo1");
-    checkbox.setAttribute("name", " Caballo");
-
-    texto.setAttribute("class", "vehiculo");
-    texto.innerText = checkbox.name;
+                let texto2 = document.createElement("label");
+                texto2.setAttribute("class","vehiculo");
+                texto2.innerText = checkbox2.name;
+                
+                checkbox3.setAttribute("type","checkbox");
+                checkbox3.setAttribute("class","txtVehiculo1");
+                checkbox3.setAttribute("name"," Lobo");
 
 
+                let texto3 = document.createElement("label");
+                texto3.setAttribute("class","vehiculo");
+                texto3.innerText = checkbox3.name;
 
-    checkbox2.setAttribute("type", "checkbox");
-    checkbox2.setAttribute("class", "txtVehiculo1");
-    checkbox2.setAttribute("name", " Moto");
+                checkbox4.setAttribute("type","checkbox");
+                checkbox4.setAttribute("class","txtVehiculo1");
+                checkbox4.setAttribute("name"," Pelicano");
 
-    let texto2 = document.createElement("label");
-    texto2.setAttribute("class", "vehiculo");
-    texto2.innerText = checkbox2.name;
+
+                
+                let texto4 = document.createElement("label");
+                texto4.setAttribute("class","vehiculo");
+                texto4.innerText = checkbox4.name;
+
 
                 div5.appendChild(texto);
                 div5.appendChild(checkbox);
 
+                div5.appendChild(texto2);
+                div5.appendChild(checkbox2);
 
-    let texto3 = document.createElement("label");
-    texto3.setAttribute("class", "vehiculo");
-    texto3.innerText = checkbox3.name;
+                div5.appendChild(texto3);
+                div5.appendChild(checkbox3);
 
-    checkbox4.setAttribute("type", "checkbox");
-    checkbox4.setAttribute("class", "txtVehiculo1");
-    checkbox4.setAttribute("name", " Pelicano");
+                div5.appendChild(texto4);
+                div5.appendChild(checkbox4);
+
+        let div6 = document.createElement("div");
+            let inputImg = document.createElement("input");
+            div6.setAttribute("id","imagen");
+            inputImg.setAttribute("type", "file");
+            inputImg.setAttribute("id", "txtImg");
+
+            div6.appendChild(inputImg);
 
 
 
-    let texto4 = document.createElement("label");
-    texto4.setAttribute("class", "vehiculo");
-    texto4.innerText = checkbox4.name;
+        let submit = document.createElement("input");
+        submit.setAttribute("type","button");   
+        submit.setAttribute("value","Send Request");   
+        submit.setAttribute("id","guardarForm");   
 
-
-    div5.appendChild(h1)
-    div5.appendChild(texto);
-    div5.appendChild(checkbox);
-
-    div5.appendChild(texto2);
-    div5.appendChild(checkbox2);
+        form.appendChild(div);
+        form.appendChild(div2);
+        form.appendChild(div3);
+        form.appendChild(div4);
+        form.appendChild(div5);
+        form.appendChild(div6);
+        form.appendChild(submit);
+        document.getElementById("formulario").appendChild(form);
 
 
 
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function(){
             saveObject();
-            ocultarForm();
-            genera_tabla();
+            validarRegExp();
         });
 //                <input type="file"  id="txtImg" onchange="previewFile()">
-        document.getElementById("txtImg").addEventListener("change", previewFile)
-
-    div6.appendChild(inputImg);
-
+        document.getElementById("txtImg").addEventListener("change", previewFile);
     }
 
-    console.log(texto);
+function validarRegExp() {
+    let texto;
+    texto = document.getElementById("txtNameGame").value;
+
+    var expreg = new RegExp("à");
+  //  const result = /^áàéèíìóòúùÁÀÉÈÍÌÓÒÚÙ /.test(texto);
+    
+    if (regexp.test(texto)) {
+        alert("BOBO NO PUEDES ESCRIBIR ESO");
+    } else {
+        ocultarForm();
+        genera_tabla(); 
+        console.log(regexp.test(texto))
+    }
 }
 
