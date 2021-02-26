@@ -1,9 +1,9 @@
 var divGuardado;
 var string64;
-var contador = 1;
+var contador = 2;
 
 function borrarDiv() {
-    let borrar;
+    var borrar;
     borrar = document.getElementById("imprimir").innerHTML = "";
 }
 
@@ -25,9 +25,13 @@ window.onload = function () {
 
     console.log(formular)
 
+    genera_tabla();
 }
 
+
 function genera_tabla() {
+    if(!objetoForm[0])addItems(1,"Twiligth Princess","Link","500","Arco","Lobo","/img/fondo_zelda.jpg");
+
     // Obtener la referencia del elemento body
     var div = document.getElementById("guardados");
 
@@ -62,17 +66,29 @@ function genera_tabla() {
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo") {
                         textoCelda += objetoForm[i].vehiculo[j].name.trim();
-                    } else {
-                        textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
+                    } 
+                    
+                    else {
+                        textoCelda += objetoForm[i].vehiculo[j].split(" ");
                     }
                 }
                 textoCelda = document.createTextNode(textoCelda);
             } else if (j == 6) {
                 textoCelda = document.createElement("img");
                 textoCelda.setAttribute("id", i + "-" + j);
-                textoCelda.setAttribute("heigh", "120px");
-                textoCelda.setAttribute("width", "120px");
-                textoCelda.setAttribute("src", objetoForm[i].image);
+
+                if(objetoForm[i].image){
+                    textoCelda.setAttribute("width", "120px");
+                    textoCelda.setAttribute("heigh", "120px");
+                    textoCelda.setAttribute("src", objetoForm[i].image);
+                } 
+
+                else{
+                    textoCelda.setAttribute("width", "120px");
+                    textoCelda.setAttribute("heigh", "120px");
+                    textoCelda.setAttribute("src", "/img/noImg.jpg");
+                } 
+
             }
 
 
@@ -82,11 +98,13 @@ function genera_tabla() {
 
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
+            
         }
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
+        
     }
-
+   
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
@@ -95,22 +113,22 @@ function genera_tabla() {
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-
+    document.getElementById("mostrarForm").style.visibility = "visible";
     ocultarForm();
 
 }
 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
-    let id = contador;
-    let money = document.getElementById("txtRupias").value;
-    let nombreJuego = document.getElementById("txtNameGame").value;
-    let nombreJugador = document.getElementById("txtNamePlayer").value;
-    let menuRadial = document.getElementById("txtMenuRadial").value;
-    let vehiculo = checkedBoxes;
-    let img = string64;
+        let id = contador;
+        let nombreJuego = document.getElementById("txtNameGame").value;
+        let nombreJugador = document.getElementById("txtNamePlayer").value;
+        let money = document.getElementById("txtRupias").value;
+        let menuRadial = document.getElementById("txtMenuRadial").value;
+        let veh = checkedBoxes;
+        let img = string64;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, menuRadial, vehiculo, money, img);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial,veh,img);
     console.log(contador);
     contador++;
 }
@@ -128,7 +146,9 @@ function previewFile() {
 }
 
 
-function generarFormulario() {
+function generarFormulario(){
+
+    document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
     /* Juego */
     let div = document.createElement("div");
@@ -191,11 +211,19 @@ function generarFormulario() {
     select.setAttribute("name", "menuRadial");
     select.setAttribute("id", "txtMenuRadial");
 
-    option.innerText = "Arco";
-    option2.innerText = "Arpa";
-    option3.innerText = "Bombas";
-    option4.innerText = "Beyblade";
-    option5.innerText = "Gancho";
+        let div5 = document.createElement("div");
+            let texto = document.createElement("label");
+                let checkbox = document.createElement("input");
+                let checkbox2 = document.createElement("input");
+                let checkbox3 = document.createElement("input");
+                let checkbox4 = document.createElement("input");
+                
+                checkbox.setAttribute("type","checkbox");
+                checkbox.setAttribute("class","txtVehiculo1");
+                checkbox.setAttribute("name"," Caballo");
+                
+                texto.setAttribute("class","vehiculo");
+                texto.innerText = checkbox.name;
 
 
     select.appendChild(option);
@@ -236,9 +264,8 @@ function generarFormulario() {
     texto2.setAttribute("class", "vehiculo");
     texto2.innerText = checkbox2.name;
 
-    checkbox3.setAttribute("type", "checkbox");
-    checkbox3.setAttribute("class", "txtVehiculo1");
-    checkbox3.setAttribute("name", " Lobo");
+                div5.appendChild(texto);
+                div5.appendChild(checkbox);
 
 
     let texto3 = document.createElement("label");
@@ -263,55 +290,19 @@ function generarFormulario() {
     div5.appendChild(texto2);
     div5.appendChild(checkbox2);
 
-    div5.appendChild(texto3);
-    div5.appendChild(checkbox3);
 
-    div5.appendChild(texto4);
-    div5.appendChild(checkbox4);
 
-    let div6 = document.createElement("div");
-    let inputImg = document.createElement("input");
-    div6.setAttribute("id", "imagen");
-    inputImg.setAttribute("type", "file");
-    inputImg.setAttribute("id", "txtImg");
+        let btnPulsado = document.getElementById("guardarForm");
+        btnPulsado.addEventListener("click", function(){
+            saveObject();
+            ocultarForm();
+            genera_tabla();
+        });
+//                <input type="file"  id="txtImg" onchange="previewFile()">
+        document.getElementById("txtImg").addEventListener("change", previewFile)
 
     div6.appendChild(inputImg);
 
-
-
-    let submit = document.createElement("input");
-    submit.setAttribute("type", "button");
-    submit.setAttribute("value", "Send Request");
-    submit.setAttribute("id", "guardarForm");
-
-    form.appendChild(div);
-    form.appendChild(div2);
-    form.appendChild(div3);
-    form.appendChild(div4);
-    form.appendChild(div5);
-    form.appendChild(div6);
-    form.appendChild(submit);
-    document.getElementById("formulario").appendChild(form);
-
-    let btnPulsado = document.getElementById("guardarForm");
-    btnPulsado.addEventListener("click", function () {
-        saveObject();
-        ocultarForm();
-        validarRegExp();
-        // genera_tabla();
-    });
-    // document.getElementById("mostrarForm").addEventListener("click", mostrarForm)
-}
-
-function validarRegExp() {
-    texto = document.getElementById("txtNameGame").value;
-
-    var result = /^áàéèíìóòúùÁÀÉÈÍÌÓÒÚÙ /.test(texto);
-
-    if (result == true || result == null || result == "") {
-        alert("BOBO NO PUEDES ESCRIBIR ESO");
-    } else {
-        genera_tabla();
     }
 
     console.log(texto);
