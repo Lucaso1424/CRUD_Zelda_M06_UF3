@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -11,7 +10,6 @@
     <script src='js/index.js'></script>
     <script src='objeto.js'></script>
 </head>
-
 <body>
     <div id="guardados">
         <!-- CONTENIDO DINAMICO-->
@@ -21,64 +19,10 @@
     </div>
     <br>
     
-    <input type="button" value="Formulario" onclick="genera_tabla()">
+    <input type="button" value="Formulario" id="mostrarForm">
 
-    <div id="formulario">
-        <form>
-            <div>
-                <label>ID:</label> <!-- NUMERICO (AUTO INCREMENTAL)?? -->
-                <input type="number" id="txtID" placeholder="Escribe un numero">
-            </div>
-
-            <div>
-                <label for="txtNameGame">Nombre del juego:</label> <!-- CAMPO TEXTO -->
-                <input type="text" id="txtNameGame" placeholder="Escribe un Juego">
-            </div>
-
-            <div>
-                <label for="txtNamePlayer">Nombre del jugador:</label> <!-- CAMPO TEXTO -->
-                <input type="text" id="txtNamePlayer" placeholder="Escribe un Jugador">
-            </div>
-
-            <div>
-                <label for="txtMenuRadial">Menu Radial</label> <!-- MENU DESPLEGABLE -->
-                <select name="menuRadial" id="txtMenuRadial">
-                    <option>Bombas</option>
-                    <option>Arco</option>
-                    <option>Arpa</option>
-                    <option>Gancho</option>
-                    <option>Beyblade</option>
-                </select>
-            </div>
-
-            <div>
-                <label id="txtVehiculo">Vehículo:</label> <!-- MULTIOPCION -->
-                <input type="checkbox" class="txtVehiculo1" name="Caballo">Caballo
-                <input type="checkbox" class="txtVehiculo1" name=" Moto">Moto
-                <input type="checkbox" class="txtVehiculo1" name=" Lobo">Lobo
-            </div>
-            <div id="imagen">
-                <input type="file"  id="txtImg" onchange="previewFile()">
-                
-            </div>
-
-
-            <!--<div>
-                <label for="txtImage">Imagen:</label>  IMAGEN 
-                <input type="number" id="txtID" placeholder="Escribe un numero">
-            </div> 
-           <button type="button" id="guardarForm">Guardar</button> -->
-            <input type="button" value="Send Request" id="guardarForm">
-            <br>
-            <br>
-        </form>
-        <button onclick="borrarDiv()">Borrar div</button>
-        <div id="imprimirIMG">
-
-
-        </div>
-    </div>
-
+     <div id="formulario">
+        
 </body>
 
 </html>
