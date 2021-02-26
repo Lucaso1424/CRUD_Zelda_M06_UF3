@@ -1,6 +1,7 @@
 var divGuardado;
 var string64;
 var contador = 1;
+
 function borrarDiv() {
     var borrar;
     borrar = document.getElementById("imprimir").innerHTML = "";
@@ -18,26 +19,18 @@ function ocultarForm() {
 }
 
 window.onload = function () {
-   // var btnPulsado = document.getElementById("guardarForm");
-   // btnPulsado.addEventListener("click", saveObject);
-  //   btnPulsado.addEventListener("click", genera_tabla);
-    //generarTabla();
-    //document.getElementById("formulario").style.visibility = "hidden";
-
-   //document.getElementById("txtImg").addEventListener("change",previewFile)
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
 
     var formular = document.getElementById("formulario");
     
     console.log(formular)
 
+    genera_tabla();
 }
 
 
 function genera_tabla() {
-    if(!objetoForm[0]){
-        addItems(0,"Twilight Princess","Link",500,"Arco","Lobo",)
-    }
+    if(!objetoForm[0])addItems(1,"Twiligth Princess","Link","500","Arco","Lobo","/img/fondo_zelda.jpg");
 
     // Obtener la referencia del elemento body
     var div = document.getElementById("guardados");
@@ -85,7 +78,7 @@ function genera_tabla() {
                     } 
                     
                     else {
-                        textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
+                        textoCelda += objetoForm[i].vehiculo[j].split(" ");
                     }
                 }
                 textoCelda = document.createTextNode(textoCelda);
