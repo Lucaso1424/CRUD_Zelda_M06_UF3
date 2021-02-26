@@ -324,7 +324,7 @@ function generarFormulario(){
         form.appendChild(submit);
         document.getElementById("formulario").appendChild(form);
 
-
+        if((input == null || input == undefined) || (input2 == null || input2 == undefined) || (input == null || input == undefined) )
 
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function(){
