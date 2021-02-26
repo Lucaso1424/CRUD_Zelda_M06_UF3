@@ -35,6 +35,10 @@ window.onload = function () {
 
 
 function genera_tabla() {
+    if(!objetoForm[0]){
+        addItems(0,"Twilight Princess","Link",500,"Arco","Lobo",)
+    }
+
     // Obtener la referencia del elemento body
     var div = document.getElementById("guardados");
 
