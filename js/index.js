@@ -230,7 +230,7 @@ function anadirEventListener() {
 }
 
 function sonidoCofre() {
-    var audio = new Audio("/sound/chest.mp3");
+    let audio = new Audio("/sound/chest.mp3");
     audio.play();
 }
 
@@ -244,7 +244,7 @@ function presionarTecla(e) {
         let video = document.getElementById('video');
         video.play();
         document.getElementById("ocultar_video").style.visibility = "visible";
-    } 
+    }
 }
 
 window.addEventListener('load', iniciarVideo);
