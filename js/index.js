@@ -312,16 +312,12 @@ function generarFormulario() {
     document.getElementById("txtImg").addEventListener("change", previewFile);
 }
 
-
-
 function camposObligatorios(param, param2, param3) {
     if (param.value == "" || param2.value == "" || param3.value == "") {
         alert("¡Tienes que rellenar los campos obligatorios!")
     } else {
         validarRegExp();
-
     }
-
 }
 
 function validarRegExp() {
@@ -340,7 +336,6 @@ function validarRegExp() {
         alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo/a.");
     } else {
         saveObject();
-
         ocultarForm();
         genera_tabla();
     }
