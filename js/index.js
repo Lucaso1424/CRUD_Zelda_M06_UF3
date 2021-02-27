@@ -75,11 +75,11 @@ function genera_tabla() {
                 textoCelda.setAttribute("id", i + "-" + j);
 
                 if (objetoForm[i].image) {
-                    textoCelda.setAttribute("width", "190px");
+                    textoCelda.setAttribute("width", "210px");
                     textoCelda.setAttribute("height", "170px");
                     textoCelda.setAttribute("src", objetoForm[i].image);
                 } else {
-                    textoCelda.setAttribute("width", "190px");
+                    textoCelda.setAttribute("width", "210px");
                     textoCelda.setAttribute("height", "170px");
                     if (objetoForm[i].image == undefined || objetoForm[i].image == "") {
                         textoCelda.src = "/img/default_links.jpg";
@@ -227,8 +227,6 @@ function anadirEventListener() {
             document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
             objetoForm[i].image = "/img/vegeta_meme.png";
         })
-
-
     }
 }
 
