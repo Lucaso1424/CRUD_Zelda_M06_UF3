@@ -9,6 +9,7 @@ function borrarDiv() {
 function mostrarForm() {
     document.getElementById("ocultar_video").innerHTML = "";
     generarFormulario("guardarForm");
+    
     borrarDiv();
 }
 
@@ -18,6 +19,7 @@ function ocultarForm() {
 
 window.onload = function () {
     genera_tabla();
+
     anadirEventListener();
 }
 
@@ -43,7 +45,7 @@ function genera_tabla() {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             var celda = document.createElement("td");
-
+            celda.setAttribute("id", "td" + i+"-"+j);
 
             var textoCelda = null;
             if (j == 0) {
@@ -149,15 +151,16 @@ function saveObject() {
     contador++;
 }
 
-function modifyObject(){
+function modifyObject(campoEditar,campoObjeto){
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
     let nombreJuego = document.getElementById("txtNameGame").value;
     let nombreJugador = document.getElementById("txtNamePlayer").value;
     let money = document.getElementById("txtRupias").value;
     let menuRadial = document.getElementById("txtMenuRadial").value;
     let veh = checkedBoxes;
+    //console.log(string64);
     let img = string64;
-    updateItems(nombreJuego, nombreJugador, money, menuRadial, veh, img);
+    updateItems(campoEditar,campoObjeto,nombreJuego, nombreJugador, money, menuRadial, veh, img);
 }
 
 function previewFile() {
@@ -176,7 +179,7 @@ function previewFile() {
 
 
 
-function camposObligatorios(param, param2, param3) {
+function camposObligatorios(param, param2, param3,campoEditar,campoObjeto) {
 
     if (document.getElementById("guardarForm")) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
@@ -188,7 +191,7 @@ function camposObligatorios(param, param2, param3) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
             alert("¡Tienes que rellenar los campos obligatorios!")
         } else {
-            validarRegExp();
+            validarRegExp(campoEditar,campoObjeto);
         }
     }
 
@@ -196,7 +199,7 @@ function camposObligatorios(param, param2, param3) {
 }
 
 
-function validarRegExp() {
+function validarRegExp(campoEditar,campoObjeto) {
     let texto;
     let rupias;
     texto = document.getElementById("txtNameGame").value;
@@ -215,6 +218,7 @@ function validarRegExp() {
             saveObject();
             ocultarForm();
             genera_tabla();
+            sonidoCofre();
             anadirEventListener();
         }
 
@@ -225,9 +229,10 @@ function validarRegExp() {
         } else if (regexp3.test(rupias) == true) {
             alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
         } else {
-            modifyObject();
+            modifyObject(campoEditar,campoObjeto);
             ocultarForm();
             genera_tabla();
+            sonidoCofre();
             anadirEventListener();
         }
     }
@@ -252,12 +257,20 @@ function anadirEventListener() {
         })
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            document.getElementById("imprimir").innerHTML = "";
-            generarFormulario("modificar");
+            for(let i = 0; i< objetoForm.length;i++){
+                    let campoEditar = document.getElementById("tr"+i);
+                    let campoObjeto = objetoForm[i];
+                    
+                    console.log(campoObjeto);
+
+                    document.getElementById("imprimir").innerHTML = "";
+                    generarFormulario("modificar",campoEditar,campoObjeto);
+                    break;
+                }
+            }
 
 
-
-        })
+        )
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
@@ -281,8 +294,10 @@ function iniciarVideo() {
 function presionarTecla(e) {
     if (e.key == "c") {
         let video = document.getElementById('video');
+        if(video){
         video.play();
         document.getElementById("ocultar_video").style.visibility = "visible";
+        }
     }
 }
 
