@@ -32,13 +32,15 @@ function genera_tabla() {
 
     // Crea un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
-    var tblBody = document.createElement("tbody");
+    tabla.setAttribute("id", "tabla");
 
+    var tblBody = document.createElement("tbody");
+    tblBody.setAttribute("id", "tbody")
     // Crea las celdas
     for (var i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
         var hilera = document.createElement("tr");
-
+        hilera.setAttribute("id", "tr" + i);
         for (var j = 0; j <= 7; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
@@ -364,10 +366,22 @@ function validarRegExp() {
     }
 }
 
+
 function anadirEventListener() {
     for (let i = 0; i < objetoForm.length; i++) {
+        console.log(i);
+
         document.getElementById("botonBorrar" + i).addEventListener("click", function () {
-            console.log("hola")
+
+            if (objetoForm.length == 1) {
+                console.log("entra")
+                document.getElementById("imprimir").innerHTML = "";
+            } else {
+                document.getElementById("tr" + i).innerHTML = "";
+                console.log(objetoForm);
+
+            }
+            objetoForm.splice(i, 1);
         })
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
