@@ -186,8 +186,6 @@ function generarFormulario(param) {
         let btnPulsado = document.getElementById("modificar");
         btnPulsado.addEventListener("click", function(){
             camposObligatorios(input, input2, input3);
-
-
         })
 
     }

@@ -149,7 +149,7 @@ function saveObject() {
     contador++;
 }
 
-function modifyObject(){
+function modifyObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
     let nombreJuego = document.getElementById("txtNameGame").value;
     let nombreJugador = document.getElementById("txtNamePlayer").value;
@@ -218,7 +218,7 @@ function validarRegExp() {
             anadirEventListener();
         }
 
-        
+
     } else if (document.getElementById("modificar")) {
         if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
             alert("¡No puedes escribir acentos ni carácteres especiales!");
@@ -281,8 +281,10 @@ function iniciarVideo() {
 function presionarTecla(e) {
     if (e.key == "c") {
         let video = document.getElementById('video');
-        video.play();
-        document.getElementById("ocultar_video").style.visibility = "visible";
+        if (video) {
+            video.play();
+            document.getElementById("ocultar_video").style.visibility = "visible";
+        }
     }
 }
 
