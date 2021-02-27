@@ -60,12 +60,10 @@ function genera_tabla() {
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo" || objetoForm[i].vehiculo[0].name == " Pelicano") {
                         textoCelda += objetoForm[i].vehiculo[j].name.trim();
-                    }
-                    else if(objetoForm[i].vehiculo == "Lobo"){
+                    } else if (objetoForm[i].vehiculo == "Lobo") {
                         textoCelda += objetoForm[i].vehiculo.trim();
                         break;
-                    }
-                    else {
+                    } else {
                         textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
                     }
                 }
@@ -86,18 +84,18 @@ function genera_tabla() {
 
             }
 
-         
-
- 
 
 
-            console.log("Valor J: " + j);
-            console.log("Valor textoCelda: " + textoCelda);
+
+
+
+            // console.log("Valor J: " + j);
+            // console.log("Valor textoCelda: " + textoCelda);
 
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
-      
+
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
     }
@@ -348,4 +346,15 @@ function validarRegExp() {
         ocultarForm();
         genera_tabla();
     }
+}
+
+function borrarFoto(e) {
+    console.log("se ha movido el ratón");
+    delete objetoForm.image;
+}
+
+for (let i = 0; objetoForm.image.length; i++) {
+    var borrarClick = document.getElementById("txtImg"+[i]);
+    borrarClick.addEventListener("mousemove", borrarFoto);
+    console.log(borrarClick);
 }
