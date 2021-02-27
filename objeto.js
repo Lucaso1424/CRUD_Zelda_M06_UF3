@@ -15,3 +15,16 @@ function addItems(pid, nameGame, player, money, menu,veh,img) {
     objetoForm.push(newObject);
 }
 
+
+function updateItems(nameGame, player, money, menu,veh,img){
+
+        objetoForm.name = nameGame;
+        objetoForm.namePlayer = player;
+        objetoForm.rupias = money;
+        objetoForm.radialMenu = menu;
+        objetoForm.vehiculo = veh;
+        objetoForm.image = img;
+    }
+
+
+

@@ -8,7 +8,7 @@ function borrarDiv() {
 
 function mostrarForm() {
     document.getElementById("ocultar_video").innerHTML = "";
-    generarFormulario();
+    generarFormulario("guardarForm");
     borrarDiv();
 }
 
@@ -20,7 +20,6 @@ window.onload = function () {
     genera_tabla();
     anadirEventListener();
 }
-
 
 function genera_tabla() {
     string64 = "";
@@ -150,25 +149,49 @@ function saveObject() {
     contador++;
 }
 
+function modifyObject(){
+    let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
+    let nombreJuego = document.getElementById("txtNameGame").value;
+    let nombreJugador = document.getElementById("txtNamePlayer").value;
+    let money = document.getElementById("txtRupias").value;
+    let menuRadial = document.getElementById("txtMenuRadial").value;
+    let veh = checkedBoxes;
+    let img = string64;
+    updateItems(nombreJuego, nombreJugador, money, menuRadial, veh, img);
+}
+
 function previewFile() {
     var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
 
     reader.onloadend = function () {
         string64 = reader.result;
-        console.log(string64)
+        //  console.log(string64)
     }
 
     reader.readAsDataURL(file);
 }
 
 
+
+
+
 function camposObligatorios(param, param2, param3) {
-    if (param.value == "" || param2.value == "" || param3.value == "") {
-        alert("¡Tienes que rellenar los campos obligatorios!")
-    } else {
-        validarRegExp();
+
+    if (document.getElementById("guardarForm")) {
+        if (param.value == "" || param2.value == "" || param3.value == "") {
+            alert("¡Tienes que rellenar los campos obligatorios!")
+        } else {
+            validarRegExp();
+        }
+    } else if (document.getElementById("modificar")) {
+        if (param.value == "" || param2.value == "" || param3.value == "") {
+            alert("¡Tienes que rellenar los campos obligatorios!")
+        } else {
+            validarRegExp();
+        }
     }
+
 
 }
 
@@ -183,15 +206,30 @@ function validarRegExp() {
     var regexp2 = /[@$%&+´`]/
     var regexp3 = /^[0-9]{6,}/
 
-    if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
-        alert("¡No puedes escribir acentos ni carácteres especiales!");
-    } else if (regexp3.test(rupias) == true) {
-        alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
-    } else {
-        saveObject();
-        ocultarForm();
-        genera_tabla();
-        anadirEventListener();
+    if (document.getElementById("guardarForm")) {
+        if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
+            alert("¡No puedes escribir acentos ni carácteres especiales!");
+        } else if (regexp3.test(rupias) == true) {
+            alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
+        } else {
+            saveObject();
+            ocultarForm();
+            genera_tabla();
+            anadirEventListener();
+        }
+
+        
+    } else if (document.getElementById("modificar")) {
+        if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
+            alert("¡No puedes escribir acentos ni carácteres especiales!");
+        } else if (regexp3.test(rupias) == true) {
+            alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
+        } else {
+            modifyObject();
+            ocultarForm();
+            genera_tabla();
+            anadirEventListener();
+        }
     }
 }
 
@@ -213,7 +251,7 @@ function anadirEventListener() {
             objetoForm.splice(i, 1);
         })
 
-        document.getElementById("botonModificar"+i).addEventListener("click", function(){
+        document.getElementById("botonModificar" + i).addEventListener("click", function () {
             document.getElementById("imprimir").innerHTML = "";
             generarFormulario("modificar");
 
@@ -240,7 +278,7 @@ function presionarTecla(e) {
         let video = document.getElementById('video');
         video.play();
         document.getElementById("ocultar_video").style.visibility = "visible";
-    } 
+    }
 }
 
 window.addEventListener('load', iniciarVideo);
