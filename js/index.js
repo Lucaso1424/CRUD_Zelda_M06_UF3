@@ -8,22 +8,18 @@ function borrarDiv() {
 }
 
 function mostrarForm() {
-    //document.getElementById("formulario").style.visibility = "visible";
     generarFormulario();
     borrarDiv();
 }
 
 function ocultarForm() {
-    //document.getElementById("formulario").style.visibility = "hidden";
     document.getElementById("formulario").innerHTML ="";
 }
 
 window.onload = function () {
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
 
-    var formular = document.getElementById("formulario");
-    
-    console.log(formular)
+
 
     genera_tabla();
 }
@@ -324,30 +320,36 @@ function generarFormulario(){
 
         document.getElementById("formulario").appendChild(form);
 
-        if((input == null || input == undefined) || (input2 == null || input2 == undefined) || (input == null || input == undefined) )
 
-        let btnPulsado = document.getElementById("guardarForm");
-        btnPulsado.addEventListener("click", function(){
+            let btnPulsado = document.getElementById("guardarForm");
+             btnPulsado.addEventListener("click",function (){
+                camposObligatorios(input,input2,input3);
+
+
+             })
+
+
+
+ 
+        document.getElementById("txtImg").addEventListener("change",previewFile)
+
+
+}
+
+
+
+function camposObligatorios(param,param2,param3){
+            if(param.value  == "" || param2.value == "" ||param3.value == ""){
+            alert("¡Tienes que rellenar los campos obligatorios!")
+        }
+        else{
+            /*     */
+
             saveObject();
-            validarRegExp();
-        });
-//                <input type="file"  id="txtImg" onchange="previewFile()">
-        document.getElementById("txtImg").addEventListener("change", previewFile);
-    }
+            borrarDiv();
+            ocultarForm();
+            genera_tabla();
+        }
 
-function validarRegExp() {
-    let texto;
-    texto = document.getElementById("txtNameGame").value;
-
-    var expreg = new RegExp("à");
-  //  const result = /^áàéèíìóòúùÁÀÉÈÍÌÓÒÚÙ /.test(texto);
-    
-    if (regexp.test(texto)) {
-        alert("BOBO NO PUEDES ESCRIBIR ESO");
-    } else {
-        ocultarForm();
-        genera_tabla(); 
-        console.log(regexp.test(texto))
-    }
 }
 
