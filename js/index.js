@@ -1,8 +1,9 @@
 var divGuardado;
 var string64;
-var contador = 1;
+var contador = 2;
+
 function borrarDiv() {
-    let borrar;
+    var borrar;
     borrar = document.getElementById("imprimir").innerHTML = "";
 }
 
@@ -18,22 +19,19 @@ function ocultarForm() {
 }
 
 window.onload = function () {
-   // var btnPulsado = document.getElementById("guardarForm");
-   // btnPulsado.addEventListener("click", saveObject);
-  //   btnPulsado.addEventListener("click", genera_tabla);
-    //generarTabla();
-    //document.getElementById("formulario").style.visibility = "hidden";
-
-   //document.getElementById("txtImg").addEventListener("change",previewFile)
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
 
     var formular = document.getElementById("formulario");
     
     console.log(formular)
 
+    genera_tabla();
 }
 
+
 function genera_tabla() {
+    if(!objetoForm[0])addItems(1,"Twiligth Princess","Link","500","Arco","Lobo","/img/fondo_zelda.jpg");
+
     // Obtener la referencia del elemento body
     var div = document.getElementById("guardados");
 
@@ -80,7 +78,7 @@ function genera_tabla() {
                     } 
                     
                     else {
-                        textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
+                        textoCelda += objetoForm[i].vehiculo[j].split(" ");
                     }
                 }
                 textoCelda = document.createTextNode(textoCelda);
@@ -89,9 +87,19 @@ function genera_tabla() {
             else if (j == 6) {
                 textoCelda = document.createElement("img");
                 textoCelda.setAttribute("id", i + "-" + j);
-                textoCelda.setAttribute("heigh", "120px");
-                textoCelda.setAttribute("width", "120px");
-                textoCelda.setAttribute("src", objetoForm[i].image);
+
+                if(objetoForm[i].image){
+                    textoCelda.setAttribute("width", "120px");
+                    textoCelda.setAttribute("heigh", "120px");
+                    textoCelda.setAttribute("src", objetoForm[i].image);
+                } 
+
+                else{
+                    textoCelda.setAttribute("width", "120px");
+                    textoCelda.setAttribute("heigh", "120px");
+                    textoCelda.setAttribute("src", "/img/noImg.jpg");
+                } 
+
             }
 
 
@@ -101,11 +109,13 @@ function genera_tabla() {
 
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
+            
         }
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
+        
     }
-
+   
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
@@ -114,8 +124,8 @@ function genera_tabla() {
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-
-    ocultarForm();
+    document.getElementById("mostrarForm").style.visibility = "visible";
+  //  ocultarForm();
 
 }
 
@@ -126,10 +136,10 @@ function saveObject() {
         let nombreJugador = document.getElementById("txtNamePlayer").value;
         let money = document.getElementById("txtRupias").value;
         let menuRadial = document.getElementById("txtMenuRadial").value;
-        let vehiculo = checkedBoxes;
+        let veh = checkedBoxes;
         let img = string64;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, menuRadial,money,vehiculo, img);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial,veh,img);
     console.log(contador);
     contador++;
 }
@@ -148,6 +158,8 @@ function previewFile() {
 
 
 function generarFormulario(){
+
+    document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
 
@@ -312,16 +324,30 @@ function generarFormulario(){
 
         document.getElementById("formulario").appendChild(form);
 
+        if((input == null || input == undefined) || (input2 == null || input2 == undefined) || (input == null || input == undefined) )
+
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function(){
             saveObject();
-            ocultarForm();
-           genera_tabla();
-
-
-
+            validarRegExp();
         });
-        document.getElementById("txtImg").addEventListener("change",previewFile)
-
+//                <input type="file"  id="txtImg" onchange="previewFile()">
+        document.getElementById("txtImg").addEventListener("change", previewFile);
     }
+
+function validarRegExp() {
+    let texto;
+    texto = document.getElementById("txtNameGame").value;
+
+    var expreg = new RegExp("à");
+  //  const result = /^áàéèíìóòúùÁÀÉÈÍÌÓÒÚÙ /.test(texto);
+    
+    if (regexp.test(texto)) {
+        alert("BOBO NO PUEDES ESCRIBIR ESO");
+    } else {
+        ocultarForm();
+        genera_tabla(); 
+        console.log(regexp.test(texto))
+    }
+}
 
