@@ -8,7 +8,6 @@ function addItems(pid, nameGame, player, money, menu,veh,img) {
         rupias: money,
         radialMenu: menu,
         vehiculo: veh,
-
         image: img
 
     };
