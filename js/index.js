@@ -78,7 +78,7 @@ function genera_tabla() {
                     textoCelda.setAttribute("height", "170px");
                     textoCelda.setAttribute("src", objetoForm[i].image);
                 } else {
-                    textoCelda.setAttribute("width", "210px");
+                    textoCelda.setAttribute("width", "230px");
                     textoCelda.setAttribute("height", "170px");
                     if (objetoForm[i].image == undefined || objetoForm[i].image == "") {
                         textoCelda.src = "/img/default_links.jpg";
@@ -266,6 +266,11 @@ function anadirEventListener() {
             objetoForm[i].image = "/img/vegeta_meme.png";
         })
     }
+}
+
+function sonidoCofre() {
+    let audio = new Audio("/sound/chest.mp3");
+    audio.play();
 }
 
 function iniciarVideo() {
