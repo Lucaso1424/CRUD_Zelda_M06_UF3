@@ -60,8 +60,13 @@ function genera_tabla() {
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo" || objetoForm[i].vehiculo[0].name == " Pelicano") {
                         textoCelda += objetoForm[i].vehiculo[j].name.trim();
-                    } else {
-                        textoCelda += objetoForm[i].vehiculo[j].split(" ");
+                    }
+                    else if(objetoForm[i].vehiculo == "Lobo"){
+                        textoCelda += objetoForm[i].vehiculo.trim();
+                        break;
+                    }
+                    else {
+                        textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
                     }
                 }
                 textoCelda = document.createTextNode(textoCelda);
@@ -81,6 +86,9 @@ function genera_tabla() {
 
             }
 
+         
+
+ 
 
 
             console.log("Valor J: " + j);
@@ -88,12 +96,12 @@ function genera_tabla() {
 
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
-
         }
+      
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
-
     }
+
 
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
@@ -105,8 +113,9 @@ function genera_tabla() {
     tabla.setAttribute("border", "2");
     document.getElementById("mostrarForm").style.visibility = "visible";
     //  ocultarForm();
-
 }
+
+
 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
@@ -233,6 +242,7 @@ function generarFormulario() {
     checkbox.setAttribute("class", "txtVehiculo1");
     checkbox.setAttribute("name", "Caballo");
 
+    texto = document.createElement("label");
     texto.setAttribute("class", "vehiculo");
     texto.innerText = checkbox.name;
 
@@ -308,7 +318,6 @@ function generarFormulario() {
     btnPulsado.addEventListener("click", function () {
         camposObligatorios(input, input2, input3)
     });
-    //                <input type="file"  id="txtImg" onchange="previewFile()">
     document.getElementById("txtImg").addEventListener("change", previewFile);
 }
 
