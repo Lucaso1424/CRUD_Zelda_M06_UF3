@@ -15,3 +15,4 @@ function addItems(pid, nameGame, player, money, menu,veh,img) {
     console.log(newObject);
     objetoForm.push(newObject);
 }
+
