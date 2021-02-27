@@ -374,7 +374,7 @@ function anadirEventListener(){
 
             if(objetoForm.length == 1){
                 console.log("entra")
-                document.getElementById("tabla").innerHTML ="";
+                document.getElementById("imprimir").innerHTML ="";
             }
             else {
                 document.getElementById("tr"+i).innerHTML ="";
