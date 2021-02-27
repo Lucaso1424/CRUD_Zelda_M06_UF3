@@ -332,7 +332,7 @@ function validarRegExp() {
     if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
         alert("¡No puedes escribir acentos ni carácteres especiales!");
     } else if (regexp3.test(rupias) == true) {
-        alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
+        alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo/a.");
     } else {
         saveObject();
         ocultarForm();
