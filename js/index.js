@@ -25,6 +25,7 @@ window.onload = function () {
 
 
 function genera_tabla() {
+    string64 = "";
     if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
 
     // Obtener la referencia del elemento body
@@ -76,16 +77,14 @@ function genera_tabla() {
                 textoCelda.setAttribute("id", i + "-" + j);
 
                 if (objetoForm[i].image) {
-                    textoCelda.setAttribute("width", "220px");
-                    textoCelda.setAttribute("heigh", "220px");
+                    textoCelda.setAttribute("width", "190px");
+                    textoCelda.setAttribute("height", "170px");
                     textoCelda.setAttribute("src", objetoForm[i].image);
                 } else {
-                    textoCelda.setAttribute("width", "220px");
-                    textoCelda.setAttribute("heigh", "220px");
-                    if (textoCelda.src == "/img/vegeta_meme.png") {
-                        textoCelda.setAttribute("src", "/img/vegeta_meme.png");
-                    } else {
-                        textoCelda.setAttribute("src", "/img/default_links.jpg");
+                    textoCelda.setAttribute("width", "190px");
+                    textoCelda.setAttribute("height", "170px");
+                    if (objetoForm[i].image == undefined || objetoForm[i].image == "") {
+                        textoCelda.src = "/img/default_links.jpg";
                     }
                 }
 
@@ -339,7 +338,6 @@ function camposObligatorios(param, param2, param3) {
         alert("¡Tienes que rellenar los campos obligatorios!")
     } else {
         validarRegExp();
-
     }
 
 }
@@ -388,6 +386,7 @@ function anadirEventListener() {
             delete objetoForm[i].image;
             console.log("Se ha borrado la imagen, dejamos una imagen default");
             document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
+            objetoForm[i].image = "/img/vegeta_meme.png";
         })
     }
 }
