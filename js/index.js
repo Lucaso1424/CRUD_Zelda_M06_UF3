@@ -38,7 +38,7 @@ function genera_tabla() {
         // Crea las hileras de la tabla
         var hilera = document.createElement("tr");
 
-        for (var j = 0; j <= 6; j++) {
+        for (var j = 0; j <= 7; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             var celda = document.createElement("td");
@@ -85,7 +85,14 @@ function genera_tabla() {
                 }
 
             }
+         else if (j == 7) {
+            textoCelda = document.createElement("button");
+            textoCelda.setAttribute("id","botonBorrar"+i);
+            textoCelda.setAttribute("name","botonBorrar");
+            textoCelda.setAttribute("value","botonBorrar");
+            textoCelda.innerText ="botonBorrar";
 
+        }
          
 
  
@@ -349,8 +356,22 @@ function validarRegExp() {
         alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
     } else {
         saveObject();
-
         ocultarForm();
         genera_tabla();
+        anadirEventListener()
+    }
+}
+
+
+function anadirEventListener(){
+    for(let i = 0; i < objetoForm.length; i++){
+        document.getElementById("botonBorrar"+i).addEventListener("click", function () {
+            console.log("hola")
+
+        })
+
+        document.getElementById(i+"-6").addEventListener("mousemove", function() {
+            
+        })
     }
 }
