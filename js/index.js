@@ -7,6 +7,7 @@ function borrarDiv() {
 }
 
 function mostrarForm() {
+    document.getElementById("ocultar_video").innerHTML = "";
     generarFormulario();
     borrarDiv();
 }
@@ -16,7 +17,6 @@ function ocultarForm() {
 }
 
 window.onload = function () {
-    document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
     genera_tabla();
     anadirEventListener();
 }
@@ -27,7 +27,7 @@ function genera_tabla() {
     if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
 
     // Obtener la referencia del elemento body
-    var div = document.getElementById("guardados");
+    var div = document.getElementById("imprimir");
 
     // Crea un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
@@ -126,11 +126,14 @@ function genera_tabla() {
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
+    document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
+
     document.getElementById("mostrarForm").style.visibility = "visible";
+    document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
+    document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
+    document.getElementById("ocultar_video").style.visibility = "hidden";
     //  ocultarForm();
 }
-
-
 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
@@ -228,3 +231,18 @@ function anadirEventListener() {
 
     }
 }
+
+function iniciarVideo() {
+    let boton = document.getElementById('teclado');
+    boton.addEventListener('keypress', presionarTecla);
+}
+
+function presionarTecla(e) {
+    if (e.key == "c") {
+        let video = document.getElementById('video');
+        video.play();
+        document.getElementById("ocultar_video").style.visibility = "visible";
+    } 
+}
+
+window.addEventListener('load', iniciarVideo);
