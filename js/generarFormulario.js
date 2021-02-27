@@ -1,5 +1,4 @@
-function generarFormulario(param) {
-
+function generarFormulario(param,campoEditar,campoObjeto) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
@@ -166,15 +165,18 @@ function generarFormulario(param) {
     document.getElementById("formulario").appendChild(form);
 
 
+
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function () {
-            camposObligatorios(input, input2, input3)
+            camposObligatorios(input, input2, input3);
+
         });
 
         document.getElementById("txtImg").addEventListener("change", previewFile);
     }
 
+    
     else if(param == "modificar"){
         document.getElementById("imprimir").innerHTML ="";
         document.getElementById("ocultar_video").innerHTML = "";
@@ -182,11 +184,16 @@ function generarFormulario(param) {
             input.setAttribute("placeholder",objetoForm[i].name);
             input2.setAttribute("placeholder",objetoForm[i].namePlayer);
             input3.setAttribute("placeholder",objetoForm[i].rupias);
+
+            let btnPulsado = document.getElementById("modificar");
+            btnPulsado.addEventListener("click", function(){
+                camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
+
+            })
+            document.getElementById("txtImg").addEventListener("change", previewFile);
+            break;
         }
-        let btnPulsado = document.getElementById("modificar");
-        btnPulsado.addEventListener("click", function(){
-            camposObligatorios(input, input2, input3);
-        })
+
 
     }
 }
