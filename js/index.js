@@ -3,27 +3,21 @@ var string64;
 var contador = 2;
 
 function borrarDiv() {
-    var borrar;
-    borrar = document.getElementById("imprimir").innerHTML = "";
+    document.getElementById("imprimir").innerHTML = "";
 }
 
 function mostrarForm() {
-    //document.getElementById("formulario").style.visibility = "visible";
     generarFormulario();
     borrarDiv();
 }
 
 function ocultarForm() {
-    //document.getElementById("formulario").style.visibility = "hidden";
     document.getElementById("formulario").innerHTML = "";
 }
 
 window.onload = function () {
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
 
-    var formular = document.getElementById("formulario");
-
-    console.log(formular)
 
     genera_tabla();
 }
@@ -64,7 +58,7 @@ function genera_tabla() {
             } else if (j == 5) {
                 textoCelda = "";
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
-                    if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo") {
+                    if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo" || objetoForm[i].vehiculo[0].name == " Pelicano") {
                         textoCelda += objetoForm[i].vehiculo[j].name.trim();
                     } else {
                         textoCelda += objetoForm[i].vehiculo[j].split(" ");
@@ -190,7 +184,6 @@ function generarFormulario() {
     input3.setAttribute("placeholder", "Escribe un numero");
 
 
-
     div3.appendChild(label3);
     div3.appendChild(input3);
 
@@ -238,7 +231,7 @@ function generarFormulario() {
 
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("class", "txtVehiculo1");
-    checkbox.setAttribute("name", " Caballo");
+    checkbox.setAttribute("name", "Caballo");
 
     texto.setAttribute("class", "vehiculo");
     texto.innerText = checkbox.name;
@@ -313,10 +306,22 @@ function generarFormulario() {
 
     let btnPulsado = document.getElementById("guardarForm");
     btnPulsado.addEventListener("click", function () {
-        validarRegExp();
+        camposObligatorios(input, input2, input3)
     });
     //                <input type="file"  id="txtImg" onchange="previewFile()">
     document.getElementById("txtImg").addEventListener("change", previewFile);
+}
+
+
+
+function camposObligatorios(param, param2, param3) {
+    if (param.value == "" || param2.value == "" || param3.value == "") {
+        alert("¡Tienes que rellenar los campos obligatorios!")
+    } else {
+        validarRegExp();
+
+    }
+
 }
 
 function validarRegExp() {
@@ -335,6 +340,7 @@ function validarRegExp() {
         alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo/a.");
     } else {
         saveObject();
+
         ocultarForm();
         genera_tabla();
     }
