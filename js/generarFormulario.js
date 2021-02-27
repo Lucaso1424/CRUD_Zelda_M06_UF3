@@ -169,7 +169,8 @@ function generarFormulario() {
 
     let btnPulsado = document.getElementById("guardarForm");
     btnPulsado.addEventListener("click", function () {
-        camposObligatorios(input, input2, input3)
+        camposObligatorios(input, input2, input3);
+        sonidoCofre();
     });
     document.getElementById("txtImg").addEventListener("change", previewFile);
 }
