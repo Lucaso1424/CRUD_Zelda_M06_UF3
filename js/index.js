@@ -17,8 +17,6 @@ function ocultarForm() {
 
 window.onload = function () {
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
-
-
     genera_tabla();
     anadirEventListener();
 }
@@ -214,6 +212,7 @@ function anadirEventListener() {
 
         document.getElementById("botonModificar"+i).addEventListener("click", function(){
             document.getElementById("imprimir").innerHTML = "";
+            generarFormulario("modificar");
 
 
 

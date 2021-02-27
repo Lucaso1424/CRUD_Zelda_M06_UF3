@@ -1,4 +1,4 @@
-function generarFormulario() {
+function generarFormulario(param) {
 
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
@@ -154,7 +154,7 @@ function generarFormulario() {
     let submit = document.createElement("input");
     submit.setAttribute("type", "button");
     submit.setAttribute("value", "Send Request");
-    submit.setAttribute("id", "guardarForm");
+    submit.setAttribute("id", param);
 
     form.appendChild(div);
     form.appendChild(div2);
@@ -167,9 +167,16 @@ function generarFormulario() {
 
 
 
-    let btnPulsado = document.getElementById("guardarForm");
-    btnPulsado.addEventListener("click", function () {
-        camposObligatorios(input, input2, input3)
-    });
-    document.getElementById("txtImg").addEventListener("change", previewFile);
+    if(param == "guardarForm"){
+        let btnPulsado = document.getElementById("guardarForm");
+        btnPulsado.addEventListener("click", function () {
+            console.log("HH");
+            camposObligatorios(input, input2, input3)
+        });
+        document.getElementById("txtImg").addEventListener("change", previewFile);
+    }
+    else if(param ){
+        console.log("hola")
+    }
+
 }
