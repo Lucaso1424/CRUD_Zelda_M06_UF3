@@ -135,8 +135,6 @@ function genera_tabla() {
     //  ocultarForm();
 }
 
-
-
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
     let id = contador;
