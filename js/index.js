@@ -1,6 +1,7 @@
 var divGuardado;
 var string64;
 var contador = 2;
+var booleanJson = false;
 
 function borrarDiv() {
     document.getElementById("imprimir").innerHTML = "";
@@ -20,12 +21,12 @@ function ocultarForm() {
 window.onload = function () {
     genera_tabla();
 
-    anadirEventListener();
+   // anadirEventListener();
 }
 
 function genera_tabla() {
     string64 = "";
-    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
+    if (!objetoForm[0])   addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif","Vuelo","Gerudo","Arco","cancion");
 
     // Obtener la referencia del elemento body
     var div = document.getElementById("imprimir");
@@ -37,7 +38,7 @@ function genera_tabla() {
     var tblBody = document.createElement("tbody");
     tblBody.setAttribute("id", "tbody")
     // Crea las celdas
-    for (var i = 0; i < objetoForm.length; i++) {
+    for (var i = 0; i < objetoForm.length; i++) {   
         // Crea las hileras de la tabla
         var hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
@@ -103,10 +104,10 @@ function genera_tabla() {
 
             } else if (j == 9) {
                 textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonModificar_json" + i);
-                textoCelda.setAttribute("name", "botonModificar_json");
-                textoCelda.setAttribute("value", "botonModificar_json");
-                textoCelda.innerText = "botonModificarValores";
+                textoCelda.setAttribute("id", "botonVer_json" + i);
+                textoCelda.setAttribute("name", "botonVer_json");
+                textoCelda.setAttribute("value", "botonVer_json");
+                textoCelda.innerText = "boton Valores";
             }
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
@@ -124,197 +125,221 @@ function genera_tabla() {
     // appends <table> into <body>
     div.appendChild(tabla);
 
+
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-    document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
+    anadirEventListener();
+    for (let i = 0; i < objetoForm.length; i++){
+               document.getElementById("botonVer_json"+i).addEventListener("click", function (){
+                   console.log(booleanJson);
+                if(booleanJson){
+                    console.log("ENTRA");
+                    document.getElementById("imprimir").innerHTML ="";
+                
+                    
+                }
 
-    document.getElementById("mostrarForm").style.visibility = "visible";
-    document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
-    document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
-    document.getElementById("ocultar_video").style.visibility = "hidden";
-    //  ocultarForm();
-}
 
-function saveObject() {
-    let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
-    let id = contador;
-    let nombreJuego = document.getElementById("txtNameGame").value;
-    let nombreJugador = document.getElementById("txtNamePlayer").value;
-    let money = document.getElementById("txtRupias").value;
-    let menuRadial = document.getElementById("txtMenuRadial").value;
-    let veh = checkedBoxes;
-    let img = string64;
-    let subArray = [
-        habilidad = "",
-        zona = "",
-        arma = "",
-        meoldia = "",
-    ]
-    console.log(subArray);
-    //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, subArray);
-    console.log(contador);
-    contador++;
-}
+               })
 
-function modifyObject(campoEditar, campoObjeto) {
-    let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
-    let nombreJuego = document.getElementById("txtNameGame").value;
-    let nombreJugador = document.getElementById("txtNamePlayer").value;
-    let money = document.getElementById("txtRupias").value;
-    let menuRadial = document.getElementById("txtMenuRadial").value;
-    let veh = checkedBoxes;
-    //console.log(string64);
-    let img = string64;
-    updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img);
-}
 
-function previewFile() {
-    var file = document.querySelector('input[type=file]').files[0];
-    var reader = new FileReader();
+        }
 
-    reader.onloadend = function () {
-        string64 = reader.result;
-        //  console.log(string64)
+        document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
+
+        document.getElementById("mostrarForm").style.visibility = "visible";
+        document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
+        document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
+        document.getElementById("ocultar_video").style.visibility = "hidden";
     }
 
-    reader.readAsDataURL(file);
-}
-
-function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
-
-    if (document.getElementById("guardarForm")) {
-        if (param.value == "" || param2.value == "" || param3.value == "") {
-            alert("¡Tienes que rellenar los campos obligatorios!")
-        } else {
-            validarRegExp();
-        }
-    } else if (document.getElementById("modificar")) {
-        if (param.value == "" || param2.value == "" || param3.value == "") {
-            alert("¡Tienes que rellenar los campos obligatorios!")
-        } else {
-            validarRegExp(campoEditar, campoObjeto);
-        }
+    function saveObject() {
+        let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
+        let id = contador;
+        let nombreJuego = document.getElementById("txtNameGame").value;
+        let nombreJugador = document.getElementById("txtNamePlayer").value;
+        let money = document.getElementById("txtRupias").value;
+        let menuRadial = document.getElementById("txtMenuRadial").value;
+        let veh = checkedBoxes;
+        let img = string64;
+        let habilidad = "";
+        let zona = "";
+        let arma = "";
+        let meoldia = "";
+        //img = document.querySelector("#txtImage").value;
+        addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, );
+        console.log(contador);
+        contador++;
     }
-}
 
-function validarRegExp(campoEditar, campoObjeto) {
-    let texto;
-    let rupias;
-    texto = document.getElementById("txtNameGame").value;
-    rupias = document.getElementById("txtRupias").value;
-
-    var regexp1 = /[áàÁÀ-éèÉÈ-íìÍÌ-óòÓÒ-úùÚÙ]/
-    var regexp2 = /[@$%&+´`]/
-    var regexp3 = /^[0-9]{6,}/
-
-    if (document.getElementById("guardarForm")) {
-        if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
-            alert("¡No puedes escribir acentos ni carácteres especiales!");
-        } else if (regexp3.test(rupias) == true) {
-            alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
-        } else {
-            saveObject();
-            ocultarForm();
-            genera_tabla();
-            sonidoCofre();
-            anadirEventListener();
-        }
-
-
-    } else if (document.getElementById("modificar")) {
-        if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
-            alert("¡No puedes escribir acentos ni carácteres especiales!");
-        } else if (regexp3.test(rupias) == true) {
-            alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
-        } else {
-            modifyObject(campoEditar, campoObjeto);
-            ocultarForm();
-            genera_tabla();
-            sonidoCofre();
-            anadirEventListener();
-        }
+    function modifyObject(campoEditar, campoObjeto) {
+        let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
+        let nombreJuego = document.getElementById("txtNameGame").value;
+        let nombreJugador = document.getElementById("txtNamePlayer").value;
+        let money = document.getElementById("txtRupias").value;
+        let menuRadial = document.getElementById("txtMenuRadial").value;
+        let veh = checkedBoxes;
+        //console.log(string64);
+        let img = string64;
+        updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img);
     }
-}
 
+    function previewFile() {
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
 
-function anadirEventListener() {
-    for (let i = 0; i < objetoForm.length; i++) {
-        console.log(i);
+        reader.onloadend = function () {
+            string64 = reader.result;
+            //  console.log(string64)
+        }
 
-        document.getElementById("botonBorrar" + i).addEventListener("click", function () {
+        reader.readAsDataURL(file);
+    }
 
-            if (objetoForm.length == 1) {
-                console.log("entra")
-                document.getElementById("imprimir").innerHTML = "";
+    function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
+
+        if (document.getElementById("guardarForm")) {
+            if (param.value == "" || param2.value == "" || param3.value == "") {
+                alert("¡Tienes que rellenar los campos obligatorios!")
             } else {
-                document.getElementById("tr" + i).innerHTML = "";
-                console.log(objetoForm);
-
+                validarRegExp();
             }
-            objetoForm.splice(i, 1);
-        })
-
-        document.getElementById("botonModificar" + i).addEventListener("click", function () {
-
-                let campoEditar = document.getElementById("tr" + i);
-                let campoObjeto = objetoForm[i];
-
-                console.log(campoEditar)
-                console.log(campoObjeto);
-
-                document.getElementById("imprimir").innerHTML = "";
-                generarFormulario("modificar", campoEditar, campoObjeto);
-
+        } else if (document.getElementById("modificar")) {
+            if (param.value == "" || param2.value == "" || param3.value == "") {
+                alert("¡Tienes que rellenar los campos obligatorios!")
+            } else {
+                validarRegExp(campoEditar, campoObjeto);
             }
-
-
-        )
-
-        document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
-
-            let campoEditar_json = document.getElementById("tr" + i);
-            let campoObjeto_json= objetoForm[i].json;
-
-            console.log(campoEditar_json)
-            console.log(campoObjeto_json);
-
-            document.getElementById("imprimir").innerHTML = "";
-            generarFormulario("modificar", campoEditar, campoObjeto);
-
-        }
-
-
-    )
-
-        document.getElementById(i + "-6").addEventListener("dblclick", function () {
-            delete objetoForm[i].image;
-            console.log("Se ha borrado la imagen, dejamos una imagen default");
-            document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
-            objetoForm[i].image = "/img/vegeta_meme.png";
-        })
-    }
-}
-
-function sonidoCofre() {
-    let audio = new Audio("/sound/chest.mp3");
-    audio.play();
-}
-
-function iniciarVideo() {
-    let boton = document.getElementById('teclado');
-    boton.addEventListener('keypress', presionarTecla);
-}
-
-function presionarTecla(e) {
-    if (e.key == "c") {
-        let video = document.getElementById('video');
-        if (video) {
-            video.play();
-            document.getElementById("ocultar_video").style.visibility = "visible";
         }
     }
-}
 
-window.addEventListener('load', iniciarVideo);
+    function validarRegExp(campoEditar, campoObjeto) {
+        let texto;
+        let rupias;
+        texto = document.getElementById("txtNameGame").value;
+        rupias = document.getElementById("txtRupias").value;
+
+        var regexp1 = /[áàÁÀ-éèÉÈ-íìÍÌ-óòÓÒ-úùÚÙ]/
+        var regexp2 = /[@$%&+´`]/
+        var regexp3 = /^[0-9]{6,}/
+
+        if (document.getElementById("guardarForm")) {
+            if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
+                alert("¡No puedes escribir acentos ni carácteres especiales!");
+            } else if (regexp3.test(rupias) == true) {
+                alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
+            } else {
+                saveObject();
+                ocultarForm();
+                genera_tabla();
+                sonidoCofre();
+               // anadirEventListener();
+            }
+
+
+        } else if (document.getElementById("modificar")) {
+            if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
+                alert("¡No puedes escribir acentos ni carácteres especiales!");
+            } else if (regexp3.test(rupias) == true) {
+                alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
+            } else {
+                modifyObject(campoEditar, campoObjeto);
+                ocultarForm();
+                genera_tabla();
+                sonidoCofre();
+                //anadirEventListener();
+            }
+        }
+    }
+
+
+    function anadirEventListener() {
+        for (let i = 0; i < objetoForm.length; i++) {
+            console.log(i);
+
+            document.getElementById("botonBorrar" + i).addEventListener("click", function () {
+
+                if (objetoForm.length == 1) {
+                    console.log("entra")
+                    document.getElementById("imprimir").innerHTML = "";
+                } else {
+                    document.getElementById("tr" + i).innerHTML = "";
+                    console.log(objetoForm);
+
+                }
+                objetoForm.splice(i, 1);
+            })
+
+            document.getElementById("botonModificar" + i).addEventListener("click", function () {
+
+                    genera_tabla();
+
+
+                    let campoEditar = document.getElementById("tr" + i);
+                    let campoObjeto = objetoForm[i];
+
+                    console.log(campoEditar)
+                    console.log(campoObjeto);
+                    /*
+                    document.getElementById("imprimir").innerHTML = "";
+                    generarFormulario("modificar", campoEditar, campoObjeto);
+                    */
+                }
+
+
+            )
+
+
+            document.getElementById("botonVer_json"+i).addEventListener("click", function() {
+                booleanJson = true;
+                genera_tabla();
+
+            })
+
+            /* document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
+
+                    let campoEditar_json = document.getElementById("tr" + i);
+                    let campoObjeto_json = objetoForm[i].json;
+
+                    console.log(campoEditar_json)
+                    console.log(campoObjeto_json);
+
+                    document.getElementById("imprimir").innerHTML = "";
+                    generarFormulario_json("modificar", campoEditar_json, campoObjeto_json);
+
+                }
+
+
+            ) */
+
+            document.getElementById(i + "-6").addEventListener("dblclick", function () {
+                delete objetoForm[i].image;
+                console.log("Se ha borrado la imagen, dejamos una imagen default");
+                document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
+                objetoForm[i].image = "/img/vegeta_meme.png";
+            })
+        }
+    }
+
+    function sonidoCofre() {
+        let audio = new Audio("/sound/chest.mp3");
+        audio.play();
+    }
+
+    function iniciarVideo() {
+        let boton = document.getElementById('teclado');
+        boton.addEventListener('keypress', presionarTecla);
+    }
+
+    function presionarTecla(e) {
+        if (e.key == "c") {
+            let video = document.getElementById('video');
+            if (video) {
+                video.play();
+                document.getElementById("ocultar_video").style.visibility = "visible";
+            }
+        }
+    }
+
+    window.addEventListener('load', iniciarVideo);

@@ -1,6 +1,7 @@
 var objetoForm = [];
 
-function addItems(pid, nameGame, player, money, menu,veh,img,subArray) {
+function addItems(pid, nameGame, player, money, menu,veh,img,skill,zone,weapon,melody) {
+    //addItemsJson(skill,zone,weapon,melody);  
     let newObject = {
         id: pid,
         name: nameGame,
@@ -10,13 +11,18 @@ function addItems(pid, nameGame, player, money, menu,veh,img,subArray) {
         vehiculo: veh,
         image: img,
         json : [{
-            habilidad: subArray,
-            zona: "",
-            arma : "",
-            melodia: ""
+            habilidad: skill,
+            zona: zone,
+            arma: weapon,
+            melodia: melody,
         }]
 
     };
+
+
+
+    
+    
     console.log(newObject);
     objetoForm.push(newObject);
 }
@@ -42,4 +48,14 @@ function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, ve
         console.log("No entra");
         campoObjeto.image = img;
     }
+}
+
+function addItemsJson(skill,zone,weapon,melody){
+  let xd = {
+    habilidad: skill,
+    zona: zone,
+    arma: weapon,
+    melodia: melody
+ }   
+
 }
