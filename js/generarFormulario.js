@@ -251,7 +251,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
-        btnPulsado.addEventListener("click", function() {
+        btnPulsado.addEventListener("click", function () {
             console.log(input_json, input_json2, input_json3, select_json);
             camposObligatorios(input, input2, input3);
         });
@@ -274,7 +274,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
             camposObligatorios(input, input2, input3, campoEditar, campoObjeto);
         });
         document.getElementById("txtImg").addEventListener("change", previewFile);
-      
+
         // AQUI, VISUALIZAMOS EL subJson DE EL OBJETO  
 
     } else if (param == "verSubJson") {
@@ -287,7 +287,11 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
 function genera_tabla_json() {
     // Obtener la referencia del elemento body
-    let div = document.getElementById("imprimir");
+    let div = document.getElementById("imprimemeEsta");
+    let anterior = document.getElementById("imprimir");
+    div.setAttribute("class", "contenido");
+    if (anterior.children.length == 0) anterior.removeAttribute("class");
+
     // Crea un elemento <table> y un elemento <tbody>
     let tabla = document.createElement("table");
     tabla.setAttribute("id", "tabla");
@@ -299,14 +303,14 @@ function genera_tabla_json() {
         // Crea las hileras de la tabla
         let hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
-        for (let j = 0; j <= 3; j++) {
+        for (let j = 0; j <= 6; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             let celda = document.createElement("td");
             celda.setAttribute("id", "td" + i + "-" + j);
 
             let textoCelda = null;
-           if (j == 0) {
+            if (j == 0) {
                 textoCelda = document.createTextNode(objetoForm[i].json[0].habilidad);
             } else if (j == 1) {
                 textoCelda = document.createTextNode(objetoForm[i].json[0].zona);
@@ -314,7 +318,32 @@ function genera_tabla_json() {
                 textoCelda = document.createTextNode(objetoForm[i].json[0].arma);
             } else if (j == 3) {
                 textoCelda = document.createTextNode(objetoForm[i].json[0].melodia);
+            } else if (j == 4) {
+                textoCelda = document.createElement("button");
+                textoCelda.setAttribute("id", "botonBorrarJson" + i);
+                textoCelda.setAttribute("name", "botonBorrarJson");
+                textoCelda.setAttribute("value", "botonBorrarJson");
+                textoCelda.innerText = "Borrar SubJson";
+
+            } else if (j == 5) {
+
+                textoCelda = document.createElement("button");
+                textoCelda.setAttribute("id", "botonModificar" + i);
+                textoCelda.setAttribute("name", "botonModificar");
+                textoCelda.setAttribute("value", "botonModificar");
+                textoCelda.innerText = "Modificar entrada";
+
+            } else if (j == 6) {
+
+                textoCelda = document.createElement("button");
+                textoCelda.setAttribute("id", "botonVolver" + i);
+                textoCelda.setAttribute("name", "botonVolver");
+                textoCelda.setAttribute("value", "botonVolver");
+                textoCelda.innerText = "Volver";
+
             }
+
+
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
             celda.appendChild(textoCelda);
@@ -329,7 +358,7 @@ function genera_tabla_json() {
     // appends <table> into <body>
     div.appendChild(tabla);
 
-    document.getElementById("imprimir").appendChild(tabla);
+    document.getElementById("imprimemeEsta").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
 
@@ -345,4 +374,27 @@ function genera_tabla_json() {
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
     // OCULTAMOS EL VIDEO CON EL hidden
     document.getElementById("ocultar_video").style.visibility = "hidden";
+
+
+
+    for (let i = 0; i < objetoForm.length; i++) {
+        // addEventListener PARA BORRAR EL subJson DEL OBJETIVO 3
+        document.getElementById("botonBorrarJson" + i).addEventListener("click", function () {
+            if (objetoForm[i].json.length == 1) {
+                console.log("entra");
+                document.getElementById("imprimemeEsta").innerHTML = "";
+            } else {
+                document.getElementById("tr" + i).innerHTML = "";
+                console.log(objetoForm);
+            }
+            delete objetoForm.json;
+
+        })
+
+        document.getElementById("botonVolver" + i).addEventListener("click", function () {
+            document.getElementById("imprimemeEsta").innerHTML = "";
+            genera_tabla();
+
+        })
+    }
 }
