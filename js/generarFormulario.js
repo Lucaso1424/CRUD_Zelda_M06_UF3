@@ -311,13 +311,13 @@ function genera_tabla_json() {
 
             let textoCelda = null;
             if (j == 0) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].habilidad);
+                textoCelda = document.createTextNode(objetoForm[i].json[i].habilidad);
             } else if (j == 1) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].zona);
+                textoCelda = document.createTextNode(objetoForm[i].json[i].zona);
             } else if (j == 2) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].arma);
+                textoCelda = document.createTextNode(objetoForm[i].json[i].arma);
             } else if (j == 3) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].melodia);
+                textoCelda = document.createTextNode(objetoForm[i].json[i].melodia);
             } else if (j == 4) {
                 textoCelda = document.createElement("button");
                 textoCelda.setAttribute("id", "botonBorrarJson" + i);
@@ -387,7 +387,7 @@ function genera_tabla_json() {
                 document.getElementById("tr" + i).innerHTML = "";
                 console.log(objetoForm);
             }
-            delete objetoForm.json;
+            delete objetoForm[i].json;
 
         })
 

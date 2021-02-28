@@ -266,7 +266,7 @@ function anadirEventListener() {
 
         // addEventListener PARA MODIFICAR LOS VALORES
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-                console.log("VALOR DE LA PUTA I: " + i);
+                console.log("VALOR DE I: " + i);
                 if (objetoForm.length == 1 && objetoForm[0].id == 1) {
                     let campoEditar = document.getElementById("tr0");
                     let campoObjeto = objetoForm[0];
