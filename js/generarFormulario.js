@@ -294,6 +294,11 @@ function generarFormulario(param,campoEditar,campoObjeto) {
             document.getElementById("txtImg").addEventListener("change", previewFile);
 
     }
+
+    else if(param == "verSubJson"){
+        document.getElementById("imprimir").innerHTML ="";
+        document.getElementById("ocultar_video").innerHTML = "";
+    }
 }
 
 
@@ -331,88 +336,36 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
 
 
 function genera_tabla_json(){
-    if (!objetoForm[0].json)
 
     // Obtener la referencia del elemento body
-    var div = document.getElementById("imprimir");
+    let div = document.getElementById("imprimir");
 
     // Crea un elemento <table> y un elemento <tbody>
-    var tabla = document.createElement("table");
+    let tabla = document.createElement("table");
     tabla.setAttribute("id", "tabla");
 
-    var tblBody = document.createElement("tbody");
+    let tblBody = document.createElement("tbody");
     tblBody.setAttribute("id", "tbody")
     // Crea las celdas
-    for (var i = 0; i < objetoForm.length; i++) {
+    for (let i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
-        var hilera = document.createElement("tr");
+        let hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
-        for (var j = 0; j <= 9; j++) {
+        for (let j = 0; j <= 3; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
-            var celda = document.createElement("td");
+            let celda = document.createElement("td");
             celda.setAttribute("id", "td" + i + "-" + j);
 
-            var textoCelda = null;
+            let textoCelda = null;
             if (j == 0) {
-                textoCelda = document.createTextNode(objetoForm[i].id);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].habilidad);
             } else if (j == 1) {
-                textoCelda = document.createTextNode(objetoForm[i].name);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].zona);
             } else if (j == 2) {
-                textoCelda = document.createTextNode(objetoForm[i].namePlayer);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].arma);
             } else if (j == 3) {
-                textoCelda = document.createTextNode(objetoForm[i].radialMenu);
-            } else if (j == 4) {
-                textoCelda = document.createTextNode(objetoForm[i].rupias);
-            } else if (j == 5) {
-                textoCelda = "";
-                for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
-                    if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo" || objetoForm[i].vehiculo[0].name == " Pelicano") {
-                        textoCelda += objetoForm[i].vehiculo[j].name.trim();
-                    } else if (objetoForm[i].vehiculo == "Lobo") {
-                        textoCelda += objetoForm[i].vehiculo.trim();
-                        break;
-                    } else {
-                        textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
-                    }
-                }
-                textoCelda = document.createTextNode(textoCelda);
-            } else if (j == 6) {
-                textoCelda = document.createElement("img");
-                textoCelda.setAttribute("id", i + "-" + j);
-
-                if (objetoForm[i].image) {
-                    textoCelda.setAttribute("width", "210px");
-                    textoCelda.setAttribute("height", "170px");
-                    textoCelda.setAttribute("src", objetoForm[i].image);
-                } else {
-                    textoCelda.setAttribute("width", "230px");
-                    textoCelda.setAttribute("height", "170px");
-                    if (objetoForm[i].image == undefined || objetoForm[i].image == "") {
-                        textoCelda.src = "/img/default_links.jpg";
-                    }
-                }
-
-            } else if (j == 7) {
-                textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonBorrar" + i);
-                textoCelda.setAttribute("name", "botonBorrar");
-                textoCelda.setAttribute("value", "botonBorrar");
-                textoCelda.innerText = "botonBorrar";
-
-            } else if (j == 8) {
-                textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonModificar" + i);
-                textoCelda.setAttribute("name", "botonModificar");
-                textoCelda.setAttribute("value", "botonModificar");
-                textoCelda.innerText = "botonModificar";
-
-            } else if (j == 9) {
-                textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonVer_json" + i);
-                textoCelda.setAttribute("name", "botonVer_json");
-                textoCelda.setAttribute("value", "botonVer_json");
-                textoCelda.innerText = "boton Valores";
+                textoCelda = document.createTextNode(objetoForm[i].json[0].melodia);
             }
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
@@ -434,23 +387,6 @@ function genera_tabla_json(){
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-    anadirEventListener();
-    for (let i = 0; i < objetoForm.length; i++){
-               document.getElementById("botonVer_json"+i).addEventListener("click", function (){
-                   console.log(booleanJson);
-                if(booleanJson){
-                    console.log("ENTRA");
-                    document.getElementById("imprimir").innerHTML ="";
-                   
-                    
-                }
-
-
-               })
-
-
-        }
-
         document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
 
         document.getElementById("mostrarForm").style.visibility = "visible";
