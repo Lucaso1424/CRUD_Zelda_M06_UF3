@@ -229,14 +229,10 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     div_json4.appendChild(label_json4);
     div_json4.appendChild(select_json);
 
-
-
     // for(let i = 1; i < 4; i++){
     //   select.appendChild(option+""+i);
 
     // }
-
-
 
     document.getElementById("formulario_json").appendChild(form);
 
@@ -258,20 +254,15 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     form.appendChild(div_json4);
 
     form.appendChild(div6);
-
     form.appendChild(submit);
 
-
     document.getElementById("formulario").appendChild(form);
-
-
 
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function () {
             console.log(input_json, input_json2, input_json3, select_json);
             camposObligatorios(input, input2, input3);
-
         });
 
         document.getElementById("txtImg").addEventListener("change", previewFile);
@@ -303,9 +294,6 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form2 = document.createElement("form2");
 
-
-
-
     if (param_json == "guardarForm_json") {
         let btnPulsadojson = document.getElementById("guardarForm_json");
         btnPulsadojson.addEventListener("click", function () {
@@ -323,7 +311,7 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
             let btnPulsado = document.getElementById("modificar_json");
             btnPulsado.addEventListener("click", function () {
                 camposObligatorios(input_json, input_json2, input_json3, campoEditar_json, campoObjeto_json);
-            })
+            });
             break;
         }
     }
@@ -331,7 +319,6 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
 
 
 function genera_tabla_json() {
-
     // Obtener la referencia del elemento body
     let div = document.getElementById("imprimir");
 
@@ -340,13 +327,13 @@ function genera_tabla_json() {
     tabla.setAttribute("id", "tabla");
 
     let tblBody = document.createElement("tbody");
-    tblBody.setAttribute("id", "tbody")
+    tblBody.setAttribute("id", "tbody");
     // Crea las celdas
     for (let i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
         let hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
-        for (let j = 0; j <= 3; j++) {
+        for (let j = 0; j <= 6; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             let celda = document.createElement("td");
