@@ -30,7 +30,7 @@ function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, ve
     console.log(campoEditar.querySelector("img"));
     console.log(campoObjeto);
     console.log(campoObjeto.image);
-    console.log(imagencita.src);
+    console.log(imagencita.src)
     console.log(img);
 
     // AÑADIMOS EN EL CAMPO_OBJETO, LOS VALORES DEL OBJETO JSON PARA DEFINIRLOS DE NUEVO EN EL ACTUALIZAR
