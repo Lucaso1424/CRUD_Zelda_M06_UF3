@@ -145,8 +145,15 @@ function saveObject() {
     let menuRadial = document.getElementById("txtMenuRadial").value;
     let veh = checkedBoxes;
     let img = string64;
+    let subArray = [
+        habilidad = "",
+        zona = "",
+        arma = "",
+        meoldia = "",
+    ]
+    console.log(subArray);
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img,subArray);
     console.log(contador);
     contador++;
 }
@@ -250,16 +257,16 @@ function anadirEventListener() {
         })
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            for(let i = 0; i< objetoForm.length;i++){
+
                     let campoEditar = document.getElementById("tr"+i);
                     let campoObjeto = objetoForm[i];
                     
+                    console.log(campoEditar)
                     console.log(campoObjeto);
 
                     document.getElementById("imprimir").innerHTML = "";
                     generarFormulario("modificar",campoEditar,campoObjeto);
-                    break;
-                }
+
             }
 
 

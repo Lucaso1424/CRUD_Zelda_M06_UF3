@@ -1,4 +1,4 @@
-function generarFormulario(param,campoEditar,campoObjeto) {
+function generarFormulario(param, campoEditar, campoObjeto) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
@@ -172,28 +172,28 @@ function generarFormulario(param,campoEditar,campoObjeto) {
         });
 
         document.getElementById("txtImg").addEventListener("change", previewFile);
-    }
-
-    else if(param == "modificar"){
-        document.getElementById("imprimir").innerHTML ="";
+    } else if (param == "modificar") {
+        document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
-        for(let i = 0; i < objetoForm.length;i++){
-            input.setAttribute("placeholder",objetoForm[i].name);
-            input2.setAttribute("placeholder",objetoForm[i].namePlayer);
-            input3.setAttribute("placeholder",objetoForm[i].rupias);
 
-            let btnPulsado = document.getElementById("modificar");
-            btnPulsado.addEventListener("click", function(){
-                camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
-            })
-            document.getElementById("txtImg").addEventListener("change", previewFile);
-            break;
-        }
+        console.log(campoEditar);
+        console.log(campoObjeto);
+        input.setAttribute("placeholder", campoObjeto.name);
+        input2.setAttribute("placeholder", campoObjeto.namePlayer);
+        input3.setAttribute("placeholder", campoObjeto.rupias);
+
+        let btnPulsado = document.getElementById("modificar");
+        btnPulsado.addEventListener("click", function () {
+            camposObligatorios(input, input2, input3, campoEditar, campoObjeto);
+        })
+        document.getElementById("txtImg").addEventListener("change", previewFile);
+        break;
     }
 }
 
 
-function generarFormulario_json(param_json,campoEditar_json,campoObjeto_json) {
+
+function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form2 = document.createElement("form2");
 
@@ -274,19 +274,17 @@ function generarFormulario_json(param_json,campoEditar_json,campoObjeto_json) {
         btnPulsadojson.addEventListener("click", function () {
             camposObligatorios(input_json, input_json2, input_json3);
         });
-    }
-
-    else if(param_json == "modificar_json") {
-        document.getElementById("imprimir").innerHTML ="";
+    } else if (param_json == "modificar_json") {
+        document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
-        for(let i = 0; i < objetoForm.length; i++){
-            input.setAttribute("placeholder",objetoForm[i].habilidad);
-            input2.setAttribute("placeholder",objetoForm[i].zona);
-            input3.setAttribute("placeholder",objetoForm[i].arma);
+        for (let i = 0; i < objetoForm.length; i++) {
+            input.setAttribute("placeholder", objetoForm[i].habilidad);
+            input2.setAttribute("placeholder", objetoForm[i].zona);
+            input3.setAttribute("placeholder", objetoForm[i].arma);
 
             let btnPulsado = document.getElementById("modificar_json");
-            btnPulsado.addEventListener("click", function(){
-                camposObligatorios(input_json, input_json2, input_json3,campoEditar_json,campoObjeto_json);
+            btnPulsado.addEventListener("click", function () {
+                camposObligatorios(input_json, input_json2, input_json3, campoEditar_json, campoObjeto_json);
             })
             break;
         }
