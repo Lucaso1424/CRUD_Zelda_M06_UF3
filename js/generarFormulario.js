@@ -180,10 +180,12 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     else if(param == "modificar"){
         document.getElementById("imprimir").innerHTML ="";
         document.getElementById("ocultar_video").innerHTML = "";
-        for(let i = 0; i < objetoForm.length;i++){
-            input.setAttribute("placeholder",objetoForm[i].name);
-            input2.setAttribute("placeholder",objetoForm[i].namePlayer);
-            input3.setAttribute("placeholder",objetoForm[i].rupias);
+
+            console.log(campoEditar);
+            console.log(campoObjeto);
+            input.setAttribute("placeholder",campoObjeto.name);
+            input2.setAttribute("placeholder",campoObjeto.namePlayer);
+            input3.setAttribute("placeholder",campoObjeto.rupias);
 
             let btnPulsado = document.getElementById("modificar");
             btnPulsado.addEventListener("click", function(){
@@ -191,8 +193,8 @@ function generarFormulario(param,campoEditar,campoObjeto) {
 
             })
             document.getElementById("txtImg").addEventListener("change", previewFile);
-            break;
-        }
+
+ 
 
 
     }

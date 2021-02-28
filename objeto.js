@@ -1,6 +1,6 @@
 var objetoForm  = [];
 
-function addItems(pid, nameGame, player, money, menu,veh,img) {
+function addItems(pid, nameGame, player, money, menu,veh,img,subArray) {
     let newObject = {
         id: pid,
         name: nameGame,
@@ -8,7 +8,13 @@ function addItems(pid, nameGame, player, money, menu,veh,img) {
         rupias: money,
         radialMenu: menu,
         vehiculo: veh,
-        image: img
+        image: img,
+        json : [{
+            habilidad: subArray,
+            zona: "",
+            arma : "",
+            melodia: ""
+        }]
 
     };
     console.log(newObject);
