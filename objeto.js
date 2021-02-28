@@ -1,6 +1,6 @@
 var objetoForm = [];
 
-function addItems(pid, nameGame, player, money, menu,veh,img,skill,zone,weapon,melody) {
+function addItems(pid, nameGame, player, money, menu, veh, img, skill, zone, weapon, melody) {
     //addItemsJson(skill,zone,weapon,melody);  
     let newObject = {
         id: pid,
@@ -10,7 +10,7 @@ function addItems(pid, nameGame, player, money, menu,veh,img,skill,zone,weapon,m
         radialMenu: menu,
         vehiculo: veh,
         image: img,
-        json : [{
+        json: [{
             habilidad: skill,
             zona: zone,
             arma: weapon,
@@ -18,16 +18,11 @@ function addItems(pid, nameGame, player, money, menu,veh,img,skill,zone,weapon,m
         }]
 
     };
-
-
-
-    
-    
     console.log(newObject);
     objetoForm.push(newObject);
 }
 
-function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, veh, img) {
+function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, veh, img, skill, zone, weapon, melody) {
     let imagencita = campoEditar.querySelector("img");
     console.log(campoEditar.querySelector("img"));
     console.log(campoObjeto);
@@ -40,6 +35,11 @@ function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, ve
     campoObjeto.rupias = money;
     campoObjeto.radialMenu = menu;
     campoObjeto.vehiculo = veh;
+    campoObjeto.json.habilidad = skill
+    campoObjeto.json.zona = zone
+    campoObjeto.json.arma = weapon
+    campoObjeto.json.melodia = melody
+    console.log(campoObjeto.json.habilidad);
 
     if (img == "" || img == undefined) {
         campoObjeto.image = campoEditar.querySelector("img").src;
@@ -48,14 +48,4 @@ function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, ve
         console.log("No entra");
         campoObjeto.image = img;
     }
-}
-
-function addItemsJson(skill,zone,weapon,melody){
-  let xd = {
-    habilidad: skill,
-    zona: zone,
-    arma: weapon,
-    melodia: melody
- }   
-
 }

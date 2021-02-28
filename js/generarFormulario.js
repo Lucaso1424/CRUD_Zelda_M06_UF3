@@ -2,7 +2,6 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
-
     /* Juego */
     let div = document.createElement("div");
     let label = document.createElement("label");
@@ -52,11 +51,11 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let div4 = document.createElement("div");
     let label4 = document.createElement("label");
     let select = document.createElement("select");
-    let option = document.createElement("option");
-    let option2 = document.createElement("option");
-    let option3 = document.createElement("option");
-    let option4 = document.createElement("option");
-    let option5 = document.createElement("option");
+    let option = document.createElement("option")
+    let option2 = document.createElement("option")
+    let option3 = document.createElement("option")
+    let option4 = document.createElement("option")
+    let option5 = document.createElement("option")
 
     label4.setAttribute("for", "Rupias");
     label4.innerText = "Menu Radial: ";
@@ -70,16 +69,12 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     option4.innerText = "Beyblade";
     option5.innerText = "Gancho";
 
-
     select.appendChild(option);
     select.appendChild(option2);
     select.appendChild(option3);
     select.appendChild(option4);
     select.appendChild(option5);
-    // for(let i = 1; i < 4; i++){
-    //   select.appendChild(option+""+i);
 
-    // }
     div4.appendChild(label4);
     div4.appendChild(select);
 
@@ -98,8 +93,6 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     texto.setAttribute("class", "vehiculo");
     texto.innerText = checkbox.name;
 
-
-
     checkbox2.setAttribute("type", "checkbox");
     checkbox2.setAttribute("class", "txtVehiculo1");
     checkbox2.setAttribute("name", " Moto");
@@ -111,7 +104,6 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     checkbox3.setAttribute("type", "checkbox");
     checkbox3.setAttribute("class", "txtVehiculo1");
     checkbox3.setAttribute("name", " Lobo");
-
 
     let texto3 = document.createElement("label");
     texto3.setAttribute("class", "vehiculo");
@@ -215,28 +207,16 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     option4_json.innerText = "Poder de Din";
     option5_json.innerText = "Cumbion del bazar";
 
-
     select_json.appendChild(option_json);
     select_json.appendChild(option2_json);
     select_json.appendChild(option3_json);
     select_json.appendChild(option4_json);
     select_json.appendChild(option5_json);
-    // for(let i = 1; i < 4; i++){
-    //   select.appendChild(option+""+i);
-
-    // }
 
     div_json4.appendChild(label_json4);
     div_json4.appendChild(select_json);
-
-    // for(let i = 1; i < 4; i++){
-    //   select.appendChild(option+""+i);
-
-    // }
-
+    
     document.getElementById("formulario_json").appendChild(form);
-
-
 
     let submit = document.createElement("input");
     submit.setAttribute("type", "button");
@@ -252,11 +232,10 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     form.appendChild(div_json2);
     form.appendChild(div_json3);
     form.appendChild(div_json4);
-
     form.appendChild(div6);
     form.appendChild(submit);
-
     document.getElementById("formulario").appendChild(form);
+
 
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
@@ -279,10 +258,8 @@ function generarFormulario(param, campoEditar, campoObjeto) {
         let btnPulsado = document.getElementById("modificar");
         btnPulsado.addEventListener("click", function () {
             camposObligatorios(input, input2, input3, campoEditar, campoObjeto);
-
-        })
+        });
         document.getElementById("txtImg").addEventListener("change", previewFile);
-
     } else if (param == "verSubJson") {
         document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
@@ -321,19 +298,18 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
 function genera_tabla_json() {
     // Obtener la referencia del elemento body
     let div = document.getElementById("imprimir");
-
     // Crea un elemento <table> y un elemento <tbody>
     let tabla = document.createElement("table");
     tabla.setAttribute("id", "tabla");
 
     let tblBody = document.createElement("tbody");
-    tblBody.setAttribute("id", "tbody");
+    tblBody.setAttribute("id", "tbody")
     // Crea las celdas
     for (let i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
         let hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
-        for (let j = 0; j <= 6; j++) {
+        for (let j = 0; j <= 3; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             let celda = document.createElement("td");
@@ -341,44 +317,27 @@ function genera_tabla_json() {
 
             let textoCelda = null;
             if (j == 0) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].habilidad);
+                textoCelda = document.createTextNode(objetoForm[i].json.habilidad);
             } else if (j == 1) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].zona);
+                textoCelda = document.createTextNode(objetoForm[i].json.zona);
             } else if (j == 2) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].arma);
+                textoCelda = document.createTextNode(objetoForm[i].json.arma);
             } else if (j == 3) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].melodia);
-            } else if (j == 4) {
-                textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonBorrar" + i);
-                textoCelda.setAttribute("name", "botonBorrar");
-                textoCelda.setAttribute("value", "botonBorrar");
-                textoCelda.innerText = "botonBorrar";
-            } else if (j == 5) {
-                textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonModificar" + i);
-                textoCelda.setAttribute("name", "botonModificar");
-                textoCelda.setAttribute("value", "botonModificar");
-                textoCelda.innerText = "botonModificar";
-            } else if (j == 6) {
-                textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonVolver_json" + i);
-                textoCelda.setAttribute("name", "botonVolver_json");
-                textoCelda.setAttribute("value", "botonVolver_json");
-                textoCelda.innerText = "boton Volver";
+                textoCelda = document.createTextNode(objetoForm[i].json.melodia);
             }
+            // console.log("Valor J: " + j);
+            // console.log("Valor textoCelda: " + textoCelda);
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
-
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
     }
+
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
     div.appendChild(tabla);
-
 
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";

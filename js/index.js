@@ -1,6 +1,7 @@
 var divGuardado;
 var string64;
 var contador = 2;
+var contModificar;
 
 function borrarDiv() {
     document.getElementById("imprimir").innerHTML = "";
@@ -9,7 +10,6 @@ function borrarDiv() {
 function mostrarForm() {
     document.getElementById("ocultar_video").innerHTML = "";
     generarFormulario("guardarForm");
-
     borrarDiv();
 }
 
@@ -19,7 +19,6 @@ function ocultarForm() {
 
 window.onload = function () {
     genera_tabla();
-
     anadirEventListener();
 }
 
@@ -92,32 +91,30 @@ function genera_tabla() {
                 textoCelda.setAttribute("id", "botonBorrar" + i);
                 textoCelda.setAttribute("name", "botonBorrar");
                 textoCelda.setAttribute("value", "botonBorrar");
-                textoCelda.innerText = "botonBorrar";
+                textoCelda.innerText = "Borrar entrada";
 
             } else if (j == 8) {
                 textoCelda = document.createElement("button");
                 textoCelda.setAttribute("id", "botonModificar" + i);
                 textoCelda.setAttribute("name", "botonModificar");
                 textoCelda.setAttribute("value", "botonModificar");
-                textoCelda.innerText = "botonModificar";
+                textoCelda.innerText = "Modificar entrada";
 
             } else if (j == 9) {
                 textoCelda = document.createElement("button");
                 textoCelda.setAttribute("id", "verSubJson" + i);
                 textoCelda.setAttribute("name", "verSubJson");
                 textoCelda.setAttribute("value", "verSubJson");
-                textoCelda.innerText = "Boton ver SubJson";
+                textoCelda.innerText = "Ver subjson";
             }
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
-
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
     }
-
 
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
@@ -150,9 +147,9 @@ function saveObject() {
     let habilidad = document.getElementById("txtHabilidad").value;
     let zona = document.getElementById("txtZona").value;
     let arma = document.getElementById("txtArma").value;
-    let meoldia = document.getElementById("txtMelodia").value;
+    let melodia = document.getElementById("txtMelodia").value;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, meoldia);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, melodia);
     console.log(contador);
     contador++;
 }
@@ -164,9 +161,12 @@ function modifyObject(campoEditar, campoObjeto) {
     let money = document.getElementById("txtRupias").value;
     let menuRadial = document.getElementById("txtMenuRadial").value;
     let veh = checkedBoxes;
-    //console.log(string64);
     let img = string64;
-    updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img);
+    let habilidad = document.getElementById("txtHabilidad").value;
+    let zona = document.getElementById("txtZona").value;
+    let arma = document.getElementById("txtArma").value;
+    let melodia = document.getElementById("txtMelodia").value;
+    updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, melodia);
 }
 
 function previewFile() {
@@ -177,12 +177,10 @@ function previewFile() {
         string64 = reader.result;
         //  console.log(string64)
     }
-
     reader.readAsDataURL(file);
 }
 
 function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
-
     if (document.getElementById("guardarForm")) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
             alert("¡Tienes que rellenar los campos obligatorios!")
@@ -239,55 +237,36 @@ function validarRegExp(campoEditar, campoObjeto) {
 function anadirEventListener() {
     for (let i = 0; i < objetoForm.length; i++) {
         console.log(i);
-
         document.getElementById("botonBorrar" + i).addEventListener("click", function () {
-
             if (objetoForm.length == 1) {
                 console.log("entra")
                 document.getElementById("imprimir").innerHTML = "";
             } else {
                 document.getElementById("tr" + i).innerHTML = "";
                 console.log(objetoForm);
-
             }
             objetoForm.splice(i, 1);
         });
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            if (objetoForm.length == 1) {
-                let campoEditar = document.getElementById("tr0");
-                let campoObjeto = objetoForm[0];
-
-                console.log(campoEditar)
-                console.log(campoObjeto);
-
-                document.getElementById("imprimir").innerHTML = "";
-                generarFormulario("modificar", campoEditar, campoObjeto);
-
-            } else {
-                console.log("VALOR DE LA PUTA I: " + i);
+            for (let i = 0; i < objetoForm.length; i++) {
                 let campoEditar = document.getElementById("tr" + i);
                 let campoObjeto = objetoForm[i];
-
-                console.log(campoEditar)
                 console.log(campoObjeto);
-
                 document.getElementById("imprimir").innerHTML = "";
                 generarFormulario("modificar", campoEditar, campoObjeto);
-
+                break;
             }
         });
 
         document.getElementById("verSubJson" + i).addEventListener("click", function () {
             let campoEditar_json = document.getElementById("tr" + i);
             let campoObjeto_json = objetoForm[i].json;
-
             console.log(campoEditar_json)
             console.log(campoObjeto_json);
-
             document.getElementById("imprimir").innerHTML = "";
             genera_tabla_json();
-        }); 
+        });
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
