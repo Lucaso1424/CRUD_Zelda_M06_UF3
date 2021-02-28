@@ -1,4 +1,4 @@
-function generarFormulario(param, campoEditar, campoObjeto) {
+function generarFormulario(param,campoEditar,campoObjeto) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
@@ -9,7 +9,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let input = document.createElement("input");
 
     label.setAttribute("for", "Juego");
-    label.innerText = "Juego: ";
+    label.innerText = "Juego: "
 
     input.setAttribute("type", "text");
     input.setAttribute("id", "txtNameGame");
@@ -164,6 +164,8 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     form.appendChild(submit);
     document.getElementById("formulario").appendChild(form);
 
+
+
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function () {
@@ -172,25 +174,27 @@ function generarFormulario(param, campoEditar, campoObjeto) {
         });
 
         document.getElementById("txtImg").addEventListener("change", previewFile);
-    } else if (param == "modificar") {
-        document.getElementById("imprimir").innerHTML = "";
+    }
+    
+    else if(param == "modificar"){
+        document.getElementById("imprimir").innerHTML ="";
         document.getElementById("ocultar_video").innerHTML = "";
 
-        console.log(campoEditar);
-        console.log(campoObjeto);
-        input.setAttribute("placeholder", campoObjeto.name);
-        input2.setAttribute("placeholder", campoObjeto.namePlayer);
-        input3.setAttribute("placeholder", campoObjeto.rupias);
+            console.log(campoEditar);
+            console.log(campoObjeto);
+            input.setAttribute("placeholder",campoObjeto.name);
+            input2.setAttribute("placeholder",campoObjeto.namePlayer);
+            input3.setAttribute("placeholder",campoObjeto.rupias);
 
-        let btnPulsado = document.getElementById("modificar");
-        btnPulsado.addEventListener("click", function () {
-            camposObligatorios(input, input2, input3, campoEditar, campoObjeto);
-        })
-        document.getElementById("txtImg").addEventListener("change", previewFile);
-        break;
+            let btnPulsado = document.getElementById("modificar");
+            btnPulsado.addEventListener("click", function(){
+                camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
+
+            })
+            document.getElementById("txtImg").addEventListener("change", previewFile);
+
     }
 }
-
 
 
 function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) {

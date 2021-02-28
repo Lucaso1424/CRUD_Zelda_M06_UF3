@@ -9,7 +9,7 @@ function borrarDiv() {
 function mostrarForm() {
     document.getElementById("ocultar_video").innerHTML = "";
     generarFormulario("guardarForm");
-    
+
     borrarDiv();
 }
 
@@ -41,11 +41,11 @@ function genera_tabla() {
         // Crea las hileras de la tabla
         var hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
-        for (var j = 0; j <= 8; j++) {
+        for (var j = 0; j <= 9; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
             var celda = document.createElement("td");
-            celda.setAttribute("id", "td" + i+"-"+j);
+            celda.setAttribute("id", "td" + i + "-" + j);
 
             var textoCelda = null;
             if (j == 0) {
@@ -101,15 +101,15 @@ function genera_tabla() {
                 textoCelda.setAttribute("value", "botonModificar");
                 textoCelda.innerText = "botonModificar";
 
+            } else if (j == 9) {
+                textoCelda = document.createElement("button");
+                textoCelda.setAttribute("id", "botonModificar_json" + i);
+                textoCelda.setAttribute("name", "botonModificar_json");
+                textoCelda.setAttribute("value", "botonModificar_json");
+                textoCelda.innerText = "botonModificarValores";
             }
-
-
-
-
-
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
-
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
@@ -153,12 +153,12 @@ function saveObject() {
     ]
     console.log(subArray);
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img,subArray);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, subArray);
     console.log(contador);
     contador++;
 }
 
-function modifyObject(campoEditar,campoObjeto){
+function modifyObject(campoEditar, campoObjeto) {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
     let nombreJuego = document.getElementById("txtNameGame").value;
     let nombreJugador = document.getElementById("txtNamePlayer").value;
@@ -167,7 +167,7 @@ function modifyObject(campoEditar,campoObjeto){
     let veh = checkedBoxes;
     //console.log(string64);
     let img = string64;
-    updateItems(campoEditar,campoObjeto,nombreJuego, nombreJugador, money, menuRadial, veh, img);
+    updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img);
 }
 
 function previewFile() {
@@ -182,7 +182,7 @@ function previewFile() {
     reader.readAsDataURL(file);
 }
 
-function camposObligatorios(param, param2, param3,campoEditar,campoObjeto) {
+function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
 
     if (document.getElementById("guardarForm")) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
@@ -194,12 +194,12 @@ function camposObligatorios(param, param2, param3,campoEditar,campoObjeto) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
             alert("¡Tienes que rellenar los campos obligatorios!")
         } else {
-            validarRegExp(campoEditar,campoObjeto);
+            validarRegExp(campoEditar, campoObjeto);
         }
     }
 }
 
-function validarRegExp(campoEditar,campoObjeto) {
+function validarRegExp(campoEditar, campoObjeto) {
     let texto;
     let rupias;
     texto = document.getElementById("txtNameGame").value;
@@ -229,7 +229,7 @@ function validarRegExp(campoEditar,campoObjeto) {
         } else if (regexp3.test(rupias) == true) {
             alert("No puedes escribir 6 o más cifras en las rupias, no tenemos ese capital, bobo.");
         } else {
-            modifyObject(campoEditar,campoObjeto);
+            modifyObject(campoEditar, campoObjeto);
             ocultarForm();
             genera_tabla();
             sonidoCofre();
@@ -258,19 +258,35 @@ function anadirEventListener() {
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
 
-                    let campoEditar = document.getElementById("tr"+i);
-                    let campoObjeto = objetoForm[i];
-                    
-                    console.log(campoEditar)
-                    console.log(campoObjeto);
+                let campoEditar = document.getElementById("tr" + i);
+                let campoObjeto = objetoForm[i];
 
-                    document.getElementById("imprimir").innerHTML = "";
-                    generarFormulario("modificar",campoEditar,campoObjeto);
+                console.log(campoEditar)
+                console.log(campoObjeto);
+
+                document.getElementById("imprimir").innerHTML = "";
+                generarFormulario("modificar", campoEditar, campoObjeto);
 
             }
 
 
         )
+
+        document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
+
+            let campoEditar_json = document.getElementById("tr" + i);
+            let campoObjeto_json= objetoForm[i].json;
+
+            console.log(campoEditar_json)
+            console.log(campoObjeto_json);
+
+            document.getElementById("imprimir").innerHTML = "";
+            generarFormulario("modificar", campoEditar, campoObjeto);
+
+        }
+
+
+    )
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
@@ -294,9 +310,9 @@ function iniciarVideo() {
 function presionarTecla(e) {
     if (e.key == "c") {
         let video = document.getElementById('video');
-        if(video){
-        video.play();
-        document.getElementById("ocultar_video").style.visibility = "visible";
+        if (video) {
+            video.play();
+            document.getElementById("ocultar_video").style.visibility = "visible";
         }
     }
 }
