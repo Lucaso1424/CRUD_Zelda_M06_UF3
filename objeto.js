@@ -8,42 +8,37 @@ function addItems(pid, nameGame, player, money, menu, veh, img) {
         rupias: money,
         radialMenu: menu,
         vehiculo: veh,
-        image: img
+        image: img,
+        json: [{
+            habilidad: "",
+            zona: "",
+            arma: "",
+            melodia: ""
+        }]
     };
     console.log(newObject);
     objetoForm.push(newObject);
 }
 
-
-function updateItems(campoEditar,campoObjeto,nameGame, player, money, menu,veh,img){
+function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, veh, img) {
     let imagencita = campoEditar.querySelector("img");
-        console.log(campoEditar.querySelector("img"));
-        console.log(campoObjeto);
-        console.log(campoObjeto.image);
-        console.log(imagencita.src)
-        console.log(img);
+    console.log(campoEditar.querySelector("img"));
+    console.log(campoObjeto);
+    console.log(campoObjeto.image);
+    console.log(imagencita.src)
+    console.log(img);
 
-        campoObjeto.name = nameGame;
-        campoObjeto.namePlayer = player;
-        campoObjeto.rupias = money;
-        campoObjeto.radialMenu = menu;
-        campoObjeto.vehiculo = veh;
+    campoObjeto.name = nameGame;
+    campoObjeto.namePlayer = player;
+    campoObjeto.rupias = money;
+    campoObjeto.radialMenu = menu;
+    campoObjeto.vehiculo = veh;
 
-        if(img == "" || img == undefined){
-            campoObjeto.image = campoEditar.querySelector("img").src;
-            console.log("Entra");
-        }
-        else {
-            console.log("No entra");
-            campoObjeto.image = img;
-        }
-
+    if (img == "" || img == undefined) {
+        campoObjeto.image = campoEditar.querySelector("img").src;
+        console.log("Entra");
+    } else {
+        console.log("No entra");
+        campoObjeto.image = img;
     }
-
-    objetoForm.name = nameGame;
-    objetoForm.namePlayer = player;
-    objetoForm.rupias = money;
-    objetoForm.radialMenu = menu;
-    objetoForm.vehiculo = veh;
-    objetoForm.image = img;
 }

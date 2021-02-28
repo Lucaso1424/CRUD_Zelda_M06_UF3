@@ -175,10 +175,6 @@ function previewFile() {
     reader.readAsDataURL(file);
 }
 
-
-
-
-
 function camposObligatorios(param, param2, param3,campoEditar,campoObjeto) {
 
     if (document.getElementById("guardarForm")) {
@@ -194,10 +190,7 @@ function camposObligatorios(param, param2, param3,campoEditar,campoObjeto) {
             validarRegExp(campoEditar,campoObjeto);
         }
     }
-
-
 }
-
 
 function validarRegExp(campoEditar,campoObjeto) {
     let texto;

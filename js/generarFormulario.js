@@ -9,7 +9,7 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     let input = document.createElement("input");
 
     label.setAttribute("for", "Juego");
-    label.innerText = "Juego: "
+    label.innerText = "Juego: ";
 
     input.setAttribute("type", "text");
     input.setAttribute("id", "txtNameGame");
@@ -164,8 +164,6 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     form.appendChild(submit);
     document.getElementById("formulario").appendChild(form);
 
-
-
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function () {
@@ -176,7 +174,6 @@ function generarFormulario(param,campoEditar,campoObjeto) {
         document.getElementById("txtImg").addEventListener("change", previewFile);
     }
 
-    
     else if(param == "modificar"){
         document.getElementById("imprimir").innerHTML ="";
         document.getElementById("ocultar_video").innerHTML = "";
@@ -188,12 +185,110 @@ function generarFormulario(param,campoEditar,campoObjeto) {
             let btnPulsado = document.getElementById("modificar");
             btnPulsado.addEventListener("click", function(){
                 camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
-
             })
             document.getElementById("txtImg").addEventListener("change", previewFile);
             break;
         }
+    }
+}
 
 
+function generarFormulario_json(param_json,campoEditar_json,campoObjeto_json) {
+    document.getElementById("mostrarForm").style.visibility = "hidden";
+    let form2 = document.createElement("form2");
+
+
+    /* Habilidad */
+    let div_json = document.createElement("div");
+    let label_json = document.createElement("label");
+    let input_json = document.createElement("input");
+
+    label_json.setAttribute("for", "Habilidad");
+    label_json.innerText = "Habilidad: ";
+
+    input_json.setAttribute("type", "text");
+    input_json.setAttribute("id", "txtHabilidad");
+    input_json.setAttribute("placeholder", "Escribe una habilidad");
+
+    div_json.appendChild(label_json);
+    div_json.appendChild(input_json);
+
+    /* Zona */
+    let div_json2 = document.createElement("div");
+    let label_json2 = document.createElement("label");
+    let input_json2 = document.createElement("input");
+
+    label_json2.setAttribute("for", "Zona");
+    label_json2.innerText = "Zona: ";
+
+    input_json2.setAttribute("type", "text");
+    input_json2.setAttribute("id", "txtZona");
+    input_json2.setAttribute("placeholder", "Escribe una zona de juego");
+
+    div_json2.appendChild(label_json2);
+    div_json2.appendChild(input_json2);
+
+    /* Arma */
+    let div_json3 = document.createElement("div");
+    let label_json3 = document.createElement("label");
+    let input_json3 = document.createElement("input");
+    label_json3.setAttribute("for", "Arma");
+    label_json3.innerText = "Arma: "
+
+    input_json3.setAttribute("type", "text");
+    input_json3.setAttribute("id", "txtArma");
+    input_json3.setAttribute("placeholder", "Escribe un arma");
+
+    div_json3.appendChild(label_json3);
+    div_json3.appendChild(input_json3);
+
+    /* Melodia */
+    let div_json4 = document.createElement("div");
+    let label_json4 = document.createElement("label");
+    let input_json4 = document.createElement("input");
+
+    label_json4.setAttribute("for", "Habilidad");
+    label_json4.innerText = "Habilidad: ";
+
+    input_json4.setAttribute("type", "text");
+    input_json4.setAttribute("id", "txtHabilidad");
+    input_json4.setAttribute("placeholder", "Escribe una habilidad");
+
+    div_json4.appendChild(label_json4);
+    div_json4.appendChild(input_json4);
+
+    let submit_json = document.createElement("input");
+    submit_json.setAttribute("type", "button");
+    submit_json.setAttribute("value", "Send Request");
+    submit_json.setAttribute("id", param_json);
+
+    form2.appendChild(div_json);
+    form2.appendChild(div_json2);
+    form2.appendChild(div_json3);
+    form2.appendChild(div_json4);
+    form2.appendChild(submit_json);
+    document.getElementById("formulario_json").appendChild(form2);
+
+    if (param_json == "guardarForm_json") {
+        let btnPulsadojson = document.getElementById("guardarForm_json");
+        btnPulsadojson.addEventListener("click", function () {
+            camposObligatorios(input_json, input_json2, input_json3);
+        });
+    }
+
+    else if(param_json == "modificar_json") {
+        document.getElementById("imprimir").innerHTML ="";
+        document.getElementById("ocultar_video").innerHTML = "";
+        for(let i = 0; i < objetoForm.length; i++){
+            input.setAttribute("placeholder",objetoForm[i].habilidad);
+            input2.setAttribute("placeholder",objetoForm[i].zona);
+            input3.setAttribute("placeholder",objetoForm[i].arma);
+
+            let btnPulsado = document.getElementById("modificar_json");
+            btnPulsado.addEventListener("click", function(){
+                camposObligatorios(input_json, input_json2, input_json3,campoEditar_json,campoObjeto_json);
+            })
+            break;
+        }
     }
 }
