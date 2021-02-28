@@ -3,25 +3,29 @@ var string64;
 var contador = 2;
 var contModificar;
 
+// DEFINIMOS UNA FUNCIÓN PARA BORRAR EL DIV DEL CONTENIDO DE LA TABLA
 function borrarDiv() {
     document.getElementById("imprimir").innerHTML = "";
 }
 
+// DEFINIMOS UNA FUNCIÓN PARAMOSTRAR EL FORMULARIO Y ELIMINAR EL VIDEO DEL EVENTO DE TECLADO
 function mostrarForm() {
     document.getElementById("ocultar_video").innerHTML = "";
     generarFormulario("guardarForm");
     borrarDiv();
 }
-
+// DEFINIMOS UNA FUNCIÓN PARA ELIMINAR EL FORMULARIO
 function ocultarForm() {
     document.getElementById("formulario").innerHTML = "";
 }
 
+// EN LA FUNCION DEL ONLOAD, GENERAMOS LA TABLA Y LLAMAMOS A LOS ADDEVENTLISTENER
 window.onload = function () {
     genera_tabla();
     anadirEventListener();
 }
 
+// CREAMOS LA FUNCION DE GENERAR LA TABLA, PARA GENERAR LA PRIMERA ENTRADA DE LA TABLA
 function genera_tabla() {
     string64 = "";
     if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
@@ -59,6 +63,7 @@ function genera_tabla() {
                 textoCelda = document.createTextNode(objetoForm[i].rupias);
             } else if (j == 5) {
                 textoCelda = "";
+                // DEFINIMOS CON UN BUCLE FOR, QUE SEPARE LOS VALORES IMPRIMIDOS POR COMAS Y ESPACIOS
                 for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
                     if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo" || objetoForm[i].vehiculo[0].name == " Pelicano") {
                         textoCelda += objetoForm[i].vehiculo[j].name.trim();
@@ -79,6 +84,7 @@ function genera_tabla() {
                     textoCelda.setAttribute("height", "170px");
                     textoCelda.setAttribute("src", objetoForm[i].image);
                 } else {
+                    // DEFINIMOS LA IMAGEN DEFAULT SI EL USUARIO NO INSERTA NINGUNA
                     textoCelda.setAttribute("width", "230px");
                     textoCelda.setAttribute("height", "170px");
                     if (objetoForm[i].image == undefined || objetoForm[i].image == "") {
@@ -135,6 +141,7 @@ function genera_tabla() {
     //  ocultarForm();
 }
 
+// CREAMOS LA FUNCION PARA GUARDAR EL OBJETO Y TODAS LAS ENTRADAS DEL OBJETO 
 function saveObject() {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
     let id = contador;
@@ -148,12 +155,13 @@ function saveObject() {
     let zona = document.getElementById("txtZona").value;
     let arma = document.getElementById("txtArma").value;
     let melodia = document.getElementById("txtMelodia").value;
-    //img = document.querySelector("#txtImage").value;
+    // FINALMENTE AÑADIMOS LOS ITEMS LLAMANDO A LA FUNCIÓN DE ADDITEMS DEL objeto.js
     addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, melodia);
     console.log(contador);
     contador++;
 }
 
+// CREAMOS UNA FUNCIÓN PARA MODIFICAR EL OBJETO JSON DE LOS VALORES QUE INTRODUCIMOS LA PRIMERA VEZ QUE CREAMOS EL FORMULARIO
 function modifyObject(campoEditar, campoObjeto) {
     let checkedBoxes = document.querySelectorAll('.txtVehiculo1:checked');
     let nombreJuego = document.getElementById("txtNameGame").value;
@@ -169,6 +177,7 @@ function modifyObject(campoEditar, campoObjeto) {
     updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, melodia);
 }
 
+// EN ESTA FUNCIÓN, UTILIZAMOS UN OBJETO FILEREADER PARA PODER UTILIZAR UNA IMAGEN SUBIDA DEL USUARIO 
 function previewFile() {
     var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
@@ -179,7 +188,7 @@ function previewFile() {
     }
     reader.readAsDataURL(file);
 }
-
+// EN ESTA FUNCIÓN, COMPROBAMOS CON UNOS PARAMETROS QUE LOS VALORES DEL FORMULARIO ESTÁN LLENOS
 function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
     if (document.getElementById("guardarForm")) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
@@ -196,6 +205,7 @@ function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
     }
 }
 
+// CREAMOS UNA FUNCIÓN Y COMPROBAMOS CON LAS EXPRESIONES REGULARES CREADAS QUE LOS INPUT TEXTUALES DEL FORM SEAN VALIDOS
 function validarRegExp(campoEditar, campoObjeto) {
     let texto;
     let rupias;
@@ -206,6 +216,7 @@ function validarRegExp(campoEditar, campoObjeto) {
     var regexp2 = /[@$%&+´`]/
     var regexp3 = /^[0-9]{6,}/
 
+    // COMPROBAMOS LOS VALORES CON EL MÉTODO test() PARA LAS REG EXP
     if (document.getElementById("guardarForm")) {
         if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
             alert("¡No puedes escribir acentos ni carácteres especiales!");
@@ -233,7 +244,7 @@ function validarRegExp(campoEditar, campoObjeto) {
     }
 }
 
-
+// CREAMOS UNA FUNCIÓN PARA UTILIZAR TODOS LOS addEventListener, DE LOS BOTONES DE BORRAR, MODIFICAR, Y BORRAR LA FOTO
 function anadirEventListener() {
     for (let i = 0; i < objetoForm.length; i++) {
         console.log(i);
@@ -248,6 +259,7 @@ function anadirEventListener() {
             objetoForm.splice(i, 1);
         });
 
+        // addEventListener PARA MODIFICAR LOS VALORES
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
             for (let i = 0; i < objetoForm.length; i++) {
                 let campoEditar = document.getElementById("tr" + i);
@@ -259,6 +271,7 @@ function anadirEventListener() {
             }
         });
 
+        // addEventListener PARA VER LOS VALORES DEL subJson DEL OBJETIVO 3
         document.getElementById("verSubJson" + i).addEventListener("click", function () {
             let campoEditar_json = document.getElementById("tr" + i);
             let campoObjeto_json = objetoForm[i].json;
@@ -268,6 +281,7 @@ function anadirEventListener() {
             genera_tabla_json();
         });
 
+        // addEventListener PARA BORRAR LA FOTO CON UN DOBLE CLICK
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
             console.log("Se ha borrado la imagen, dejamos una imagen default");
@@ -277,16 +291,20 @@ function anadirEventListener() {
     }
 }
 
+// CREAMOS UNA FUNCIÓN PARA CREAR UN NUEVO OBJETO DE AUDIO Y REPRODUCIRLO CON EL METODO .play()
 function sonidoCofre() {
     let audio = new Audio("/sound/chest.mp3");
     audio.play();
 }
 
+// CREAMOS UNA FUNCIÓN PARA INICIAR UN VIDEO CON EL EVENTO DE TECLADO keypress
 function iniciarVideo() {
     let boton = document.getElementById('teclado');
     boton.addEventListener('keypress', presionarTecla);
 }
 
+// CREAMOS UNA FUNCIÓN PARA DEFINIR EL ADDEVENTLISTENER DONDE LA VARIABLE e.key 
+// DEFINIMOS QUE LA PULSAR LA TECLA C, REALICE LO SIGUIENTE, Y SE REPRODUZCA EL VIDEO
 function presionarTecla(e) {
     if (e.key == "c") {
         let video = document.getElementById('video');
@@ -297,4 +315,5 @@ function presionarTecla(e) {
     }
 }
 
+// CARGAMOS LA FUNCION DE VIDEO PASANDO EL PARAMETRO load
 window.addEventListener('load', iniciarVideo);

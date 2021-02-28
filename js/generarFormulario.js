@@ -1,6 +1,10 @@
+// CREAMOS UNA FUNCIÓN PARA GENERAR EL FORMULARIO DINÁMICAMENTE 
 function generarFormulario(param, campoEditar, campoObjeto) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
+
+    // CON LOS CREATE ELEMENT, DEFINIMOS EN CADA ELEMENTO, LAS ETIQUETAS HTML NECESARIAS PARA EL FORM
+    // LOS INPUT, LABEL, OPTION, DIVS, ETC
 
     /* Juego */
     let div = document.createElement("div");
@@ -14,8 +18,11 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     input.setAttribute("id", "txtNameGame");
     input.setAttribute("placeholder", "Escribe un Juego");
 
+    // CON EL appendChild, DEFINIMOS LOS ELEMENTOS HIJOS AL PADRE, QUE EL PADRE ES EL DIV
     div.appendChild(label);
     div.appendChild(input);
+
+    // REALIZAMOS LO MISMO PARA TODOS LOS DEMÁS CAMPOS DEL FORMULARIO
 
     /* Jugador */
     let div2 = document.createElement("div");
@@ -42,7 +49,6 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     input3.setAttribute("type", "number");
     input3.setAttribute("id", "txtRupias");
     input3.setAttribute("placeholder", "Escribe un numero");
-
 
     div3.appendChild(label3);
     div3.appendChild(input3);
@@ -113,12 +119,11 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     checkbox4.setAttribute("class", "txtVehiculo1");
     checkbox4.setAttribute("name", " Pelicano");
 
-
-
     let texto4 = document.createElement("label");
     texto4.setAttribute("class", "vehiculo");
     texto4.innerText = checkbox4.name;
 
+    // DEFINIMOS LOS CHECKBOX EN EL DIV CORRESPONDIENTE PARA EL CAMPO DEL FORMULARIO
 
     div5.appendChild(texto);
     div5.appendChild(checkbox);
@@ -132,6 +137,8 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     div5.appendChild(texto4);
     div5.appendChild(checkbox4);
 
+    // FINALMENTE, REALIZAMOS LO MISMO PARA EL CAMPO DE LA IMAGEN
+
     let div6 = document.createElement("div");
     let inputImg = document.createElement("input");
     div6.setAttribute("id", "imagen");
@@ -140,6 +147,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
     div6.appendChild(inputImg);
 
+    // REALIZAMOS LO MISMO PARA LOS CAMPOS DEL subJson DLEL OBJETIVO 3
 
     /* Habilidad */
     let div_json = document.createElement("div");
@@ -215,13 +223,16 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
     div_json4.appendChild(label_json4);
     div_json4.appendChild(select_json);
-    
+
     document.getElementById("formulario_json").appendChild(form);
 
     let submit = document.createElement("input");
     submit.setAttribute("type", "button");
     submit.setAttribute("value", "Send Request");
     submit.setAttribute("id", param);
+
+    // AL ACABAR EL FORMULARION DINÁMICO, DEFINIMOS LOS DIVS CREADOS,
+    // COMO LOS HIJOS ( CON EL appenChild ), DE LA ETIQUETA FORM HTML CON SU VARIABLE DE FORM
 
     form.appendChild(div);
     form.appendChild(div2);
@@ -236,6 +247,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     form.appendChild(submit);
     document.getElementById("formulario").appendChild(form);
 
+    // COMPROBAMOS CON LOS CASOS DE USO ( LOS if ), SI LOS CAMPOS OBLIGATORIOS SE CUMPLEN CORRECTAMENTE
 
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
@@ -243,8 +255,10 @@ function generarFormulario(param, campoEditar, campoObjeto) {
             console.log(input_json, input_json2, input_json3, select_json);
             camposObligatorios(input, input2, input3);
         });
-
         document.getElementById("txtImg").addEventListener("change", previewFile);
+
+        // AQUI, AL PULSAR EL BOTON MODIFICAR, OCULTAMOS LOS DIVS DE LA TABLA Y EL VIDEO DEL EVENTO DE TECLADO
+
     } else if (param == "modificar") {
         document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
@@ -260,40 +274,16 @@ function generarFormulario(param, campoEditar, campoObjeto) {
             camposObligatorios(input, input2, input3, campoEditar, campoObjeto);
         });
         document.getElementById("txtImg").addEventListener("change", previewFile);
+      
+        // AQUI, VISUALIZAMOS EL subJson DE EL OBJETO  
+
     } else if (param == "verSubJson") {
         document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
     }
 }
 
-
-function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) {
-    document.getElementById("mostrarForm").style.visibility = "hidden";
-    let form2 = document.createElement("form2");
-
-    if (param_json == "guardarForm_json") {
-        let btnPulsadojson = document.getElementById("guardarForm_json");
-        btnPulsadojson.addEventListener("click", function () {
-            camposObligatorios(input_json, input_json2, input_json3);
-        });
-    } else if (param_json == "modificar_json") {
-        document.getElementById("imprimir").innerHTML = "";
-        document.getElementById("ocultar_video").innerHTML = "";
-
-        for (let i = 0; i < objetoForm.length; i++) {
-            input.setAttribute("placeholder", objetoForm[i].habilidad);
-            input2.setAttribute("placeholder", objetoForm[i].zona);
-            input3.setAttribute("placeholder", objetoForm[i].arma);
-
-            let btnPulsado = document.getElementById("modificar_json");
-            btnPulsado.addEventListener("click", function () {
-                camposObligatorios(input_json, input_json2, input_json3, campoEditar_json, campoObjeto_json);
-            });
-            break;
-        }
-    }
-}
-
+// EN ESTA FUNCION, CREAMOS LA TABLA DEL OBJETO subJson (EL OBJETO JSON) DEL OBJETIVO 3
 
 function genera_tabla_json() {
     // Obtener la referencia del elemento body
@@ -342,10 +332,17 @@ function genera_tabla_json() {
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
+
+    // GENERAMOS EL INPUT PARA ACCEDER AL FORMULARIO, Y EL DIV PARA
+    // REPRODUCIR EL VIDEO DE FORMA DINAMICA Y DEJARLO OCULTO 
     document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
 
     document.getElementById("mostrarForm").style.visibility = "visible";
+
+    // HACEMOS UN innerHTML CON LA ETIQUETA DE video HTML PARA GENERAR EL VIDEO Y PODER REPRODUCIRLO
     document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
+    // MOSTRAMOS EL FORMULARIO
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
+    // OCULTAMOS EL VIDEO CON EL hidden
     document.getElementById("ocultar_video").style.visibility = "hidden";
 }
