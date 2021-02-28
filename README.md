@@ -14,10 +14,15 @@ les funcions vistes a classecom createElement, createTextNode, ...
 Al obrir l’aplicació web, sols serà visible el contingut del primer DIV que contindrà una taula amb els registres guardats, si no hi han elements per mostrar es mostrarà
 un text indicant-ho. També hi haurà unbotó que eliminarà (NO ocultarà) tot el contingut del primer DIV i afegirà al segon DIV un formulari amb els següents elements 
 HTML com a mínim:
+
 ●2 camp de tipus text.
+
 ●1 camp numèric.
+
 ●1 camp de selecció múltiple.
+
 ●1 camp per seleccionar un fitxer d’imatge.
+
 ●1 menú desplegable amb 4 opcions.
 
 Es valorarà positivament afegir més elements HTML al formulari de altres tipus o funcionaments. Tota la informació generada per el formulari serà guardat en un array on
@@ -36,7 +41,9 @@ botó o enllaç per tancar i tornar a obrir l’aplicació o per recarregar-la.S
 les dificultats trobades i un conclusió individual.
 
 ● Mostrar la taula amb tota la funcionalitat: 1,5 punts.
+
 ● Formulari per inserir amb tota la funcionalitat: 2,5 punts.
+
 ● Memòria: 1 punt.
 
 3. OBJECTIU 2/3: Requisits per 1,5 punts
@@ -64,5 +71,7 @@ S'han d'utilitzar almenys 2 tipus diferents d'esdeveniments (un de ratolí i un 
 i tornar a obrir l’aplicació o per recarregar-la. Es valorarà positivament afegir més elements HTML al formulari de altres tipus o funcionaments. 
 
 ●Mostrar la taula amb tota la funcionalitat: 1 punt. 
+
 ●Formulari per inserir amb tota la funcionalitat: 1,25 punt. 
+
 ●Formulari per modificar amb tota la funcionalitat: 1,25 punt.
