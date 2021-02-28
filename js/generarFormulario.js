@@ -311,13 +311,13 @@ function genera_tabla_json() {
 
             let textoCelda = null;
             if (j == 0) {
-                textoCelda = document.createTextNode(objetoForm[i].json[i].habilidad);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].habilidad);
             } else if (j == 1) {
-                textoCelda = document.createTextNode(objetoForm[i].json[i].zona);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].zona);
             } else if (j == 2) {
-                textoCelda = document.createTextNode(objetoForm[i].json[i].arma);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].arma);
             } else if (j == 3) {
-                textoCelda = document.createTextNode(objetoForm[i].json[i].melodia);
+                textoCelda = document.createTextNode(objetoForm[i].json[0].melodia);
             } else if (j == 4) {
                 textoCelda = document.createElement("button");
                 textoCelda.setAttribute("id", "botonBorrarJson" + i);
