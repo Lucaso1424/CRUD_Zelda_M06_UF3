@@ -289,10 +289,7 @@ function anadirEventListener() {
                     generarFormulario("modificar", campoEditar, campoObjeto);
 
                 }
-
-            }
-
-        )
+            });
 
         // addEventListener PARA VER LOS VALORES DEL subJson DEL OBJETIVO 3
         document.getElementById("verSubJson" + i).addEventListener("click", function () {
