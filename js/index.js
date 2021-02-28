@@ -1,7 +1,6 @@
 var divGuardado;
 var string64;
 var contador = 2;
-var booleanJson = false;
 
 function borrarDiv() {
     document.getElementById("imprimir").innerHTML = "";
@@ -20,12 +19,13 @@ function ocultarForm() {
 
 window.onload = function () {
     genera_tabla();
-    // anadirEventListener();
+
+    anadirEventListener();
 }
 
 function genera_tabla() {
     string64 = "";
-    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif", "Vuelo", "Gerudo", "Arco", "cancion");
+    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
 
     // Obtener la referencia del elemento body
     var div = document.getElementById("imprimir");
@@ -35,7 +35,7 @@ function genera_tabla() {
     tabla.setAttribute("id", "tabla");
 
     var tblBody = document.createElement("tbody");
-    tblBody.setAttribute("id", "tbody");
+    tblBody.setAttribute("id", "tbody")
     // Crea las celdas
     for (var i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
@@ -103,10 +103,10 @@ function genera_tabla() {
 
             } else if (j == 9) {
                 textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonVer_json" + i);
-                textoCelda.setAttribute("name", "botonVer_json");
-                textoCelda.setAttribute("value", "botonVer_json");
-                textoCelda.innerText = "boton Valores";
+                textoCelda.setAttribute("id", "botonModificar_json" + i);
+                textoCelda.setAttribute("name", "botonModificar_json");
+                textoCelda.setAttribute("value", "botonModificar_json");
+                textoCelda.innerText = "botonModificarValores";
             }
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
@@ -128,16 +128,6 @@ function genera_tabla() {
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-    anadirEventListener();
-    for (let i = 0; i < objetoForm.length; i++) {
-        document.getElementById("botonVer_json" + i).addEventListener("click", function () {
-            console.log(booleanJson);
-            if (booleanJson) {
-                console.log("ENTRA");
-                document.getElementById("imprimir").innerHTML = "";
-            }
-        });
-    }
 
     document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
 
@@ -145,6 +135,7 @@ function genera_tabla() {
     document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
     document.getElementById("ocultar_video").style.visibility = "hidden";
+    //  ocultarForm();
 }
 
 function saveObject() {
@@ -159,9 +150,9 @@ function saveObject() {
     let habilidad = document.getElementById("txtHabilidad").value;
     let zona = document.getElementById("txtZona").value;
     let arma = document.getElementById("txtArma").value;
-    let melodia = "";
+    let meoldia = document.getElementById("txtMelodia").value;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, );
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, meoldia);
     console.log(contador);
     contador++;
 }
@@ -227,9 +218,8 @@ function validarRegExp(campoEditar, campoObjeto) {
             ocultarForm();
             genera_tabla();
             sonidoCofre();
-            // anadirEventListener();
+            anadirEventListener();
         }
-
 
     } else if (document.getElementById("modificar")) {
         if (regexp1.test(texto) == true || regexp2.test(texto) == true) {
@@ -241,7 +231,7 @@ function validarRegExp(campoEditar, campoObjeto) {
             ocultarForm();
             genera_tabla();
             sonidoCofre();
-            //anadirEventListener();
+            anadirEventListener();
         }
     }
 }
@@ -262,56 +252,51 @@ function anadirEventListener() {
 
             }
             objetoForm.splice(i, 1);
-        })
+        });
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
+            if (objetoForm.length == 1) {
+                let campoEditar = document.getElementById("tr0");
+                let campoObjeto = objetoForm[0];
 
-                genera_tabla();
+                console.log(campoEditar)
+                console.log(campoObjeto);
 
+                document.getElementById("imprimir").innerHTML = "";
+                generarFormulario("modificar", campoEditar, campoObjeto);
 
+            } else {
+                console.log("VALOR DE LA PUTA I: " + i);
                 let campoEditar = document.getElementById("tr" + i);
                 let campoObjeto = objetoForm[i];
 
                 console.log(campoEditar)
                 console.log(campoObjeto);
-                /*
+
                 document.getElementById("imprimir").innerHTML = "";
                 generarFormulario("modificar", campoEditar, campoObjeto);
-                */
             }
+        });
 
+        document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
 
-        )
+            let campoEditar_json = document.getElementById("tr" + i);
+            let campoObjeto_json = objetoForm[i].json;
 
+            console.log(campoEditar_json)
+            console.log(campoObjeto_json);
 
-        document.getElementById("botonVer_json" + i).addEventListener("click", function () {
-            booleanJson = true;
-            genera_tabla();
+            document.getElementById("imprimir").innerHTML = "";
+            genera_tabla_json();
 
-        })
-
-        /* document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
-
-                let campoEditar_json = document.getElementById("tr" + i);
-                let campoObjeto_json = objetoForm[i].json;
-
-                console.log(campoEditar_json)
-                console.log(campoObjeto_json);
-
-                document.getElementById("imprimir").innerHTML = "";
-                generarFormulario_json("modificar", campoEditar_json, campoObjeto_json);
-
-            }
-
-
-        ) */
+        });
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
             console.log("Se ha borrado la imagen, dejamos una imagen default");
             document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
             objetoForm[i].image = "/img/vegeta_meme.png";
-        })
+        });
     }
 }
 

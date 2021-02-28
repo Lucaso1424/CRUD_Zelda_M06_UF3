@@ -1,5 +1,4 @@
 function generarFormulario(param, campoEditar, campoObjeto) {
-    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
 
@@ -9,7 +8,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let input = document.createElement("input");
 
     label.setAttribute("for", "Juego");
-    label.innerText = "Juego: ";
+    label.innerText = "Juego: "
 
     input.setAttribute("type", "text");
     input.setAttribute("id", "txtNameGame");
@@ -52,11 +51,11 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let div4 = document.createElement("div");
     let label4 = document.createElement("label");
     let select = document.createElement("select");
-    let option = document.createElement("option")
-    let option2 = document.createElement("option")
-    let option3 = document.createElement("option")
-    let option4 = document.createElement("option")
-    let option5 = document.createElement("option")
+    let option = document.createElement("option");
+    let option2 = document.createElement("option");
+    let option3 = document.createElement("option");
+    let option4 = document.createElement("option");
+    let option5 = document.createElement("option");
 
     label4.setAttribute("for", "Rupias");
     label4.innerText = "Menu Radial: ";
@@ -196,18 +195,43 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     /* Melodia */
     let div_json4 = document.createElement("div");
     let label_json4 = document.createElement("label");
-    let input_json4 = document.createElement("input");
+    let select_json = document.createElement("select");
+    let option_json = document.createElement("option")
+    let option2_json = document.createElement("option")
+    let option3_json = document.createElement("option")
+    let option4_json = document.createElement("option")
+    let option5_json = document.createElement("option")
 
-    label_json4.setAttribute("for", "Habilidad");
-    label_json4.innerText = "Habilidad: ";
+    div_json4.setAttribute("for", "Melodia");
+    div_json4.innerText = "Melodia: ";
 
-    input_json4.setAttribute("type", "text");
-    input_json4.setAttribute("id", "txtHabilidad");
-    input_json4.setAttribute("placeholder", "Escribe una habilidad");
+    select_json.setAttribute("name", "Melodia");
+    select_json.setAttribute("id", "txtMelodia");
+
+    option_json.innerText = "Cantico de la Diosa";
+    option2_json.innerText = "Cantar del Heroe";
+    option3_json.innerText = "Sabidura de Nayru";
+    option4_json.innerText = "Poder de Din";
+    option5_json.innerText = "Cumbion del bazar";
+
+    select_json.appendChild(option_json);
+    select_json.appendChild(option2_json);
+    select_json.appendChild(option3_json);
+    select_json.appendChild(option4_json);
+    select_json.appendChild(option5_json);
+    // for(let i = 1; i < 4; i++){
+    //   select.appendChild(option+""+i);
+    // }
 
     div_json4.appendChild(label_json4);
-    div_json4.appendChild(input_json4);
+    div_json4.appendChild(select_json);
+
+    // for(let i = 1; i < 4; i++){
+    //   select.appendChild(option+""+i);
+
+    // }
     document.getElementById("formulario_json").appendChild(form);
+
 
     let submit = document.createElement("input");
     submit.setAttribute("type", "button");
@@ -228,6 +252,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
     form.appendChild(submit);
 
+
     document.getElementById("formulario").appendChild(form);
 
 
@@ -235,6 +260,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function () {
+            console.log(input_json, input_json2, input_json3, select_json);
             camposObligatorios(input, input2, input3);
 
         });
@@ -256,129 +282,58 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
         });
         document.getElementById("txtImg").addEventListener("change", previewFile);
-
     }
 }
-
-
-function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) {
-    document.getElementById("mostrarForm").style.visibility = "hidden";
-    document.getElementById("ocultar_video").innerHTML = "";
-
-    let form2 = document.createElement("form2");
-
-
-
-    if (param_json == "guardarForm_json") {
-        let btnPulsadojson = document.getElementById("guardarForm_json");
-        btnPulsadojson.addEventListener("click", function () {
-            camposObligatorios(input_json, input_json2, input_json3);
-        });
-    } else if (param_json == "modificar_json") {
-        document.getElementById("imprimir").innerHTML = "";
-        document.getElementById("ocultar_video").innerHTML = "";
-
-        for (let i = 0; i < objetoForm.length; i++) {
-            input.setAttribute("placeholder", objetoForm[i].habilidad);
-            input2.setAttribute("placeholder", objetoForm[i].zona);
-            input3.setAttribute("placeholder", objetoForm[i].arma);
-
-            let btnPulsado = document.getElementById("modificar_json");
-            btnPulsado.addEventListener("click", function () {
-                camposObligatorios(input_json, input_json2, input_json3, campoEditar_json, campoObjeto_json);
-            });
-            break;
-        }
-    }
-}
-
 
 function genera_tabla_json() {
-    if (!objetoForm[0].json)
-
-        // Obtener la referencia del elemento body
-        var div = document.getElementById("imprimir");
+    // Obtener la referencia del elemento body
+    let div = document.getElementById("imprimir");
 
     // Crea un elemento <table> y un elemento <tbody>
-    var tabla = document.createElement("table");
+    let tabla = document.createElement("table");
     tabla.setAttribute("id", "tabla");
 
-    var tblBody = document.createElement("tbody");
+    let tblBody = document.createElement("tbody");
     tblBody.setAttribute("id", "tbody")
     // Crea las celdas
-    for (var i = 0; i < objetoForm.length; i++) {
+    for (let i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
-        var hilera = document.createElement("tr");
+        let hilera = document.createElement("tr");
         hilera.setAttribute("id", "tr" + i);
-        for (var j = 0; j <= 9; j++) {
+        for (let j = 0; j <= 9; j++) {
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
             // texto sea el contenido de <td>, ubica el elemento <td> al final de la hilera de la tabla
-            var celda = document.createElement("td");
+            let celda = document.createElement("td");
             celda.setAttribute("id", "td" + i + "-" + j);
 
-            var textoCelda = null;
+            let textoCelda = null;
             if (j == 0) {
-                textoCelda = document.createTextNode(objetoForm[i].id);
+                textoCelda = document.createTextNode(objetoForm[i].json.habilidad);
             } else if (j == 1) {
-                textoCelda = document.createTextNode(objetoForm[i].name);
+                textoCelda = document.createTextNode(objetoForm[i].json.zona);
             } else if (j == 2) {
-                textoCelda = document.createTextNode(objetoForm[i].namePlayer);
+                textoCelda = document.createTextNode(objetoForm[i].json.arma);
             } else if (j == 3) {
-                textoCelda = document.createTextNode(objetoForm[i].radialMenu);
+                textoCelda = document.createTextNode(objetoForm[i].json.melodia);
             } else if (j == 4) {
-                textoCelda = document.createTextNode(objetoForm[i].rupias);
-            } else if (j == 5) {
-                textoCelda = "";
-                for (let j = 0; j < objetoForm[i].vehiculo.length; j++) {
-                    if (objetoForm[i].vehiculo[0].name == " Moto" || objetoForm[i].vehiculo[0].name == " Lobo" || objetoForm[i].vehiculo[0].name == " Pelicano") {
-                        textoCelda += objetoForm[i].vehiculo[j].name.trim();
-                    } else if (objetoForm[i].vehiculo == "Lobo") {
-                        textoCelda += objetoForm[i].vehiculo.trim();
-                        break;
-                    } else {
-                        textoCelda += objetoForm[i].vehiculo[j].name.split(" ");
-                    }
-                }
-                textoCelda = document.createTextNode(textoCelda);
-            } else if (j == 6) {
-                textoCelda = document.createElement("img");
-                textoCelda.setAttribute("id", i + "-" + j);
-
-                if (objetoForm[i].image) {
-                    textoCelda.setAttribute("width", "210px");
-                    textoCelda.setAttribute("height", "170px");
-                    textoCelda.setAttribute("src", objetoForm[i].image);
-                } else {
-                    textoCelda.setAttribute("width", "230px");
-                    textoCelda.setAttribute("height", "170px");
-                    if (objetoForm[i].image == undefined || objetoForm[i].image == "") {
-                        textoCelda.src = "/img/default_links.jpg";
-                    }
-                }
-
-            } else if (j == 7) {
                 textoCelda = document.createElement("button");
                 textoCelda.setAttribute("id", "botonBorrar" + i);
                 textoCelda.setAttribute("name", "botonBorrar");
                 textoCelda.setAttribute("value", "botonBorrar");
                 textoCelda.innerText = "botonBorrar";
-
-            } else if (j == 8) {
+            } else if (j == 5) {
                 textoCelda = document.createElement("button");
                 textoCelda.setAttribute("id", "botonModificar" + i);
                 textoCelda.setAttribute("name", "botonModificar");
                 textoCelda.setAttribute("value", "botonModificar");
                 textoCelda.innerText = "botonModificar";
-
-            } else if (j == 9) {
+            } else if (j == 6) {
                 textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonVer_json" + i);
-                textoCelda.setAttribute("name", "botonVer_json");
-                textoCelda.setAttribute("value", "botonVer_json");
-                textoCelda.innerText = "boton Valores";
+                textoCelda.setAttribute("id", "botonVolver_json" + i);
+                textoCelda.setAttribute("name", "botonVolver_json");
+                textoCelda.setAttribute("value", "botonVolver_json");
+                textoCelda.innerText = "boton Volver";
             }
-            // console.log("Valor J: " + j);
-            // console.log("Valor textoCelda: " + textoCelda);
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
@@ -386,8 +341,6 @@ function genera_tabla_json() {
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
     }
-
-
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
@@ -398,15 +351,6 @@ function genera_tabla_json() {
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
     anadirEventListener();
-    for (let i = 0; i < objetoForm.length; i++) {
-        document.getElementById("botonVer_json" + i).addEventListener("click", function () {
-            console.log(booleanJson);
-            if (booleanJson) {
-                console.log("ENTRA");
-                document.getElementById("imprimir").innerHTML = "";
-            }
-        });
-    }
 
     document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
 
