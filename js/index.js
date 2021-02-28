@@ -163,12 +163,12 @@ function genera_tabla() {
         let menuRadial = document.getElementById("txtMenuRadial").value;
         let veh = checkedBoxes;
         let img = string64;
-        let habilidad = "";
-        let zona = "";
-        let arma = "";
-        let meoldia = "";
+        let habilidad = document.getElementById("txtHabilidad").value;
+        let zona = document.getElementById("txtZona").value;
+        let arma = document.getElementById("txtArma").value;
+        let meoldia = document.getElementById("txtMelodia").value;
         //img = document.querySelector("#txtImage").value;
-        addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, );
+        addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img,habilidad,zona,arma,meoldia);
         console.log(contador);
         contador++;
     }

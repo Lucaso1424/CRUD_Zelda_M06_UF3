@@ -196,20 +196,46 @@ function generarFormulario(param,campoEditar,campoObjeto) {
         /* Melodia */
         let div_json4 = document.createElement("div");
         let label_json4 = document.createElement("label");
-        let input_json4 = document.createElement("input");
+        let select_json = document.createElement("select");
+        let option_json = document.createElement("option")
+        let option2_json = document.createElement("option")
+        let option3_json = document.createElement("option")
+        let option4_json = document.createElement("option")
+        let option5_json = document.createElement("option")
     
-        label_json4.setAttribute("for", "Habilidad");
-        label_json4.innerText = "Habilidad: ";
+        div_json4.setAttribute("for", "Melodia");
+        div_json4.innerText = "Melodia: ";
     
-        input_json4.setAttribute("type", "text");
-        input_json4.setAttribute("id", "txtHabilidad");
-        input_json4.setAttribute("placeholder", "Escribe una habilidad");
+        select_json.setAttribute("name", "Melodia");
+        select_json.setAttribute("id", "txtMelodia");
     
-        div_json4.appendChild(label_json4);
-        div_json4.appendChild(input_json4);
+        option_json.innerText = "Cantico de la Diosa";
+        option2_json.innerText = "Cantar del Heroe";
+        option3_json.innerText = "Sabidura de Nayru";
+        option4_json.innerText = "Poder de Din";
+        option5_json.innerText = "Cumbion del bazar";
     
+    
+        select_json.appendChild(option_json);
+        select_json.appendChild(option2_json);
+        select_json.appendChild(option3_json);
+        select_json.appendChild(option4_json);
+        select_json.appendChild(option5_json);
+        // for(let i = 1; i < 4; i++){
+        //   select.appendChild(option+""+i);
+    
+        // }
 
-    
+        div_json4.appendChild(label_json4);
+        div_json4.appendChild(select_json);
+
+
+
+    // for(let i = 1; i < 4; i++){
+    //   select.appendChild(option+""+i);
+
+    // }
+
 
 
         document.getElementById("formulario_json").appendChild(form);
@@ -242,6 +268,7 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
         btnPulsado.addEventListener("click", function () {
+            console.log(input_json,input_json2,input_json3,select_json);
             camposObligatorios(input, input2, input3);
 
         });
