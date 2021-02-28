@@ -1,4 +1,4 @@
-# Projecte M06-UF3 → CRUD_Zelda_M06_UF3
+# Projecte M06-UF3 → CRUD Zelda 
 
 ![captura_git](https://user-images.githubusercontent.com/58809030/109426820-cc7fbc00-79ef-11eb-9db7-eb1e03924828.png)
 
