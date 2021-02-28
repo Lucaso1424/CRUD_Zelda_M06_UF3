@@ -184,7 +184,6 @@ function previewFile() {
 
     reader.onloadend = function () {
         string64 = reader.result;
-        //  console.log(string64)
     }
     reader.readAsDataURL(file);
 }
@@ -198,7 +197,7 @@ function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
         }
     } else if (document.getElementById("modificar")) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
-            alert("¡Tienes que rellenar los campos obligatorios!")
+            alert("¡Tienes que rellenar los campos obligatorios!");
         } else {
             validarRegExp(campoEditar, campoObjeto);
         }

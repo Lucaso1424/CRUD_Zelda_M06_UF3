@@ -12,7 +12,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let input = document.createElement("input");
 
     label.setAttribute("for", "Juego");
-    label.innerText = "Juego: "
+    label.innerText = "Juego: ";
 
     input.setAttribute("type", "text");
     input.setAttribute("id", "txtNameGame");
@@ -30,7 +30,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let input2 = document.createElement("input");
 
     label2.setAttribute("for", "Jugador");
-    label2.innerText = "Jugador: "
+    label2.innerText = "Jugador: ";
 
     input2.setAttribute("type", "text");
     input2.setAttribute("id", "txtNamePlayer");
@@ -184,7 +184,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
     let label_json3 = document.createElement("label");
     let input_json3 = document.createElement("input");
     label_json3.setAttribute("for", "Arma");
-    label_json3.innerText = "Arma: "
+    label_json3.innerText = "Arma: ";
 
     input_json3.setAttribute("type", "text");
     input_json3.setAttribute("id", "txtArma");
@@ -251,7 +251,7 @@ function generarFormulario(param, campoEditar, campoObjeto) {
 
     if (param == "guardarForm") {
         let btnPulsado = document.getElementById("guardarForm");
-        btnPulsado.addEventListener("click", function () {
+        btnPulsado.addEventListener("click", function() {
             console.log(input_json, input_json2, input_json3, select_json);
             camposObligatorios(input, input2, input3);
         });
@@ -293,7 +293,7 @@ function genera_tabla_json() {
     tabla.setAttribute("id", "tabla");
 
     let tblBody = document.createElement("tbody");
-    tblBody.setAttribute("id", "tbody")
+    tblBody.setAttribute("id", "tbody");
     // Crea las celdas
     for (let i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
