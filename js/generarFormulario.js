@@ -301,38 +301,6 @@ function generarFormulario(param,campoEditar,campoObjeto) {
 }
 
 
-function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) {
-    document.getElementById("mostrarForm").style.visibility = "hidden";
-    let form2 = document.createElement("form2");
-
-
-
-
-    if (param_json == "guardarForm_json") {
-        let btnPulsadojson = document.getElementById("guardarForm_json");
-        btnPulsadojson.addEventListener("click", function () {
-            camposObligatorios(input_json, input_json2, input_json3);
-        });
-    } 
-    
-    else if (param_json == "modificar_json") {
-        document.getElementById("imprimir").innerHTML = "";
-        document.getElementById("ocultar_video").innerHTML = "";
-
-        for (let i = 0; i < objetoForm.length; i++) {
-            input.setAttribute("placeholder", objetoForm[i].habilidad);
-            input2.setAttribute("placeholder", objetoForm[i].zona);
-            input3.setAttribute("placeholder", objetoForm[i].arma);
-
-            let btnPulsado = document.getElementById("modificar_json");
-            btnPulsado.addEventListener("click", function () {
-                camposObligatorios(input_json, input_json2, input_json3, campoEditar_json, campoObjeto_json);
-            })
-            break;
-        }
-    }
-}
-
 
 function genera_tabla_json(){
 

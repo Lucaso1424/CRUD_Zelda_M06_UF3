@@ -260,22 +260,30 @@ function anadirEventListener() {
         })
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            document.getElementById("botonModificar" + i).addEventListener("click", function () {
-                for(let i = 0; i< objetoForm.length;i++){
-                        let campoEditar = document.getElementById("tr"+i);
-                        let campoObjeto = objetoForm[i];
-                        
-                        console.log(campoObjeto);
-    
-                        document.getElementById("imprimir").innerHTML = "";
-                        generarFormulario("modificar",campoEditar,campoObjeto);
-                        break;
-                    }
-                }
-    
-    
-            )
-    
+            console.log("VALOR DE LA PUTA I: "+i);
+            if(objetoForm.length == 1 && objetoForm[0].id == 1){
+                let campoEditar = document.getElementById("tr0");
+                let campoObjeto = objetoForm[0];
+
+                console.log(campoEditar)
+                console.log(campoObjeto);
+
+                document.getElementById("imprimir").innerHTML = "";
+                generarFormulario("modificar", campoEditar, campoObjeto);
+
+            }
+            else{
+                let campoEditar = document.getElementById("tr"+i);
+                let campoObjeto = objetoForm[i];
+
+                console.log(campoEditar)
+                console.log(campoObjeto);
+                
+                
+                document.getElementById("imprimir").innerHTML = "";
+                generarFormulario("modificar", campoEditar, campoObjeto);
+
+            }
           
         }
 
