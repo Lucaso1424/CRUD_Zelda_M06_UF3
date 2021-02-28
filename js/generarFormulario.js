@@ -1,4 +1,4 @@
-function generarFormulario(param,campoEditar,campoObjeto) {
+function generarFormulario(param, campoEditar, campoObjeto) {
     if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
@@ -149,71 +149,65 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     div6.appendChild(inputImg);
 
 
-        /* Habilidad */
-        let div_json = document.createElement("div");
-        let label_json = document.createElement("label");
-        let input_json = document.createElement("input");
-    
-        label_json.setAttribute("for", "Habilidad");
-        label_json.innerText = "Habilidad: ";
-    
-        input_json.setAttribute("type", "text");
-        input_json.setAttribute("id", "txtHabilidad");
-        input_json.setAttribute("placeholder", "Escribe una habilidad");
-    
-        div_json.appendChild(label_json);
-        div_json.appendChild(input_json);
-    
-        /* Zona */
-        let div_json2 = document.createElement("div");
-        let label_json2 = document.createElement("label");
-        let input_json2 = document.createElement("input");
-    
-        label_json2.setAttribute("for", "Zona");
-        label_json2.innerText = "Zona: ";
-    
-        input_json2.setAttribute("type", "text");
-        input_json2.setAttribute("id", "txtZona");
-        input_json2.setAttribute("placeholder", "Escribe una zona de juego");
-    
-        div_json2.appendChild(label_json2);
-        div_json2.appendChild(input_json2);
-    
-        /* Arma */
-        let div_json3 = document.createElement("div");
-        let label_json3 = document.createElement("label");
-        let input_json3 = document.createElement("input");
-        label_json3.setAttribute("for", "Arma");
-        label_json3.innerText = "Arma: "
-    
-        input_json3.setAttribute("type", "text");
-        input_json3.setAttribute("id", "txtArma");
-        input_json3.setAttribute("placeholder", "Escribe un arma");
-    
-        div_json3.appendChild(label_json3);
-        div_json3.appendChild(input_json3);
-    
-        /* Melodia */
-        let div_json4 = document.createElement("div");
-        let label_json4 = document.createElement("label");
-        let input_json4 = document.createElement("input");
-    
-        label_json4.setAttribute("for", "Habilidad");
-        label_json4.innerText = "Habilidad: ";
-    
-        input_json4.setAttribute("type", "text");
-        input_json4.setAttribute("id", "txtHabilidad");
-        input_json4.setAttribute("placeholder", "Escribe una habilidad");
-    
-        div_json4.appendChild(label_json4);
-        div_json4.appendChild(input_json4);
-    
+    /* Habilidad */
+    let div_json = document.createElement("div");
+    let label_json = document.createElement("label");
+    let input_json = document.createElement("input");
 
-    
+    label_json.setAttribute("for", "Habilidad");
+    label_json.innerText = "Habilidad: ";
 
+    input_json.setAttribute("type", "text");
+    input_json.setAttribute("id", "txtHabilidad");
+    input_json.setAttribute("placeholder", "Escribe una habilidad");
 
-        document.getElementById("formulario_json").appendChild(form);
+    div_json.appendChild(label_json);
+    div_json.appendChild(input_json);
 
+    /* Zona */
+    let div_json2 = document.createElement("div");
+    let label_json2 = document.createElement("label");
+    let input_json2 = document.createElement("input");
+
+    label_json2.setAttribute("for", "Zona");
+    label_json2.innerText = "Zona: ";
+
+    input_json2.setAttribute("type", "text");
+    input_json2.setAttribute("id", "txtZona");
+    input_json2.setAttribute("placeholder", "Escribe una zona de juego");
+
+    div_json2.appendChild(label_json2);
+    div_json2.appendChild(input_json2);
+
+    /* Arma */
+    let div_json3 = document.createElement("div");
+    let label_json3 = document.createElement("label");
+    let input_json3 = document.createElement("input");
+    label_json3.setAttribute("for", "Arma");
+    label_json3.innerText = "Arma: "
+
+    input_json3.setAttribute("type", "text");
+    input_json3.setAttribute("id", "txtArma");
+    input_json3.setAttribute("placeholder", "Escribe un arma");
+
+    div_json3.appendChild(label_json3);
+    div_json3.appendChild(input_json3);
+
+    /* Melodia */
+    let div_json4 = document.createElement("div");
+    let label_json4 = document.createElement("label");
+    let input_json4 = document.createElement("input");
+
+    label_json4.setAttribute("for", "Habilidad");
+    label_json4.innerText = "Habilidad: ";
+
+    input_json4.setAttribute("type", "text");
+    input_json4.setAttribute("id", "txtHabilidad");
+    input_json4.setAttribute("placeholder", "Escribe una habilidad");
+
+    div_json4.appendChild(label_json4);
+    div_json4.appendChild(input_json4);
+    document.getElementById("formulario_json").appendChild(form);
 
     let submit = document.createElement("input");
     submit.setAttribute("type", "button");
@@ -229,11 +223,10 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     form.appendChild(div_json2);
     form.appendChild(div_json3);
     form.appendChild(div_json4);
-    
+
     form.appendChild(div6);
 
     form.appendChild(submit);
-
 
     document.getElementById("formulario").appendChild(form);
 
@@ -247,24 +240,22 @@ function generarFormulario(param,campoEditar,campoObjeto) {
         });
 
         document.getElementById("txtImg").addEventListener("change", previewFile);
-    }
-    
-    else if(param == "modificar"){
-        document.getElementById("imprimir").innerHTML ="";
+    } else if (param == "modificar") {
+        document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
 
-            console.log(campoEditar);
-            console.log(campoObjeto);
-            input.setAttribute("placeholder",campoObjeto.name);
-            input2.setAttribute("placeholder",campoObjeto.namePlayer);
-            input3.setAttribute("placeholder",campoObjeto.rupias);
+        console.log(campoEditar);
+        console.log(campoObjeto);
+        input.setAttribute("placeholder", campoObjeto.name);
+        input2.setAttribute("placeholder", campoObjeto.namePlayer);
+        input3.setAttribute("placeholder", campoObjeto.rupias);
 
-            let btnPulsado = document.getElementById("modificar");
-            btnPulsado.addEventListener("click", function(){
-                camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
+        let btnPulsado = document.getElementById("modificar");
+        btnPulsado.addEventListener("click", function () {
+            camposObligatorios(input, input2, input3, campoEditar, campoObjeto);
 
-            });
-            document.getElementById("txtImg").addEventListener("change", previewFile);
+        });
+        document.getElementById("txtImg").addEventListener("change", previewFile);
 
     }
 }
@@ -283,9 +274,7 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
         btnPulsadojson.addEventListener("click", function () {
             camposObligatorios(input_json, input_json2, input_json3);
         });
-    } 
-    
-    else if (param_json == "modificar_json") {
+    } else if (param_json == "modificar_json") {
         document.getElementById("imprimir").innerHTML = "";
         document.getElementById("ocultar_video").innerHTML = "";
 
@@ -304,11 +293,11 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
 }
 
 
-function genera_tabla_json(){
+function genera_tabla_json() {
     if (!objetoForm[0].json)
 
-    // Obtener la referencia del elemento body
-    var div = document.getElementById("imprimir");
+        // Obtener la referencia del elemento body
+        var div = document.getElementById("imprimir");
 
     // Crea un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
@@ -409,26 +398,20 @@ function genera_tabla_json(){
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
     anadirEventListener();
-    for (let i = 0; i < objetoForm.length; i++){
-               document.getElementById("botonVer_json"+i).addEventListener("click", function (){
-                   console.log(booleanJson);
-                if(booleanJson){
-                    console.log("ENTRA");
-                    document.getElementById("imprimir").innerHTML ="";
-                   
-                    
-                }
-
-
-               })
-
-
-        }
-
-        document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
-
-        document.getElementById("mostrarForm").style.visibility = "visible";
-        document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
-        document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
-        document.getElementById("ocultar_video").style.visibility = "hidden";
+    for (let i = 0; i < objetoForm.length; i++) {
+        document.getElementById("botonVer_json" + i).addEventListener("click", function () {
+            console.log(booleanJson);
+            if (booleanJson) {
+                console.log("ENTRA");
+                document.getElementById("imprimir").innerHTML = "";
+            }
+        });
     }
+
+    document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
+
+    document.getElementById("mostrarForm").style.visibility = "visible";
+    document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
+    document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
+    document.getElementById("ocultar_video").style.visibility = "hidden";
+}
