@@ -1,6 +1,7 @@
 var divGuardado;
 var string64;
 var contador = 2;
+var contModificar;
 
 function borrarDiv() {
     document.getElementById("imprimir").innerHTML = "";
@@ -150,9 +151,9 @@ function saveObject() {
     let habilidad = document.getElementById("txtHabilidad").value;
     let zona = document.getElementById("txtZona").value;
     let arma = document.getElementById("txtArma").value;
-    let meoldia = document.getElementById("txtMelodia").value;
+    let melodia = document.getElementById("txtMelodia").value;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img,habilidad,zona,arma,meoldia);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img,habilidad,zona,arma,melodia);
     console.log(contador);
     contador++;
 }
@@ -164,9 +165,12 @@ function modifyObject(campoEditar, campoObjeto) {
     let money = document.getElementById("txtRupias").value;
     let menuRadial = document.getElementById("txtMenuRadial").value;
     let veh = checkedBoxes;
-    //console.log(string64);
     let img = string64;
-    updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img);
+    let habilidad = document.getElementById("txtHabilidad").value;
+    let zona = document.getElementById("txtZona").value;
+    let arma = document.getElementById("txtArma").value;
+    let melodia = document.getElementById("txtMelodia").value;
+    updateItems(campoEditar, campoObjeto, nombreJuego, nombreJugador, money, menuRadial, veh, img,habilidad,zona,arma,melodia);
 }
 
 function previewFile() {
@@ -193,7 +197,7 @@ function camposObligatorios(param, param2, param3, campoEditar, campoObjeto) {
         if (param.value == "" || param2.value == "" || param3.value == "") {
             alert("¡Tienes que rellenar los campos obligatorios!")
         } else {
-            validarRegExp(campoEditar, campoObjeto);
+            validarRegExp(campoEditar,campoObjeto);
         }
     }
 }
@@ -256,29 +260,22 @@ function anadirEventListener() {
         })
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            if(objetoForm.length == 1){
-                let campoEditar = document.getElementById("tr0");
-                let campoObjeto = objetoForm[0];
-
-                console.log(campoEditar)
-                console.log(campoObjeto);
-
-                document.getElementById("imprimir").innerHTML = "";
-                generarFormulario("modificar", campoEditar, campoObjeto);
-
-            }
-            else{
-                console.log("VALOR DE LA PUTA I: "+i);
-                let campoEditar = document.getElementById("tr" + i);
-                let campoObjeto = objetoForm[i];
-
-                console.log(campoEditar)
-                console.log(campoObjeto);
-
-                document.getElementById("imprimir").innerHTML = "";
-                generarFormulario("modificar", campoEditar, campoObjeto);
-            
-            }
+            document.getElementById("botonModificar" + i).addEventListener("click", function () {
+                for(let i = 0; i< objetoForm.length;i++){
+                        let campoEditar = document.getElementById("tr"+i);
+                        let campoObjeto = objetoForm[i];
+                        
+                        console.log(campoObjeto);
+    
+                        document.getElementById("imprimir").innerHTML = "";
+                        generarFormulario("modificar",campoEditar,campoObjeto);
+                        break;
+                    }
+                }
+    
+    
+            )
+    
           
         }
 
@@ -293,6 +290,7 @@ function anadirEventListener() {
             console.log(campoObjeto_json);
 
             document.getElementById("imprimir").innerHTML = "";
+
             genera_tabla_json();
 
         }

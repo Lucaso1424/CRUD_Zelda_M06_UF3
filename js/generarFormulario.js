@@ -288,11 +288,10 @@ function generarFormulario(param,campoEditar,campoObjeto) {
 
             let btnPulsado = document.getElementById("modificar");
             btnPulsado.addEventListener("click", function(){
-                camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
+                camposObligatorios(input,input2,input3,campoEditar,campoObjeto);
 
             })
             document.getElementById("txtImg").addEventListener("change", previewFile);
-
     }
 
     else if(param == "verSubJson"){
@@ -359,13 +358,13 @@ function genera_tabla_json(){
 
             let textoCelda = null;
             if (j == 0) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].habilidad);
+                textoCelda = document.createTextNode(objetoForm[i].json.habilidad);
             } else if (j == 1) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].zona);
+                textoCelda = document.createTextNode(objetoForm[i].json.zona);
             } else if (j == 2) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].arma);
+                textoCelda = document.createTextNode(objetoForm[i].json.arma);
             } else if (j == 3) {
-                textoCelda = document.createTextNode(objetoForm[i].json[0].melodia);
+                textoCelda = document.createTextNode(objetoForm[i].json.melodia);
             }
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
