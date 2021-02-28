@@ -14,6 +14,7 @@ function mostrarForm() {
     generarFormulario("guardarForm");
     borrarDiv();
 }
+
 // DEFINIMOS UNA FUNCIÓN PARA ELIMINAR EL FORMULARIO
 function ocultarForm() {
     document.getElementById("formulario").innerHTML = "";
@@ -38,7 +39,7 @@ function genera_tabla() {
     tabla.setAttribute("id", "tabla");
 
     var tblBody = document.createElement("tbody");
-    tblBody.setAttribute("id", "tbody")
+    tblBody.setAttribute("id", "tbody");
     // Crea las celdas
     for (var i = 0; i < objetoForm.length; i++) {
         // Crea las hileras de la tabla
@@ -121,12 +122,10 @@ function genera_tabla() {
         // agrega la hilera al final de la tabla (al final del elemento tblbody)
         tblBody.appendChild(hilera);
     }
-
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
     div.appendChild(tabla);
-
 
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
@@ -138,7 +137,6 @@ function genera_tabla() {
     document.getElementById("ocultar_video").innerHTML = "<video id='video' width='700' height='350'><source src = '/video/cagaste.mp4'></video>";
     document.getElementById("mostrarForm").addEventListener("click", mostrarForm);
     document.getElementById("ocultar_video").style.visibility = "hidden";
-    //  ocultarForm();
 }
 
 // CREAMOS LA FUNCION PARA GUARDAR EL OBJETO Y TODAS LAS ENTRADAS DEL OBJETO 
