@@ -39,6 +39,7 @@ function updateItems(campoEditar, campoObjeto, nameGame, player, money, menu, ve
     campoObjeto.rupias = money;
     campoObjeto.radialMenu = menu;
     campoObjeto.vehiculo = veh;
+
     campoObjeto.json.habilidad = skill
     campoObjeto.json.zona = zone
     campoObjeto.json.arma = weapon

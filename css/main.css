@@ -45,7 +45,7 @@ body * {
     src: url(HyliaSerifBeta-Regular.otf);
 }
 
-div#imprimir { 
+.contenido{ 
     margin:4px, 4px; 
     padding:4px; 
     width: 1200px; 

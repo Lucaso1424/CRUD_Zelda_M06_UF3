@@ -24,15 +24,21 @@ function ocultarForm() {
 window.onload = function () {
     genera_tabla();
     anadirEventListener();
+    let div = document.getElementById("imprimemeEsta");
+    if (div.children.length == 0) div.removeAttribute("class");
 }
 
 // CREAMOS LA FUNCION DE GENERAR LA TABLA, PARA GENERAR LA PRIMERA ENTRADA DE LA TABLA
 function genera_tabla() {
     string64 = "";
-    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
+    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif", "Saltar", "Bosque Faraone", "Espada Maestra", "Cantico de la Diosa");
 
     // Obtener la referencia del elemento body
     var div = document.getElementById("imprimir");
+    div.setAttribute("class", "contenido")
+
+    let anterior = document.getElementById("imprimemeEsta");
+    if (anterior.children.length == 0) anterior.removeAttribute("class");
 
     // Crea un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
@@ -258,15 +264,33 @@ function anadirEventListener() {
 
         // addEventListener PARA MODIFICAR LOS VALORES
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            for (let i = 0; i < objetoForm.length; i++) {
-                let campoEditar = document.getElementById("tr" + i);
-                let campoObjeto = objetoForm[i];
-                console.log(campoObjeto);
-                document.getElementById("imprimir").innerHTML = "";
-                generarFormulario("modificar", campoEditar, campoObjeto);
-                break;
+                console.log("VALOR DE LA PUTA I: " + i);
+                if (objetoForm.length == 1 && objetoForm[0].id == 1) {
+                    let campoEditar = document.getElementById("tr0");
+                    let campoObjeto = objetoForm[0];
+
+                    console.log(campoEditar)
+                    console.log(campoObjeto);
+
+                    document.getElementById("imprimir").innerHTML = "";
+                    generarFormulario("modificar", campoEditar, campoObjeto);
+
+                } else {
+                    let campoEditar = document.getElementById("tr" + i);
+                    let campoObjeto = objetoForm[i];
+
+                    console.log(campoEditar)
+                    console.log(campoObjeto);
+
+
+                    document.getElementById("imprimir").innerHTML = "";
+                    generarFormulario("modificar", campoEditar, campoObjeto);
+
+                }
+
             }
-        });
+
+        )
 
         // addEventListener PARA VER LOS VALORES DEL subJson DEL OBJETIVO 3
         document.getElementById("verSubJson" + i).addEventListener("click", function () {
@@ -277,6 +301,7 @@ function anadirEventListener() {
             document.getElementById("imprimir").innerHTML = "";
             genera_tabla_json();
         });
+
 
         // addEventListener PARA BORRAR LA FOTO CON UN DOBLE CLICK
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
