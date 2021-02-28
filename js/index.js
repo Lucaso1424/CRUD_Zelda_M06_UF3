@@ -19,7 +19,6 @@ function ocultarForm() {
 
 window.onload = function () {
     genera_tabla();
-
     anadirEventListener();
 }
 
@@ -254,7 +253,7 @@ function anadirEventListener() {
 
             }
             objetoForm.splice(i, 1);
-        })
+        });
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
 
@@ -267,10 +266,7 @@ function anadirEventListener() {
                 document.getElementById("imprimir").innerHTML = "";
                 generarFormulario("modificar", campoEditar, campoObjeto);
 
-            }
-
-
-        )
+            });
 
         document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
 
@@ -281,19 +277,16 @@ function anadirEventListener() {
             console.log(campoObjeto_json);
 
             document.getElementById("imprimir").innerHTML = "";
-            generarFormulario("modificar", campoEditar, campoObjeto);
+            generarFormulario_json("modificar", campoEditar_json, campoObjeto_json);
 
-        }
-
-
-    )
+        });
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
             console.log("Se ha borrado la imagen, dejamos una imagen default");
             document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
             objetoForm[i].image = "/img/vegeta_meme.png";
-        })
+        });
     }
 }
 

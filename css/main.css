@@ -1,4 +1,4 @@
-#guardados{
+#guardados {
     display: flex;
     flex-direction: row;
 }
@@ -12,7 +12,69 @@ td {
     vertical-align: center;
 }
 
-th, td {
+th,
+td {
     padding: 15px;
-    text-align: left;
-  }
+    text-align: center;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/*ZELDA CSS*/
+
+body,html {
+    height: 100%;
+}
+
+.fondo_zelda {
+    background: url(/img/zelda_wallpaper.jpg);
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body * {
+    font-family: "Hylia serif";
+}
+
+@font-face {
+    font-family: 'Hylia serif';
+    src: url(HyliaSerifBeta-Regular.otf);
+}
+
+div#imprimir { 
+    margin:4px, 4px; 
+    padding:4px; 
+    width: 1200px; 
+    height: 250px; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    text-align: justify;
+    background-color: rgb(111, 179, 105); 
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+} 
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(111, 179, 105); 
+    color: black;
+    text-align: center;
+}
+
+#p_footer {
+    font-family: 'Hylia serif';
+    font-weight: bold;
+}
+
+video {
+    display: block;
+    margin: 0 auto;
+}

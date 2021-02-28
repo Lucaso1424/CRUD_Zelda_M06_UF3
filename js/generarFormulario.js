@@ -1,7 +1,7 @@
 function generarFormulario(param,campoEditar,campoObjeto) {
+    if (!objetoForm[0]) addItems(1, "Skyward Sword", "Link", "500", "Arco", "Lobo", "/img/link.gif");
     document.getElementById("mostrarForm").style.visibility = "hidden";
     let form = document.createElement("form");
-
 
     /* Juego */
     let div = document.createElement("div");
@@ -9,7 +9,7 @@ function generarFormulario(param,campoEditar,campoObjeto) {
     let input = document.createElement("input");
 
     label.setAttribute("for", "Juego");
-    label.innerText = "Juego: "
+    label.innerText = "Juego: ";
 
     input.setAttribute("type", "text");
     input.setAttribute("id", "txtNameGame");
@@ -190,7 +190,7 @@ function generarFormulario(param,campoEditar,campoObjeto) {
             btnPulsado.addEventListener("click", function(){
                 camposObligatorios(input, input2, input3,campoEditar,campoObjeto);
 
-            })
+            });
             document.getElementById("txtImg").addEventListener("change", previewFile);
 
     }
@@ -199,8 +199,9 @@ function generarFormulario(param,campoEditar,campoObjeto) {
 
 function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) {
     document.getElementById("mostrarForm").style.visibility = "hidden";
-    let form2 = document.createElement("form2");
+    document.getElementById("ocultar_video").innerHTML = "";
 
+    let form2 = document.createElement("form2");
 
     /* Habilidad */
     let div_json = document.createElement("div");
@@ -272,6 +273,7 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
     form2.appendChild(div_json4);
     form2.appendChild(submit_json);
     document.getElementById("formulario_json").appendChild(form2);
+    
 
     if (param_json == "guardarForm_json") {
         let btnPulsadojson = document.getElementById("guardarForm_json");
@@ -289,7 +291,7 @@ function generarFormulario_json(param_json, campoEditar_json, campoObjeto_json) 
             let btnPulsado = document.getElementById("modificar_json");
             btnPulsado.addEventListener("click", function () {
                 camposObligatorios(input_json, input_json2, input_json3, campoEditar_json, campoObjeto_json);
-            })
+            });
             break;
         }
     }
