@@ -103,10 +103,10 @@ function genera_tabla() {
 
             } else if (j == 9) {
                 textoCelda = document.createElement("button");
-                textoCelda.setAttribute("id", "botonModificar_json" + i);
-                textoCelda.setAttribute("name", "botonModificar_json");
-                textoCelda.setAttribute("value", "botonModificar_json");
-                textoCelda.innerText = "botonModificarValores";
+                textoCelda.setAttribute("id", "verSubJson" + i);
+                textoCelda.setAttribute("name", "verSubJson");
+                textoCelda.setAttribute("value", "verSubJson");
+                textoCelda.innerText = "Boton ver SubJson";
             }
             // console.log("Valor J: " + j);
             // console.log("Valor textoCelda: " + textoCelda);
@@ -124,11 +124,11 @@ function genera_tabla() {
     // appends <table> into <body>
     div.appendChild(tabla);
 
-
+    
     document.getElementById("imprimir").appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
-
+    
     document.getElementById("formulario").innerHTML = "<input type='button' value='Formulario' id='mostrarForm'><div id='ocultar_video'></div>";
 
     document.getElementById("mostrarForm").style.visibility = "visible";
@@ -152,7 +152,7 @@ function saveObject() {
     let arma = document.getElementById("txtArma").value;
     let meoldia = document.getElementById("txtMelodia").value;
     //img = document.querySelector("#txtImage").value;
-    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img, habilidad, zona, arma, meoldia);
+    addItems(id, nombreJuego, nombreJugador, money, menuRadial, veh, img,habilidad,zona,arma,meoldia);
     console.log(contador);
     contador++;
 }
@@ -255,7 +255,7 @@ function anadirEventListener() {
         });
 
         document.getElementById("botonModificar" + i).addEventListener("click", function () {
-            if (objetoForm.length == 1) {
+            if(objetoForm.length == 1){
                 let campoEditar = document.getElementById("tr0");
                 let campoObjeto = objetoForm[0];
 
@@ -265,8 +265,9 @@ function anadirEventListener() {
                 document.getElementById("imprimir").innerHTML = "";
                 generarFormulario("modificar", campoEditar, campoObjeto);
 
-            } else {
-                console.log("VALOR DE LA PUTA I: " + i);
+            }
+            else{
+                console.log("VALOR DE LA PUTA I: "+i);
                 let campoEditar = document.getElementById("tr" + i);
                 let campoObjeto = objetoForm[i];
 
@@ -275,13 +276,17 @@ function anadirEventListener() {
 
                 document.getElementById("imprimir").innerHTML = "";
                 generarFormulario("modificar", campoEditar, campoObjeto);
+            
             }
-        });
+          
+        }
 
-        document.getElementById("botonModificar_json" + i).addEventListener("click", function () {
+        )
+
+        document.getElementById("verSubJson" + i).addEventListener("click", function () {
 
             let campoEditar_json = document.getElementById("tr" + i);
-            let campoObjeto_json = objetoForm[i].json;
+            let campoObjeto_json= objetoForm[i].json;
 
             console.log(campoEditar_json)
             console.log(campoObjeto_json);
@@ -289,14 +294,18 @@ function anadirEventListener() {
             document.getElementById("imprimir").innerHTML = "";
             genera_tabla_json();
 
-        });
+        }
+
+
+    )
 
         document.getElementById(i + "-6").addEventListener("dblclick", function () {
             delete objetoForm[i].image;
             console.log("Se ha borrado la imagen, dejamos una imagen default");
             document.getElementById(i + "-6").src = "/img/vegeta_meme.png";
             objetoForm[i].image = "/img/vegeta_meme.png";
-        });
+        })
+
     }
 }
 
